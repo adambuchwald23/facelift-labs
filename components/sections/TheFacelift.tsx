@@ -131,8 +131,10 @@ function NumberWatermark({ number }: { number: string }) {
         fontSize: "clamp(4.5rem, 10vw, 6.5rem)",
         letterSpacing: "-0.05em",
         lineHeight: 1,
-        color: "#020202",
-        WebkitTextStroke: "2px rgba(0,255,136,0.4)",
+        color: "transparent",
+        background: "linear-gradient(180deg, rgba(0,255,136,0.18) 0%, rgba(0,255,136,0.06) 100%)",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
       }}
     >
       {number}
