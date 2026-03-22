@@ -24,7 +24,7 @@ export default function Comparison() {
     <SectionWrapper
       id="why-us"
       direction="left"
-      className="px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16"
+      className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 flex justify-center sm:mb-14">
@@ -88,6 +88,7 @@ export default function Comparison() {
                   width={140}
                   height={24}
                   className="h-[22px] w-auto"
+                  sizes="140px"
                   loading="lazy"
                 />
               </div>

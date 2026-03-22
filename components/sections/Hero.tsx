@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-20 min-h-[calc(100svh-4rem)]"
+      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-24 min-h-[calc(100svh-4rem)]"
     >
       {/* Top-left radial glow — contained to corner, never reaches marquee */}
       <div

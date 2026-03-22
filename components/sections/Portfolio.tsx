@@ -61,7 +61,7 @@ export default function Portfolio() {
   return (
     <SectionWrapper
       id="portfolio"
-      className="px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16"
+      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex justify-center sm:mb-14">
@@ -173,14 +173,14 @@ export default function Portfolio() {
                   <div className="flex items-center gap-2 sm:order-1">
                     <button
                       onClick={prev}
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                      className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
                       aria-label="Previous project"
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </button>
                     <button
                       onClick={next}
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                      className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
                       aria-label="Next project"
                     >
                       <ChevronRight className="h-4 w-4" />

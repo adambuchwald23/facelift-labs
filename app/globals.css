@@ -30,7 +30,7 @@ html {
 
 /* Prevent sticky navbar from covering section headers when scrolling to anchor */
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 6rem;
 }
 
 body {

@@ -48,14 +48,14 @@ export function CoreServiceCard({
   description,
   iconSrc,
   className,
-}: CoreServiceItem & { className?: string; index?: number }) {
+}: CoreServiceItem & { className?: string }) {
   return (
     <motion.article
       variants={cardVariants}
-      whileHover={{ y: -6, boxShadow: "0 20px 50px -12px rgba(0,255,136,0.18), 0 8px 24px -8px rgba(0,0,0,0.10)" }}
+      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
       className={cn(
-        "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8",
+        "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
         className
       )}
       style={{ boxShadow: CARD_SHADOW }}

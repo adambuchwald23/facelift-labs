@@ -45,7 +45,7 @@ export default function TheFacelift() {
     <SectionWrapper
       id="facelift"
       direction="right"
-      className="px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16"
+      className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex justify-center sm:mb-14">
@@ -99,9 +99,9 @@ type Step = (typeof THE_FACELIFT_STEPS)[number];
 function StepCard({ step }: { step: Step }) {
   return (
     <motion.article
-      whileHover={{ y: -6, boxShadow: "0 20px 50px -12px rgba(0,255,136,0.18), 0 8px 24px -8px rgba(0,0,0,0.10)" }}
+      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
-      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7"
+      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />
@@ -115,9 +115,9 @@ function StepCardAnimated({ step }: { step: Step }) {
   return (
     <motion.article
       variants={cardVariants}
-      whileHover={{ y: -6, boxShadow: "0 20px 50px -12px rgba(0,255,136,0.18), 0 8px 24px -8px rgba(0,0,0,0.10)" }}
+      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
-      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7"
+      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />

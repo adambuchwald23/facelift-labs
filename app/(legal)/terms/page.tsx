@@ -13,7 +13,7 @@ export default function TermsOfService() {
       </h1>
       <p className="mt-4 text-sm text-foreground-muted">Last updated: March 2026</p>
 
-      <div className="prose-section mt-10 space-y-8 text-[0.9375rem] leading-relaxed text-foreground-muted">
+      <div className="mt-10 space-y-8 text-[0.9375rem] leading-relaxed text-foreground-muted">
         <section>
           <h2 className="text-lg font-semibold text-foreground">1. Acceptance of Terms</h2>
           <p>

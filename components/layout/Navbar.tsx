@@ -20,6 +20,7 @@ export default function Navbar() {
   const clickLockRef = useRef(false);
   const clickLockTimer = useRef<ReturnType<typeof setTimeout>>();
   const activeHrefRef = useRef(activeHref);
+  const scrolledRef = useRef(false);
   const rafRef = useRef<number>(0);
   activeHrefRef.current = activeHref;
 
@@ -52,10 +53,13 @@ export default function Navbar() {
     const update = () => {
       ticking = false;
       const sy = window.scrollY;
-      setScrolled(sy > 20);
+      const nowScrolled = sy > 20;
+      if (nowScrolled !== scrolledRef.current) setScrolled(nowScrolled);
+      scrolledRef.current = nowScrolled;
 
       if (sy < 100) {
-        setActiveHref("");
+        if (activeHrefRef.current !== "") setActiveHref("");
+        activeHrefRef.current = "";
         clickLockRef.current = false;
         return;
       }
@@ -69,7 +73,8 @@ export default function Navbar() {
           active = link.href;
         }
       }
-      setActiveHref(active);
+      if (active !== activeHrefRef.current) setActiveHref(active);
+      activeHrefRef.current = active;
     };
 
     const onScroll = () => {

@@ -1,6 +1,18 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+const MAX_FIELD_LEN = 500;
+const MAX_MESSAGE_LEN = 5000;
+
 export async function POST(req: Request) {
   try {
     if (!process.env.RESEND_API_KEY) {
@@ -21,21 +33,44 @@ export async function POST(req: Request) {
       );
     }
 
+    if (
+      typeof email !== "string" ||
+      typeof message !== "string" ||
+      email.length > MAX_FIELD_LEN ||
+      message.length > MAX_MESSAGE_LEN
+    ) {
+      return NextResponse.json(
+        { error: "Invalid input." },
+        { status: 400 },
+      );
+    }
+
+    const safe = {
+      firstName: escapeHtml(String(firstName || "").slice(0, MAX_FIELD_LEN)),
+      lastName: escapeHtml(String(lastName || "").slice(0, MAX_FIELD_LEN)),
+      email: escapeHtml(email),
+      phone: escapeHtml(String(phone || "").slice(0, MAX_FIELD_LEN)),
+      services: Array.isArray(services)
+        ? services.map((s: unknown) => escapeHtml(String(s).slice(0, MAX_FIELD_LEN)))
+        : [],
+      message: escapeHtml(message),
+    };
+
     const toEmail = process.env.CONTACT_TO_EMAIL || "hello@faceliftlabs.com";
 
     const { error } = await resend.emails.send({
       from: "Facelift Labs <onboarding@resend.dev>",
       to: [toEmail],
       replyTo: email,
-      subject: `New inquiry from ${firstName || ""} ${lastName || ""}`.trim(),
+      subject: `New inquiry from ${safe.firstName} ${safe.lastName}`.trim(),
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName || ""} ${lastName || ""}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-        ${services?.length ? `<p><strong>Services:</strong> ${services.join(", ")}</p>` : ""}
+        <p><strong>Name:</strong> ${safe.firstName} ${safe.lastName}</p>
+        <p><strong>Email:</strong> ${safe.email}</p>
+        ${safe.phone ? `<p><strong>Phone:</strong> ${safe.phone}</p>` : ""}
+        ${safe.services.length ? `<p><strong>Services:</strong> ${safe.services.join(", ")}</p>` : ""}
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
+        <p>${safe.message.replace(/\n/g, "<br />")}</p>
       `,
     });
 

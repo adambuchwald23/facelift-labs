@@ -17,7 +17,7 @@ export default function LegalLayout({
               width={613}
               height={100}
               className="h-auto w-[130px]"
-              priority
+              loading="lazy"
             />
           </Link>
           <Link
@@ -41,7 +41,7 @@ export default function LegalLayout({
           </Link>
         </div>
       </header>
-      {children}
+      <main id="main">{children}</main>
     </>
   );
 }
