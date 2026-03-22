@@ -4,6 +4,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { StructuredData } from "./structured-data";
+import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -81,6 +82,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <StructuredData />
+        <SmoothScrollProvider />
         {children}
       </body>
     </html>
