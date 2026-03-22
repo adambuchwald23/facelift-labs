@@ -25,7 +25,7 @@ export default function Footer() {
             </Link>
 
             <p className="max-w-[220px] text-sm leading-relaxed text-foreground-muted">
-              Modern websites engineered for growth.
+              Modern websites engineered to convert.
             </p>
 
             {/* Tampa, FL pill */}

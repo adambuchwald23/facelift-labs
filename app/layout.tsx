@@ -21,11 +21,11 @@ function metadataBaseUrl() {
 export const metadata: Metadata = {
   metadataBase: metadataBaseUrl(),
   title: {
-    default: "Facelift Labs | Modern Websites Engineered for Growth",
+    default: "Facelift Labs | Modern Websites Engineered to Convert",
     template: "%s | Facelift Labs",
   },
   description:
-    "We design and build high-performance websites that help brands grow faster online. Custom UX/UI design, Next.js development, and strategic SEO.",
+    "We design and build high-performance websites for brands that need a new site or a complete redesign. Custom UX/UI design, Next.js development, and strategic SEO.",
   keywords: [
     "web design",
     "web development",
@@ -44,17 +44,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Facelift Labs",
-    title: "Facelift Labs | Modern Websites Engineered for Growth",
+    title: "Facelift Labs | Modern Websites Engineered to Convert",
     description:
-      "We design and build high-performance websites that help brands grow faster online. Custom UX/UI design, Next.js development, and strategic SEO.",
+      "We design and build high-performance websites for brands that need a new site or a complete redesign. Custom UX/UI design, Next.js development, and strategic SEO.",
     url: "https://faceliftlabs.com",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Facelift Labs" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Facelift Labs | Modern Websites Engineered for Growth",
+    title: "Facelift Labs | Modern Websites Engineered to Convert",
     description:
-      "We design and build high-performance websites that help brands grow faster online.",
+      "We design and build high-performance websites for brands that need a new site or a complete redesign.",
     images: ["/og-image.png"],
   },
   robots: {

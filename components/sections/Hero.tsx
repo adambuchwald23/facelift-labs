@@ -61,10 +61,11 @@ export default function Hero() {
               {/* Explicit space between spans: without Tailwind, both are inline and would read "…engineeredfor" */}
               <span className="block pb-2">{HERO.headline}</span>{" "}
               <span className="mt-3 block min-h-[1.2em]">
-                for{" "}
+                to{" "}
                 <span className="bg-gradient-to-r from-foreground via-accent to-foreground bg-[length:200%_auto] bg-clip-text font-bold text-transparent animate-gradient-x">
                   {HERO.headlineAccent}
                 </span>
+                .
               </span>
             </h1>
           </motion.div>

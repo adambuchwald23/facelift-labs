@@ -12,9 +12,9 @@ export const NAV_LINKS = [
 
 export const HERO = {
   headline: "Modern websites engineered",
-  headlineAccent: "growth",
+  headlineAccent: "convert",
   subtitle:
-    "We design and build high performance websites that help brands grow faster online.",
+    "We design and build high-performance websites for brands that need a new site or a complete redesign.",
   ctaPrimary: "Get Your Digital Facelift",
   ctaSecondary: "See How It Works",
   trustedBy: "Trusted by 1K+ companies",

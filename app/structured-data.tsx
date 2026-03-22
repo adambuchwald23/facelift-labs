@@ -4,7 +4,7 @@ export function StructuredData() {
     "@type": "ProfessionalService",
     name: "Facelift Labs",
     description:
-      "We design and build high-performance websites that help brands grow faster online.",
+      "We design and build high-performance websites for brands that need a new site or a complete redesign.",
     url: "https://faceliftlabs.com",
     telephone: "954-218-2066",
     email: "hello@faceliftlabs.com",
