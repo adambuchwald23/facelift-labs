@@ -52,7 +52,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-start pt-8 px-5 sm:justify-center sm:pt-0 sm:px-6 sm:pb-20 md:pb-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-center px-5 pb-10 sm:px-6 sm:pb-20 md:pb-24">
         <div className="w-full max-w-4xl mx-auto text-center">
 
           {/* Headline */}
@@ -120,7 +120,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-8 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14 sm:text-sm"
+            className="mt-6 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14 sm:text-sm"
           >
             {HERO.trustedBy}
           </motion.p>
@@ -131,7 +131,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-4 flex items-center justify-center gap-1 sm:mt-4"
+            className="mt-3 flex items-center justify-center gap-1 sm:mt-4"
             aria-hidden
           >
             {[1, 2, 3, 4, 5].map((i) => (
@@ -155,7 +155,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-8 sm:mt-10"
+            className="mt-5 sm:mt-10"
             aria-hidden
           >
             <div className="marquee-wrap mx-auto max-w-2xl overflow-hidden">

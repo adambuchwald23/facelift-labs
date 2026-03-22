@@ -77,8 +77,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen antialiased overflow-x-clip">
-        <div className="overflow-x-clip">
+      <body className="min-h-screen antialiased overflow-x-hidden overflow-x-clip overscroll-x-none">
+        <div className="overflow-x-hidden overflow-x-clip">
           <a href="#main" className="skip-to-content">
             Skip to content
           </a>
