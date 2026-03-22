@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens — match Figma: white/light theme, accent #00FF88 */
+:root {
+  --accent: #00ff88;
+  --background: #ffffff;
+  --background-card: #ffffff;
+  --foreground: #020202;
+  --foreground-muted: #4b4b4b;
+  --foreground-subtle: #8d8d8d;
+  --radius-button: 25px;
+  --radius-card: 50px;
+  --radius-pill: 100px;
+  --section-gap: 5rem; /* equal spacing between sections per Figma */
+  --content-max: 1280px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent sticky navbar from covering section headers when scrolling to anchor */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Safe area for notched devices */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Skip-to-content link — hidden until focused for keyboard users */
+.skip-to-content {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 12px 12px;
+  background: var(--accent);
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Touch devices: remove tap highlight for custom controls */
+@media (hover: none) {
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Trusted-by marquee: duplicate set for seamless loop */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Force each cell onto its own compositor layer to prevent flicker at the loop boundary */
+.marquee-wrap [data-marquee-cell] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  /* Show only one set of logos when motion is reduced (avoid duplicate strip) */
+  .marquee-wrap {
+    max-width: 54rem;
+    justify-content: flex-start;
+  }
+}
+
+/* Animated gradient text (21st.dev-style) */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 2s ease-in-out 1.5s 1 forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-x {
+    animation: none;
+    background-position: 0% center;
+  }
+}
+
+/* Hero CTA arrow — shoots left-to-right only on button hover */
+@keyframes cta-arrow-shoot {
+  0%   { transform: translate3d(-8px, -50%, 0); opacity: 0; }
+  18%  { transform: translate3d(-2px, -50%, 0); opacity: 1; }
+  72%  { transform: translate3d(5px,  -50%, 0); opacity: 1; }
+  90%  { transform: translate3d(9px,  -50%, 0); opacity: 0; }
+  100% { transform: translate3d(9px,  -50%, 0); opacity: 0; }
+}
+
+/* Hidden by default; plays only while the button is hovered */
+.cta-arrow-shoot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(0, -50%, 0);
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+.cta-arrow-btn:hover .cta-arrow-shoot,
+.cta-arrow-btn:focus-visible .cta-arrow-shoot {
+  animation: cta-arrow-shoot 2s cubic-bezier(0.25, 0, 0.35, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-arrow-shoot,
+  .cta-arrow-btn:hover .cta-arrow-shoot,
+  .cta-arrow-btn:focus-visible .cta-arrow-shoot {
+    animation: none;
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+/* Aurora background — smooth animated green light layers */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%       { transform: translate(5%, -4%) scale(1.08); }
+  66%       { transform: translate(-4%, 3%) scale(0.95); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%       { transform: translate(-6%, 3%) scale(1.05); }
+  66%       { transform: translate(4%, -5%) scale(1.1); }
+}
+@keyframes aurora-3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50%       { transform: translate(3%, -6%) scale(0.92); }
+}
+
+/* ── Bento card: rotating neon green border sweep ── */
+@property --bento-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes bento-spin {
+  to { --bento-angle: 360deg; }
+}
+
+@keyframes bento-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+.bento-border-active {
+  background: conic-gradient(
+    from var(--bento-angle),
+    transparent 0%,
+    #00FF88 10%,
+    #00FF88 14%,
+    transparent 22%
+  );
+  animation: bento-spin 3s linear infinite;
+}
+
+.bento-glow-active {
+  animation: bento-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-border-active { animation: none; }
+  .bento-glow-active   { animation: none; }
+}
+
+/* Responsive: minimum touch target ~44px for tap areas */
+.min-touch-target {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Focus visible for accessibility — meets WCAG 2.1 AA */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--foreground);
+}

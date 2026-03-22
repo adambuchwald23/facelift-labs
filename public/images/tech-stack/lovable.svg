@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="lovable-color 1" clip-path="url(#clip0_0_21)">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M28.2056 0C43.778 0 56.4072 12.4511 56.4072 27.8083V38.3833H65.7944C81.3668 38.3833 94 50.8305 94 66.1917C94 81.5568 81.3748 94 65.7944 94H0V27.8083C0 12.455 12.6252 0 28.2056 0Z" fill="url(#paint0_radial_0_21)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_21" cx="0" cy="0" r="1" gradientTransform="matrix(-3.98271 88.125 -121.289 -5.30121 55.758 11.75)" gradientUnits="userSpaceOnUse">
+<stop offset="0.25" stop-color="#FE7B02"/>
+<stop offset="0.433" stop-color="#FE4230"/>
+<stop offset="0.548" stop-color="#FE529A"/>
+<stop offset="0.654" stop-color="#DD67EE"/>
+<stop offset="0.95" stop-color="#4B73FF"/>
+</radialGradient>
+<clipPath id="clip0_0_21">
+<rect width="94" height="94" fill="white"/>
+</clipPath>
+</defs>
+</svg>
