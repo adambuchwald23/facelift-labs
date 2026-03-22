@@ -11,9 +11,9 @@ interface SectionWrapperProps {
 }
 
 const directionOffset = {
-  up:    { y: 24, x: 0  },
-  left:  { y: 12, x: -20 },
-  right: { y: 12, x: 20  },
+  up:    { y: 32, x: 0  },
+  left:  { y: 16, x: -24 },
+  right: { y: 16, x: 24  },
 };
 
 /**
@@ -32,8 +32,8 @@ export default function SectionWrapper({
       id={id}
       initial={{ opacity: 0, y: offset.y, x: offset.x }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "0px" }}
+      transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
       /* scroll-mt-24 = 96px — keeps section below the sticky navbar on anchor nav */
       className={`scroll-mt-24 ${className}`}
     >

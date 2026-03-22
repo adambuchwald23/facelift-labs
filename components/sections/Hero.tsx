@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative w-full flex flex-col items-center overflow-hidden scroll-mt-20"
+      className="relative w-full flex flex-col items-center overflow-hidden scroll-mt-20 min-h-[calc(100svh-4rem)]"
     >
       {/* Top-left radial glow — contained to corner, never reaches marquee */}
       <div
@@ -52,7 +52,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 container mx-auto px-4 pt-16 pb-14 sm:pt-20 sm:pb-18 md:px-6 md:pt-24 md:pb-22">
+      <div className="relative z-10 container mx-auto flex flex-1 flex-col justify-center px-4 pt-10 pb-10 sm:pt-14 sm:pb-12 md:px-6 md:pt-16 md:pb-14">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Headline */}

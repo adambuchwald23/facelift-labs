@@ -8,20 +8,12 @@ import { TECH_STACK_ITEMS } from "@/lib/constants";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.2 } },
-};
-
-/* Entrance: fade + scale only (no y — avoids conflict with float) */
-const tileVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
-  },
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
 };
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
+
+const SPREAD_X = ["-30px", "-16px", "16px", "30px", "-24px", "0px", "24px"];
 
 export default function TechStack() {
   return (
@@ -38,7 +30,7 @@ export default function TechStack() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px" }}
           className="flex flex-col items-center gap-7 sm:gap-8"
         >
           {/* Row 1 — 4 items */}
@@ -68,6 +60,18 @@ function Tile({
   floatIndex: number;
 }) {
   const dur = FLOAT_DURATIONS[floatIndex % FLOAT_DURATIONS.length];
+  const spreadX = SPREAD_X[floatIndex % SPREAD_X.length];
+
+  const tileVariants = {
+    hidden: { opacity: 0, y: 30, x: spreadX, scale: 0.85 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: "0px",
+      scale: 1,
+      transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
 
   return (
     <motion.div variants={tileVariants}>

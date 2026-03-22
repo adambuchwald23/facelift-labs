@@ -11,12 +11,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const listVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.35, delayChildren: 0.3 } },
+  visible: { transition: { staggerChildren: 0.45, delayChildren: 0.5 } },
 };
 
 const rowVariants = {
-  hidden: { opacity: 0, x: -8 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Comparison() {
@@ -32,10 +32,10 @@ export default function Comparison() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "0px" }}
+          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden rounded-[40px] bg-white ring-1 ring-inset ring-black/[0.07]"
           style={{ boxShadow: CARD_SHADOW }}
         >
@@ -55,7 +55,7 @@ export default function Comparison() {
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "0px" }}
                 className="space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
@@ -95,7 +95,7 @@ export default function Comparison() {
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "0px" }}
                 className="space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (

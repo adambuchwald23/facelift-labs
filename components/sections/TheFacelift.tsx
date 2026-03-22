@@ -9,28 +9,28 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.22, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.35, delayChildren: 0.3 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
 function StepArrow() {
   return (
-    <div className="hidden lg:flex shrink-0 items-center justify-center self-center px-1" aria-hidden>
-      <div className="step-arrow-nudge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <div className="hidden lg:flex shrink-0 items-center justify-center self-center" aria-hidden>
+      <div className="step-arrow-nudge flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 ring-1 ring-accent/20">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path
             d="M9 6l6 6-6 6"
-            stroke="rgba(0,0,0,0.18)"
-            strokeWidth="1.5"
+            stroke="#00FF88"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -56,16 +56,16 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.25, delayChildren: 0.15 } } }}
+          viewport={{ once: true, margin: "0px" }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.35, delayChildren: 0.3 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
             <motion.div
               key={step.number}
               variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
+                hidden: { opacity: 0, y: 36, scale: 0.94 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } },
               }}
               className="flex flex-1 items-stretch gap-3"
             >
@@ -80,7 +80,7 @@ export default function TheFacelift() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px" }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
@@ -121,7 +121,6 @@ function StepCardAnimated({ step }: { step: Step }) {
   );
 }
 
-/** Giant outlined step number — the Figma-inspired watermark */
 function NumberWatermark({ number }: { number: string }) {
   return (
     <div
@@ -131,8 +130,8 @@ function NumberWatermark({ number }: { number: string }) {
         fontSize: "clamp(4.5rem, 10vw, 6.5rem)",
         letterSpacing: "-0.05em",
         lineHeight: 1,
-        /* Fully filled accent color */
-        color: "#00FF88",
+        color: "transparent",
+        WebkitTextStroke: "2px rgba(0,255,136,0.35)",
       }}
     >
       {number}
