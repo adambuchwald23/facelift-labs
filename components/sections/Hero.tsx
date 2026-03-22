@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative w-full max-w-[100vw] flex flex-col items-center overflow-hidden scroll-mt-20 min-h-[calc(100svh-4rem)]"
+      className="relative w-full max-w-[100vw] flex flex-col items-center overflow-hidden scroll-mt-20 sm:min-h-[calc(100svh-4rem)]"
     >
       {/* Top-left radial glow — contained to corner, never reaches marquee */}
       <div
@@ -52,7 +52,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 container mx-auto flex flex-1 flex-col justify-center px-4 pb-16 sm:pb-20 md:px-6 md:pb-24">
+      <div className="relative z-10 container mx-auto flex flex-1 flex-col justify-start pt-10 px-4 pb-6 sm:justify-center sm:pt-0 sm:pb-20 md:px-6 md:pb-24">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Headline */}
@@ -131,7 +131,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-10 text-sm font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14"
+            className="mt-8 text-sm font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14"
           >
             {HERO.trustedBy}
           </motion.p>
@@ -166,7 +166,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-8 sm:mt-10"
+            className="mt-6 sm:mt-10"
             aria-hidden
           >
             <div className="marquee-wrap mx-auto max-w-2xl overflow-hidden">
