@@ -49,29 +49,23 @@ export default function Footer() {
             </p>
 
             {/* Tampa, FL pill */}
-            <div
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-black/[0.1] px-4 py-2"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(0,255,136,0.14) 0%, rgba(0,255,136,0.04) 60%, transparent 100%)",
-              }}
-            >
+            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 ring-1 ring-black/[0.08] shadow-sm">
               <svg
-                width="13"
-                height="13"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-foreground"
+                className="shrink-0 text-accent"
                 aria-hidden
               >
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                 <circle cx="12" cy="9" r="2.5" fill="currentColor" stroke="none" />
               </svg>
-              <span className="text-sm font-semibold tracking-tight text-foreground">
+              <span className="text-sm font-medium tracking-tight text-foreground-muted">
                 {FOOTER.location}
               </span>
             </div>

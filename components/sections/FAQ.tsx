@@ -19,9 +19,7 @@ const itemVariants = {
 };
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(
-    FAQ_ITEMS.length > 0 ? 0 : null
-  );
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <SectionWrapper id="faq" className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24">
