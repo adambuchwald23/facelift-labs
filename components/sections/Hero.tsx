@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative w-full max-w-[100vw] flex flex-col items-center overflow-hidden scroll-mt-20 sm:min-h-[calc(100svh-4rem)]"
+      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-20 sm:min-h-[calc(100svh-4rem)]"
     >
       {/* Top-left radial glow — contained to corner, never reaches marquee */}
       <div
@@ -52,12 +52,12 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 container mx-auto flex flex-1 flex-col justify-start pt-10 px-4 pb-6 sm:justify-center sm:pt-0 sm:pb-20 md:px-6 md:pb-24">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-start pt-8 px-5 pb-6 sm:justify-center sm:pt-0 sm:px-6 sm:pb-20 md:pb-24">
+        <div className="w-full max-w-4xl mx-auto text-center">
 
           {/* Headline */}
           <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-6 md:mb-8">
+            <h1 className="text-[1.625rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-5 md:mb-8">
               {/* Explicit space between spans: without Tailwind, both are inline and would read "…engineeredfor" */}
               <span className="block pb-2">{HERO.headline}</span>{" "}
               <span className="mt-3 block min-h-[1.2em]">
@@ -65,21 +65,14 @@ export default function Hero() {
                 <span className="bg-gradient-to-r from-foreground via-accent to-foreground bg-[length:200%_auto] bg-clip-text font-bold text-transparent animate-gradient-x">
                   {HERO.headlineAccent}
                 </span>
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.6, duration: 0.8, ease: "easeOut" }}
-                  className="inline-block text-foreground"
-                >
-                  .
-                </motion.span>
+                <span className="text-foreground">.</span>
               </span>
             </h1>
           </motion.div>
 
           {/* Subtitle */}
           <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <p className="mt-4 text-base text-foreground-muted sm:mt-6 sm:text-lg md:text-xl mb-8 max-w-xl mx-auto">
+            <p className="mt-4 text-[0.9375rem] leading-relaxed text-foreground-muted sm:mt-6 sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-xl mx-auto">
               {HERO.subtitle}
             </p>
           </motion.div>
@@ -90,17 +83,14 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+            className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
           >
-            <Button href="#contact" variant="primary" className="cta-arrow-btn w-full min-w-0 max-w-[18rem] sm:w-[18rem] !text-foreground">
+            <Button href="#contact" variant="primary" className="cta-arrow-btn w-full sm:w-auto sm:min-w-[18rem] !text-foreground">
               <span>{HERO.ctaPrimary}</span>
-              {/* Clip area = circle bounds; arrow shoots through without overflow */}
               <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full" aria-hidden>
-                {/* Black disc — static */}
                 <svg className="absolute inset-0 h-7 w-7" width={28} height={28} viewBox="0 0 29 29" fill="none">
                   <circle cx="14.5" cy="14.5" r="13.5" fill="#020202" />
                 </svg>
-                {/* Arrow — animates right, centered via CSS */}
                 <span className="cta-arrow-shoot">
                   <svg width={11} height={10} viewBox="0 0 12 10" fill="none">
                     <path d="M7 1L11 5M11 5L7 9M11 5H1" stroke="#00FF88" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
@@ -108,7 +98,7 @@ export default function Hero() {
                 </span>
               </span>
             </Button>
-            <Button href="#facelift" variant="outline" className="w-full min-w-0 max-w-[18rem] sm:w-[18rem] !border-foreground hover:!bg-foreground/5">
+            <Button href="#facelift" variant="outline" className="w-full sm:w-auto sm:min-w-[18rem] !border-foreground hover:!bg-foreground/5">
               <span>{HERO.ctaSecondary}</span>
               <svg
                 className="h-7 w-7 shrink-0"
@@ -131,7 +121,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-8 text-sm font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14"
+            className="mt-6 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14 sm:text-sm"
           >
             {HERO.trustedBy}
           </motion.p>
@@ -142,13 +132,13 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-4 flex items-center justify-center gap-1"
+            className="mt-3 flex items-center justify-center gap-1 sm:mt-4"
             aria-hidden
           >
             {[1, 2, 3, 4, 5].map((i) => (
               <svg
                 key={i}
-                className="h-5 w-5 shrink-0 text-accent sm:h-6 sm:w-6"
+                className="h-4 w-4 shrink-0 text-accent sm:h-6 sm:w-6"
                 width={20}
                 height={20}
                 fill="currentColor"
@@ -172,14 +162,14 @@ export default function Hero() {
             <div className="marquee-wrap mx-auto max-w-2xl overflow-hidden">
               <div className="flex w-max animate-marquee">
                 {[0, 1].map((setIdx) => (
-                  <div key={setIdx} className="flex shrink-0" style={{ gap: "2rem" , paddingRight: "2rem" }}>
+                  <div key={setIdx} className="flex shrink-0 gap-4 pr-4 sm:gap-8 sm:pr-8">
                     {HERO_TRUST_LOGOS.map((logo, i) => (
                       <div
                         key={`trust-${setIdx}-${i}`}
                         data-marquee-cell
-                        className="flex h-14 w-[12rem] shrink-0 items-center justify-center sm:h-16"
+                        className="flex h-10 w-[9rem] shrink-0 items-center justify-center sm:h-16 sm:w-[12rem]"
                       >
-                        <div className="relative h-10 w-[10rem] shrink-0 sm:h-11 sm:w-[11rem]">
+                        <div className="relative h-7 w-[7.5rem] shrink-0 sm:h-11 sm:w-[11rem]">
                           <Image
                             src={logo.full}
                             alt=""

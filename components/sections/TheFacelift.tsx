@@ -45,7 +45,7 @@ export default function TheFacelift() {
     <SectionWrapper
       id="facelift"
       direction="right"
-      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
+      className="px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex justify-center sm:mb-14">
