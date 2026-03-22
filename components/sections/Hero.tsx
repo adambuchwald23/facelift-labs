@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-20 sm:min-h-[calc(100svh-4rem)]"
+      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-20 min-h-[calc(100svh-4rem)]"
     >
       {/* Top-left radial glow — contained to corner, never reaches marquee */}
       <div
@@ -59,8 +59,8 @@ export default function Hero() {
           <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible">
             <h1 className="text-[1.625rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-5 md:mb-8">
               {/* Explicit space between spans: without Tailwind, both are inline and would read "…engineeredfor" */}
-              <span className="block pb-2">{HERO.headline}</span>{" "}
-              <span className="mt-3 block min-h-[1.2em]">
+              <span className="block pb-0 sm:pb-2">{HERO.headline}</span>{" "}
+              <span className="mt-1 sm:mt-3 block min-h-[1.2em]">
                 to{" "}
                 <span className="bg-gradient-to-r from-foreground via-accent to-foreground bg-[length:200%_auto] bg-clip-text font-bold text-transparent animate-gradient-x">
                   {HERO.headlineAccent}
