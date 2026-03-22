@@ -32,12 +32,6 @@ section[id] {
   scroll-margin-top: 5rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
   background: var(--background);
@@ -194,13 +188,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .tile-float { animation: none; }
-}
-
-/* Responsive: minimum touch target ~44px for tap areas */
-.min-touch-target {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
 }
 
 /* Focus visible for accessibility — meets WCAG 2.1 AA */

@@ -19,7 +19,6 @@ export default function Footer() {
                 width={200}
                 height={36}
                 className="h-8 w-auto"
-                style={{ width: "auto", height: 32 }}
                 loading="lazy"
               />
             </Link>

@@ -173,28 +173,30 @@ export default function Contact() {
             </Button>
           </motion.div>
 
-          <AnimatePresence>
-            {status === "success" && (
-              <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="mt-5 text-center text-sm font-medium text-foreground"
-              >
-                Message sent! We&apos;ll be in touch soon.
-              </motion.p>
-            )}
-            {status === "error" && (
-              <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="mt-5 text-center text-sm font-medium text-red-500"
-              >
-                Something went wrong. Please try again or email us directly.
-              </motion.p>
-            )}
-          </AnimatePresence>
+          <div aria-live="polite" role="status">
+            <AnimatePresence>
+              {status === "success" && (
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-5 text-center text-sm font-medium text-foreground"
+                >
+                  Message sent! We&apos;ll be in touch soon.
+                </motion.p>
+              )}
+              {status === "error" && (
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-5 text-center text-sm font-medium text-red-500"
+                >
+                  Something went wrong. Please try again or email us directly.
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.form>
       </div>
     </SectionWrapper>

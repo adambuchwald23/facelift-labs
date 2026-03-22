@@ -101,6 +101,7 @@ export default function Portfolio() {
                   filter:
                     "drop-shadow(0 24px 48px rgba(0,0,0,0.20)) drop-shadow(0 6px 14px rgba(0,0,0,0.10))",
                 }}
+                sizes="(max-width: 640px) 100vw, 50vw"
                 unoptimized
                 priority={i < 2}
               />

@@ -76,6 +76,7 @@ export default function FAQ() {
                       strokeWidth={2.5}
                       strokeLinecap="round"
                       strokeLinejoin="round"
+                      aria-hidden
                     >
                       <path d="M19 9l-7 7-7-7" />
                     </svg>

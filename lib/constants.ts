@@ -90,10 +90,6 @@ export const COMPARISON = {
   ],
 } as const;
 
-/** Figma FAQ section copy */
-export const FAQ_HEADLINE = "Have questions?";
-export const FAQ_SUBTEXT =
-  "Have more questions? Book a free discovery call.";
 export const FAQ_CTA_LABEL = "Book a call";
 
 export const FAQ_ITEMS = [
