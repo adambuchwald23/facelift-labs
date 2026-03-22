@@ -52,6 +52,8 @@ export function CoreServiceCard({
   return (
     <motion.article
       variants={cardVariants}
+      whileHover={{ y: -6, boxShadow: "0 20px 50px -12px rgba(0,255,136,0.18), 0 8px 24px -8px rgba(0,0,0,0.10)" }}
+      transition={{ type: "spring", stiffness: 300, damping: 24 }}
       className={cn(
         "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8",
         className

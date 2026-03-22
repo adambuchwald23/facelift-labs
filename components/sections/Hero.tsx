@@ -65,7 +65,20 @@ export default function Hero() {
                 <span className="bg-gradient-to-r from-foreground via-accent to-foreground bg-[length:200%_auto] bg-clip-text font-bold text-transparent animate-gradient-x">
                   {HERO.headlineAccent}
                 </span>
-                .
+                <motion.span
+                  initial={{ opacity: 0, x: 20, scale: 1.8 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  transition={{
+                    delay: 1.8,
+                    duration: 0.5,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 12,
+                  }}
+                  className="inline-block text-accent"
+                >
+                  .
+                </motion.span>
               </span>
             </h1>
           </motion.div>
