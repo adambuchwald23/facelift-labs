@@ -16,7 +16,7 @@ const listVariants = {
 
 const rowVariants = {
   hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Comparison() {
@@ -35,7 +35,7 @@ export default function Comparison() {
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px 0px -30% 0px" }}
-          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden rounded-[40px] bg-white ring-1 ring-inset ring-black/[0.07]"
           style={{ boxShadow: CARD_SHADOW }}
         >

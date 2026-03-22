@@ -18,7 +18,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -66,6 +66,7 @@ export default function TheFacelift() {
               variants={{
                 hidden: { opacity: 0, y: 36, scale: 0.94 },
                 visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } },
+
               }}
               className="flex flex-1 items-stretch gap-3"
             >
@@ -130,8 +131,8 @@ function NumberWatermark({ number }: { number: string }) {
         fontSize: "clamp(4.5rem, 10vw, 6.5rem)",
         letterSpacing: "-0.05em",
         lineHeight: 1,
-        color: "transparent",
-        WebkitTextStroke: "2px rgba(0,255,136,0.35)",
+        color: "#020202",
+        WebkitTextStroke: "2px rgba(0,255,136,0.4)",
       }}
     >
       {number}

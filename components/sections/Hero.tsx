@@ -11,7 +11,7 @@ const fadeUpVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1.4, delay: 0.3 + i * 0.2, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.5, delay: 0.3 + i * 0.2, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
@@ -52,7 +52,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 container mx-auto flex flex-1 flex-col justify-center px-4 pt-10 pb-10 sm:pt-14 sm:pb-12 md:px-6 md:pt-16 md:pb-14">
+      <div className="relative z-10 container mx-auto flex flex-1 flex-col px-4 pt-6 pb-10 sm:pt-10 sm:pb-12 md:px-6 md:pt-12 md:pb-14">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Headline */}
