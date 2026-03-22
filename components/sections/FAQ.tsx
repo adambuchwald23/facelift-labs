@@ -10,13 +10,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.4, delayChildren: 0.3 } },
+  visible: { transition: { staggerChildren: 0.45, delayChildren: 0.5 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } },
-
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function FAQ() {
@@ -41,7 +40,7 @@ export default function FAQ() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
           className="space-y-3"
         >
           {FAQ_ITEMS.map((faq, i) => {
@@ -109,8 +108,8 @@ export default function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
-          transition={{ duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
           <p className="text-sm text-foreground-muted">

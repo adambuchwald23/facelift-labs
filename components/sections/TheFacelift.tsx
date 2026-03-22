@@ -9,16 +9,16 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.35, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.45, delayChildren: 0.4 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -56,8 +56,8 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.35, delayChildren: 0.3 } } }}
+          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.45, delayChildren: 0.4 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
@@ -65,7 +65,7 @@ export default function TheFacelift() {
               key={step.number}
               variants={{
                 hidden: { opacity: 0, y: 36, scale: 0.94 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } },
 
               }}
               className="flex flex-1 items-stretch gap-3"
@@ -81,7 +81,7 @@ export default function TheFacelift() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (

@@ -10,12 +10,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const formContainerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.4 } },
+  visible: { transition: { staggerChildren: 0.4, delayChildren: 0.6 } },
 };
 
 const fieldVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const INPUT_BASE =
@@ -91,7 +91,7 @@ export default function Contact() {
           variants={formContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
           onSubmit={handleSubmit}
           className="relative overflow-hidden rounded-[40px] bg-white p-8 ring-1 ring-inset ring-black/[0.07] sm:p-10"
           style={{ boxShadow: CARD_SHADOW }}
