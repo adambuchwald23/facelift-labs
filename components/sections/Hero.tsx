@@ -52,13 +52,13 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-center px-5 sm:px-6 sm:pb-20 md:pb-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-start pt-[3vh] pb-[2vh] px-5 sm:justify-center sm:pt-0 sm:pb-20 sm:px-6 md:pb-24">
+        {/* Primary content — headline, subtitle, CTAs */}
         <div className="w-full max-w-4xl mx-auto text-center">
 
           {/* Headline */}
           <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible">
             <h1 className="text-[1.625rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-5 md:mb-8">
-              {/* Explicit space between spans: without Tailwind, both are inline and would read "…engineeredfor" */}
               <span className="block pb-0 sm:pb-2">{HERO.headline}</span>{" "}
               <span className="mt-1 sm:mt-3 block min-h-[1.2em]">
                 to{" "}
@@ -114,7 +114,10 @@ export default function Hero() {
               </svg>
             </Button>
           </motion.div>
+        </div>
 
+        {/* Trust + Marquee — pushed to bottom on mobile, flows naturally on desktop */}
+        <div className="w-full max-w-4xl mx-auto text-center mt-auto sm:mt-0">
           {/* Trust */}
           <motion.p
             custom={3}
