@@ -56,7 +56,7 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.35, delayChildren: 0.3 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
@@ -80,7 +80,7 @@ export default function TheFacelift() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (

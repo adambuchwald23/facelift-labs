@@ -91,7 +91,7 @@ export default function Contact() {
           variants={formContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           onSubmit={handleSubmit}
           className="relative overflow-hidden rounded-[40px] bg-white p-8 ring-1 ring-inset ring-black/[0.07] sm:p-10"
           style={{ boxShadow: CARD_SHADOW }}

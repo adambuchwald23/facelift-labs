@@ -72,7 +72,7 @@ export default function Portfolio() {
           variants={laptopContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
         >
           {PORTFOLIO_PROJECTS.map((project, i) => (

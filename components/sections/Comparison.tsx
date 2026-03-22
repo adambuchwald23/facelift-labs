@@ -34,7 +34,7 @@ export default function Comparison() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden rounded-[40px] bg-white ring-1 ring-inset ring-black/[0.07]"
           style={{ boxShadow: CARD_SHADOW }}
@@ -55,7 +55,7 @@ export default function Comparison() {
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "0px" }}
+                viewport={{ once: true, margin: "0px 0px -30% 0px" }}
                 className="space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
@@ -95,7 +95,7 @@ export default function Comparison() {
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "0px" }}
+                viewport={{ once: true, margin: "0px 0px -30% 0px" }}
                 className="space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (

@@ -40,7 +40,7 @@ export default function FAQ() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           className="space-y-3"
         >
           {FAQ_ITEMS.map((faq, i) => {
@@ -108,7 +108,7 @@ export default function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px" }}
+          viewport={{ once: true, margin: "0px 0px -30% 0px" }}
           transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
