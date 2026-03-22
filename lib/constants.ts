@@ -146,10 +146,6 @@ export const FOOTER = {
     { label: "Why Us", href: "#why-us" },
     { label: "FAQ", href: "#faq" },
   ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-  ],
   contact: {
     phone: "954-218-2066",
     email: "hello@faceliftlabs.com",

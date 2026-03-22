@@ -78,7 +78,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Right: nav columns */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-3 sm:gap-x-16">
+          <div className="grid grid-cols-2 gap-x-12 gap-y-10 sm:gap-x-16">
 
             {/* Navigation */}
             <motion.div variants={fadeUp}>
@@ -87,25 +87,6 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 {FOOTER.navigation.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Legal */}
-            <motion.div variants={fadeUp}>
-              <h3 className="mb-5 text-sm font-semibold tracking-tight text-foreground">
-                Legal
-              </h3>
-              <ul className="space-y-3">
-                {FOOTER.legal.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
