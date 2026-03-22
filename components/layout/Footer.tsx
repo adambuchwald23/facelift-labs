@@ -1,17 +1,38 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FOOTER } from "@/lib/constants";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.35, delayChildren: 0.2 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: EASE } },
+};
 
 export default function Footer() {
   return (
     <footer className="border-t border-black/[0.07] bg-[#f7f8f6]">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "0px 0px -20% 0px" }}
+        className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
+      >
 
         {/* Main row: logo + location left — nav columns right */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
 
           {/* Left: logo + tagline + location pill */}
-          <div className="flex flex-col gap-6">
+          <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <Link href="/" className="inline-block shrink-0">
               <Image
                 src="/logos/facelift-labs-horizontal.svg"
@@ -54,13 +75,13 @@ export default function Footer() {
                 {FOOTER.location}
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: nav columns */}
           <div className="grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-3 sm:gap-x-16">
 
             {/* Navigation */}
-            <div>
+            <motion.div variants={fadeUp}>
               <h3 className="mb-5 text-sm font-semibold tracking-tight text-foreground">
                 Navigation
               </h3>
@@ -76,10 +97,10 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Legal */}
-            <div>
+            <motion.div variants={fadeUp}>
               <h3 className="mb-5 text-sm font-semibold tracking-tight text-foreground">
                 Legal
               </h3>
@@ -95,10 +116,10 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Contact */}
-            <div>
+            <motion.div variants={fadeUp}>
               <h3 className="mb-5 text-sm font-semibold tracking-tight text-foreground">
                 Contact
               </h3>
@@ -120,13 +141,16 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
           </div>
         </div>
 
         {/* Divider + bottom bar */}
-        <div className="mt-12 border-t border-black/[0.07] pt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+        <motion.div
+          variants={fadeUp}
+          className="mt-12 border-t border-black/[0.07] pt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-between"
+        >
           <p className="text-sm text-foreground-muted">
             {FOOTER.copyright}
           </p>
@@ -141,9 +165,9 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
     </footer>
   );
 }
