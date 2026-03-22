@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import {
@@ -41,18 +40,12 @@ export default function CoreServices() {
     <SectionWrapper
       id="services"
       direction="left"
-      className="px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28"
+      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 1.1 }}
-          className="mb-8 flex justify-center sm:mb-12"
-        >
+        <div className="mb-8 flex justify-center sm:mb-12">
           <SectionHeader label="Services" />
-        </motion.div>
+        </div>
         <CoreServicesGrid>
           {services.map((item, i) => (
             <CoreServiceCard key={item.name} {...item} index={i} />

@@ -32,12 +32,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     const syncFromHash = () => {
       if (clickLockRef.current) return;
       const hash = window.location.hash || "";
@@ -51,14 +45,16 @@ export default function Navbar() {
     return () => window.removeEventListener("hashchange", syncFromHash);
   }, []);
 
-  // Throttled scroll listener — uses rAF so we compute at most once per frame.
+  // Single rAF-throttled scroll listener for both scrolled state and active section.
   useEffect(() => {
     let ticking = false;
 
     const update = () => {
       ticking = false;
-      // If user scrolled back near the top, always clear — overrides click lock
-      if (window.scrollY < 100) {
+      const sy = window.scrollY;
+      setScrolled(sy > 20);
+
+      if (sy < 100) {
         setActiveHref("");
         clickLockRef.current = false;
         return;

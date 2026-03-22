@@ -48,7 +48,6 @@ export function CoreServiceCard({
   description,
   iconSrc,
   className,
-  index = 0,
 }: CoreServiceItem & { className?: string; index?: number }) {
   return (
     <motion.article

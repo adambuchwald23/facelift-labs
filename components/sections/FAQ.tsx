@@ -24,22 +24,16 @@ export default function FAQ() {
   );
 
   return (
-    <SectionWrapper id="faq" className="px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28">
+    <SectionWrapper id="faq" className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-3xl">
 
         {/* Centered header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 flex flex-col items-center text-center gap-3 sm:mb-14"
-        >
+        <div className="mb-10 flex flex-col items-center text-center gap-3 sm:mb-14">
           <SectionHeader label="FAQ" />
           <p className="mx-auto max-w-md text-base leading-relaxed text-foreground-muted">
             Everything you need to know about working with us.
           </p>
-        </motion.div>
+        </div>
 
         {/* FAQ items */}
         <motion.div

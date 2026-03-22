@@ -88,7 +88,6 @@ body {
 
 .animate-marquee {
   animation: marquee 40s linear infinite;
-  will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -154,7 +153,6 @@ body {
   justify-content: center;
   transform: translate3d(0, -50%, 0);
   opacity: 1;
-  will-change: transform, opacity;
 }
 
 .cta-arrow-btn:hover .cta-arrow-shoot,
@@ -172,56 +170,30 @@ body {
   }
 }
 
-/* Aurora background — smooth animated green light layers */
-@keyframes aurora-1 {
-  0%, 100% { transform: translate(0%, 0%) scale(1); }
-  33%       { transform: translate(5%, -4%) scale(1.08); }
-  66%       { transform: translate(-4%, 3%) scale(0.95); }
+/* Workflow step arrow nudge */
+@keyframes step-arrow-nudge {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(3px, 0, 0); }
 }
-@keyframes aurora-2 {
-  0%, 100% { transform: translate(0%, 0%) scale(1); }
-  33%       { transform: translate(-6%, 3%) scale(1.05); }
-  66%       { transform: translate(4%, -5%) scale(1.1); }
-}
-@keyframes aurora-3 {
-  0%, 100% { transform: translate(0%, 0%) scale(1); }
-  50%       { transform: translate(3%, -6%) scale(0.92); }
-}
-
-/* ── Bento card: rotating neon green border sweep ── */
-@property --bento-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes bento-spin {
-  to { --bento-angle: 360deg; }
-}
-
-@keyframes bento-pulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.15); }
-}
-
-.bento-border-active {
-  background: conic-gradient(
-    from var(--bento-angle),
-    transparent 0%,
-    #00FF88 10%,
-    #00FF88 14%,
-    transparent 22%
-  );
-  animation: bento-spin 3s linear infinite;
-}
-
-.bento-glow-active {
-  animation: bento-pulse 2.4s ease-in-out infinite;
+.step-arrow-nudge {
+  animation: step-arrow-nudge 2.4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bento-border-active { animation: none; }
-  .bento-glow-active   { animation: none; }
+  .step-arrow-nudge { animation: none; }
+}
+
+/* Tech stack tile float — GPU-composited for zero main-thread cost */
+@keyframes tile-float {
+  0%, 100% { transform: translate3d(0, -4px, 0); }
+  50%      { transform: translate3d(0, 4px, 0); }
+}
+.tile-float {
+  animation: tile-float var(--float-dur, 3.4s) ease-in-out var(--float-delay, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-float { animation: none; }
 }
 
 /* Responsive: minimum touch target ~44px for tap areas */

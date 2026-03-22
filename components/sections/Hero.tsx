@@ -162,7 +162,7 @@ export default function Hero() {
             aria-hidden
           >
             <div className="marquee-wrap mx-auto max-w-2xl overflow-hidden">
-              <div className="flex w-max animate-marquee" style={{ willChange: "transform" }}>
+              <div className="flex w-max animate-marquee">
                 {[0, 1].map((setIdx) => (
                   <div key={setIdx} className="flex shrink-0" style={{ gap: "2rem" , paddingRight: "2rem" }}>
                     {HERO_TRUST_LOGOS.map((logo, i) => (

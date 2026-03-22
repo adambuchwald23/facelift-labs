@@ -22,15 +22,10 @@ const cardVariants = {
   },
 };
 
-/** Animated chevron arrow between cards — nudges right to reinforce journey flow */
 function StepArrow() {
   return (
-    <div className="hidden lg:flex shrink-0 items-center justify-center self-center px-1">
-      <motion.div
-        animate={{ x: [0, 3, 0] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      >
+    <div className="hidden lg:flex shrink-0 items-center justify-center self-center px-1" aria-hidden>
+      <div className="step-arrow-nudge">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path
             d="M9 6l6 6-6 6"
@@ -40,7 +35,7 @@ function StepArrow() {
             strokeLinejoin="round"
           />
         </svg>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -50,18 +45,12 @@ export default function TheFacelift() {
     <SectionWrapper
       id="facelift"
       direction="right"
-      className="px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28"
+      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 1.1 }}
-          className="mb-10 flex justify-center sm:mb-14"
-        >
+        <div className="mb-10 flex justify-center sm:mb-14">
           <SectionHeader label="Workflow" />
-        </motion.div>
+        </div>
 
         {/* Desktop: flex row with arrows — staggered pop-up */}
         <motion.div
@@ -95,7 +84,7 @@ export default function TheFacelift() {
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
-            <StepCardAnimated key={step.number} step={step} index={i} />
+            <StepCardAnimated key={step.number} step={step} />
           ))}
         </motion.div>
       </div>
@@ -119,7 +108,7 @@ function StepCard({ step }: { step: Step }) {
 }
 
 /** Mobile/tablet card — uses parent container stagger */
-function StepCardAnimated({ step, index }: { step: Step; index: number }) {
+function StepCardAnimated({ step }: { step: Step }) {
   return (
     <motion.article
       variants={cardVariants}

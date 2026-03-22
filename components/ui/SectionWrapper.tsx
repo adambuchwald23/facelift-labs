@@ -32,7 +32,7 @@ export default function SectionWrapper({
       id={id}
       initial={{ opacity: 0, y: offset.y, x: offset.x }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: "-120px" }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
       /* scroll-mt-24 = 96px — keeps section below the sticky navbar on anchor nav */
       className={`scroll-mt-24 ${className}`}
