@@ -91,14 +91,14 @@ export default function Contact() {
           variants={formContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-[40px] bg-white p-8 ring-1 ring-inset ring-black/[0.07] sm:p-10"
+          className="relative overflow-hidden rounded-[28px] bg-white p-6 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-10"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[40px] bg-gradient-to-r from-accent/60 via-accent to-accent/60"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[28px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 sm:rounded-t-[40px]"
           />
 
           <motion.div variants={fieldVariants} className="grid gap-5 sm:grid-cols-2">

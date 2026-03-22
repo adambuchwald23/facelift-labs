@@ -11,14 +11,15 @@ interface SectionWrapperProps {
 }
 
 const directionOffset = {
-  up:    { y: 32, x: 0  },
-  left:  { y: 16, x: -24 },
-  right: { y: 16, x: 24  },
+  up:    { y: 20, x: 0  },
+  left:  { y: 10, x: -16 },
+  right: { y: 10, x: 16  },
 };
 
 /**
- * Wraps a section with scroll-triggered fade + slide animation (play once).
- * scroll-mt-24 ensures sections clear the sticky navbar when anchor-linked.
+ * Wraps a section with scroll-triggered slide animation (play once).
+ * Only animates position — opacity is handled by inner child elements
+ * to avoid double-opacity issues on mobile viewports.
  */
 export default function SectionWrapper({
   id,
@@ -30,11 +31,10 @@ export default function SectionWrapper({
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: offset.y, x: offset.x }}
-      whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: "0px 0px -40% 0px" }}
-      transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-      /* scroll-mt-24 = 96px — keeps section below the sticky navbar on anchor nav */
+      initial={{ y: offset.y, x: offset.x }}
+      whileInView={{ y: 0, x: 0 }}
+      viewport={{ once: true, margin: "0px 0px -15% 0px" }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
       className={`scroll-mt-24 ${className}`}
     >
       {children}

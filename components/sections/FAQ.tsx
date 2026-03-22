@@ -40,7 +40,7 @@ export default function FAQ() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           className="space-y-3"
         >
           {FAQ_ITEMS.map((faq, i) => {
@@ -50,7 +50,7 @@ export default function FAQ() {
               <motion.div
                 key={faq.question}
                 variants={itemVariants}
-                className="overflow-hidden rounded-[24px] bg-white border border-black/20"
+                className="overflow-hidden rounded-[20px] bg-white border border-black/20 sm:rounded-[24px]"
                 style={{ boxShadow: isOpen ? CARD_SHADOW : "0 1px 3px rgba(0,0,0,0.04)" }}
               >
                 <button
@@ -108,7 +108,7 @@ export default function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >

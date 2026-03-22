@@ -56,7 +56,7 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.45, delayChildren: 0.4 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
@@ -81,10 +81,10 @@ export default function TheFacelift() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
-          {THE_FACELIFT_STEPS.map((step, i) => (
+          {THE_FACELIFT_STEPS.map((step) => (
             <StepCardAnimated key={step.number} step={step} />
           ))}
         </motion.div>
@@ -99,7 +99,7 @@ type Step = (typeof THE_FACELIFT_STEPS)[number];
 function StepCard({ step }: { step: Step }) {
   return (
     <article
-      className="relative flex flex-1 flex-col overflow-hidden rounded-[40px] bg-white p-7 ring-[1px] ring-inset ring-black/[0.07]"
+      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />
@@ -113,7 +113,7 @@ function StepCardAnimated({ step }: { step: Step }) {
   return (
     <motion.article
       variants={cardVariants}
-      className="relative flex flex-col overflow-hidden rounded-[40px] bg-white p-7 ring-[1px] ring-inset ring-black/[0.07]"
+      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />

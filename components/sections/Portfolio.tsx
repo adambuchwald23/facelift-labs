@@ -72,7 +72,7 @@ export default function Portfolio() {
           variants={laptopContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
         >
           {PORTFOLIO_PROJECTS.map((project, i) => (
@@ -135,7 +135,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 12 }}
               transition={{ type: "spring", stiffness: 260, damping: 28 }}
-              className="relative w-full max-w-4xl overflow-hidden rounded-[28px] bg-[#0a0a0a] shadow-2xl"
+              className="relative w-full max-w-4xl overflow-hidden rounded-[20px] bg-[#0a0a0a] shadow-2xl sm:rounded-[28px]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close */}
@@ -161,41 +161,42 @@ export default function Portfolio() {
               </div>
 
               {/* Bottom bar: title + nav arrows + visit site CTA */}
-              <div className="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4">
-                {/* Prev / Next */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={prev}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
-                    aria-label="Previous project"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={next}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
-                    aria-label="Next project"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                </div>
-
+              <div className="flex flex-col gap-3 border-t border-white/10 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4">
                 {/* Title + counter */}
-                <div className="flex flex-col items-center gap-0.5 text-center">
+                <div className="flex flex-col items-center gap-0.5 text-center sm:order-2">
                   <p className="text-sm font-semibold text-white/90">{activeProject.title}</p>
                   <p className="text-xs text-white/35">{activeIndex + 1} / {PORTFOLIO_PROJECTS.length}</p>
                 </div>
 
-                {/* Visit site CTA */}
-                <a
-                  href={activeProject.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-foreground transition hover:brightness-110"
-                >
-                  Visit Site
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+                {/* Prev / Next + Visit Site — row on mobile */}
+                <div className="flex items-center justify-between sm:contents">
+                  <div className="flex items-center gap-2 sm:order-1">
+                    <button
+                      onClick={prev}
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                      aria-label="Previous project"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      onClick={next}
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                      aria-label="Next project"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+
+                  <a
+                    href={activeProject.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-foreground transition hover:brightness-110 sm:order-3"
+                  >
+                    Visit Site
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             </motion.div>
 

@@ -124,7 +124,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-14 text-sm font-medium uppercase tracking-wider text-foreground-subtle"
+            className="mt-10 text-sm font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14"
           >
             {HERO.trustedBy}
           </motion.p>

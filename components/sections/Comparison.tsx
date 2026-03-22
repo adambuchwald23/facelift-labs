@@ -34,9 +34,9 @@ export default function Comparison() {
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden rounded-[40px] bg-white ring-1 ring-inset ring-black/[0.07]"
+          className="overflow-hidden rounded-[28px] bg-white ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px]"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div className="grid md:grid-cols-2">
@@ -55,7 +55,7 @@ export default function Comparison() {
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+                viewport={{ once: true, margin: "0px 0px -10% 0px" }}
                 className="space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
@@ -76,7 +76,7 @@ export default function Comparison() {
             {/* ── Right: Facelift Labs ── */}
             <div className="relative p-7 md:p-10">
               {/* Subtle accent top bar */}
-              <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 rounded-tr-[40px]" />
+              <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 rounded-tr-[28px] sm:rounded-tr-[40px]" />
 
               <div className="mb-7 flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/20">
@@ -95,7 +95,7 @@ export default function Comparison() {
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+                viewport={{ once: true, margin: "0px 0px -10% 0px" }}
                 className="space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (

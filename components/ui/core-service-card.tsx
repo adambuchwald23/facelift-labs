@@ -32,7 +32,7 @@ export function CoreServicesGrid({
       variants={cardContainerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "0px 0px -40% 0px" }}
+      viewport={{ once: true, margin: "0px 0px -20% 0px" }}
       className={cn(
         "grid grid-cols-1 gap-8 sm:gap-9 md:grid-cols-3 md:gap-9",
         className
@@ -53,7 +53,7 @@ export function CoreServiceCard({
     <motion.article
       variants={cardVariants}
       className={cn(
-        "relative flex min-h-[220px] flex-col items-start rounded-[40px] bg-white p-8 ring-[1px] ring-inset ring-black/[0.07]",
+        "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8",
         className
       )}
       style={{ boxShadow: CARD_SHADOW }}
