@@ -13,6 +13,8 @@ function escapeHtml(str: string): string {
 const MAX_FIELD_LEN = 500;
 const MAX_MESSAGE_LEN = 5000;
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 export async function POST(req: Request) {
   try {
     if (!process.env.RESEND_API_KEY) {
@@ -23,7 +25,17 @@ export async function POST(req: Request) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const body = await req.json();
+
+    let body: Record<string, unknown>;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json(
+        { error: "Invalid request body." },
+        { status: 400 },
+      );
+    }
+
     const { firstName, lastName, email, phone, services, message } = body;
 
     if (!email || !message) {
@@ -45,13 +57,22 @@ export async function POST(req: Request) {
       );
     }
 
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json(
+        { error: "Please provide a valid email address." },
+        { status: 400 },
+      );
+    }
+
     const safe = {
       firstName: escapeHtml(String(firstName || "").slice(0, MAX_FIELD_LEN)),
       lastName: escapeHtml(String(lastName || "").slice(0, MAX_FIELD_LEN)),
       email: escapeHtml(email),
       phone: escapeHtml(String(phone || "").slice(0, MAX_FIELD_LEN)),
       services: Array.isArray(services)
-        ? services.map((s: unknown) => escapeHtml(String(s).slice(0, MAX_FIELD_LEN)))
+        ? services
+            .slice(0, 20)
+            .map((s: unknown) => escapeHtml(String(s).slice(0, MAX_FIELD_LEN)))
         : [],
       message: escapeHtml(message),
     };
@@ -75,7 +96,7 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend send failed:", (error as { statusCode?: number }).statusCode ?? "unknown");
       return NextResponse.json(
         { error: "Failed to send message. Please try again." },
         { status: 500 },
@@ -84,7 +105,8 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Contact API error:", err);
+    const code = err instanceof Error ? err.name : "UnknownError";
+    console.error("Contact API error:", code);
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 },
