@@ -7,11 +7,11 @@ import { HERO, HERO_TRUST_LOGOS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 28 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1.2, delay: 0.6 + i * 0.22, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 1.4, delay: 0.3 + i * 0.2, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
@@ -56,7 +56,7 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Headline */}
-          <motion.div custom={0} variants={fadeUpVariants} initial={false} animate="visible">
+          <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-6 md:mb-8">
               {/* Explicit space between spans: without Tailwind, both are inline and would read "…engineeredfor" */}
               <span className="block pb-2">{HERO.headline}</span>{" "}
@@ -71,7 +71,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Subtitle */}
-          <motion.div custom={1} variants={fadeUpVariants} initial={false} animate="visible">
+          <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
             <p className="mt-4 text-base text-foreground-muted sm:mt-6 sm:text-lg md:text-xl mb-8 max-w-xl mx-auto">
               {HERO.subtitle}
             </p>
@@ -81,7 +81,7 @@ export default function Hero() {
           <motion.div
             custom={2}
             variants={fadeUpVariants}
-            initial={false}
+            initial="hidden"
             animate="visible"
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           >
@@ -122,7 +122,7 @@ export default function Hero() {
           <motion.p
             custom={3}
             variants={fadeUpVariants}
-            initial={false}
+            initial="hidden"
             animate="visible"
             className="mt-14 text-sm font-medium uppercase tracking-wider text-foreground-subtle"
           >
@@ -133,7 +133,7 @@ export default function Hero() {
           <motion.div
             custom={3}
             variants={fadeUpVariants}
-            initial={false}
+            initial="hidden"
             animate="visible"
             className="mt-4 flex items-center justify-center gap-1"
             aria-hidden
@@ -157,7 +157,7 @@ export default function Hero() {
           <motion.div
             custom={4}
             variants={fadeUpVariants}
-            initial={false}
+            initial="hidden"
             animate="visible"
             className="mt-8 sm:mt-10"
             aria-hidden
