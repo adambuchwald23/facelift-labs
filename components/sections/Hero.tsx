@@ -66,16 +66,10 @@ export default function Hero() {
                   {HERO.headlineAccent}
                 </span>
                 <motion.span
-                  initial={{ opacity: 0, x: 20, scale: 1.8 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{
-                    delay: 1.8,
-                    duration: 0.5,
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 12,
-                  }}
-                  className="inline-block text-accent"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.6, duration: 0.8, ease: "easeOut" }}
+                  className="inline-block text-foreground"
                 >
                   .
                 </motion.span>
