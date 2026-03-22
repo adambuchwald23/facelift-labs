@@ -19,14 +19,14 @@ export default function AppleIcon() {
       >
         <span
           style={{
-            fontSize: 120,
-            fontWeight: 900,
+            fontSize: 130,
+            fontWeight: 800,
             color: "#020202",
             lineHeight: 1,
-            letterSpacing: "-0.03em",
+            fontFamily: "Inter, system-ui, sans-serif",
           }}
         >
-          F
+          f
         </span>
       </div>
     ),
