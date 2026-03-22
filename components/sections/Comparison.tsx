@@ -11,12 +11,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const listVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.2 } },
+  visible: { transition: { staggerChildren: 0.35, delayChildren: 0.3 } },
 };
 
 const rowVariants = {
-  hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, x: -8 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Comparison() {

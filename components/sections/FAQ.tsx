@@ -10,12 +10,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.2 } },
+  visible: { transition: { staggerChildren: 0.35, delayChildren: 0.3 } },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function FAQ() {
