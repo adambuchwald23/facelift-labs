@@ -185,7 +185,7 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="mt-5 text-center text-sm font-medium text-accent"
+                className="mt-5 text-center text-sm font-medium text-foreground"
               >
                 Message sent! We&apos;ll be in touch soon.
               </motion.p>
