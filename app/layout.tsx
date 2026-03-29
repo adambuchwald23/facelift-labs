@@ -3,6 +3,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "./structured-data";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
           <StructuredData />
           <SmoothScrollProvider />
           {children}
+          <SpeedInsights />
         </div>
       </body>
     </html>

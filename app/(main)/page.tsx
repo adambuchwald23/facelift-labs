@@ -1,11 +1,13 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
-import Portfolio from "@/components/sections/Portfolio";
-import CoreServices from "@/components/sections/CoreServices";
-import TheFacelift from "@/components/sections/TheFacelift";
-import TechStack from "@/components/sections/TechStack";
-import Comparison from "@/components/sections/Comparison";
-import FAQ from "@/components/sections/FAQ";
-import Contact from "@/components/sections/Contact";
+
+const CoreServices = dynamic(() => import("@/components/sections/CoreServices"));
+const Portfolio = dynamic(() => import("@/components/sections/Portfolio"));
+const TheFacelift = dynamic(() => import("@/components/sections/TheFacelift"));
+const TechStack = dynamic(() => import("@/components/sections/TechStack"));
+const Comparison = dynamic(() => import("@/components/sections/Comparison"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
 
 /**
  * Single-page landing: Hero → Services → Portfolio → Workflow

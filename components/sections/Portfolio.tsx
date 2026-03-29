@@ -101,7 +101,7 @@ export default function Portfolio() {
                       "drop-shadow(0 24px 48px rgba(0,0,0,0.20)) drop-shadow(0 6px 14px rgba(0,0,0,0.10))",
                   }}
                   sizes="(max-width: 640px) 100vw, 50vw"
-                  priority={i < 2}
+                  loading="lazy"
                 />
 
                 <div className="mt-3 flex justify-center">
