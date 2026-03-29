@@ -97,7 +97,7 @@ export const FAQ_ITEMS = [
   {
     question: 'What is a "Digital Facelift?"',
     answer:
-      "A Digital Facelift is our end-to-end process: strategy, design, build, and launch—giving your brand a modern, high-performing web presence.",
+      "A Digital Facelift is our end-to-end process: strategy, design, build, and launch, giving your brand a modern, high-performing web presence.",
   },
   {
     question: "What services does Facelift Labs offer?",
@@ -112,12 +112,12 @@ export const FAQ_ITEMS = [
   {
     question: "How long does a typical project take?",
     answer:
-      "Timeline depends on scope. A typical website project runs 8–12 weeks from kickoff to launch, with clear milestones along the way.",
+      "Timeline depends on scope. A typical website project runs 4 to 8 weeks from kickoff to launch, with clear milestones along the way.",
   },
   {
     question: "Do you include SEO in your builds?",
     answer:
-      "Yes. SEO is baked into our process from day one—technical foundation, content structure, and performance all aligned for visibility.",
+      "Yes. SEO is baked into our process from day one. Technical foundation, content structure, and performance all aligned for visibility.",
   },
   {
     question: "Why invest in a fully custom website?",
