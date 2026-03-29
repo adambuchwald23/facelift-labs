@@ -24,7 +24,7 @@ export default function Comparison() {
   return (
     <SectionWrapper
       id="why-us"
-      className="min-h-[calc(100svh-6rem)] flex flex-col justify-center px-4 py-6 sm:px-6 sm:py-8 md:py-10 lg:py-12"
+      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10 md:pt-10 md:pb-12"
     >
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 flex justify-center sm:mb-14">

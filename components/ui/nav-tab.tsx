@@ -24,7 +24,7 @@ export const NavTab = React.memo(function NavTab({
       aria-current={selected ? "true" : undefined}
       onClick={onClick}
       className={cn(
-        "relative z-10 w-fit cursor-pointer rounded-full bg-transparent px-4 py-2 text-sm font-medium capitalize outline-none focus-visible:outline-none",
+        "relative z-10 w-fit cursor-pointer rounded-full bg-transparent px-4 py-2 text-sm font-medium capitalize outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-1",
         "transition-colors duration-200",
         selected
           ? "text-foreground"

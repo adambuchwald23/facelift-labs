@@ -17,12 +17,12 @@ export default function FAQ() {
   const [listRef, listInView] = useInView<HTMLDivElement>();
 
   return (
-    <SectionWrapper id="faq" className="min-h-[calc(100svh-6rem)] flex flex-col justify-center px-4 py-6 sm:px-6 sm:py-8 md:py-10 lg:py-12">
+    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10 md:pt-10 md:pb-12">
       <div className="mx-auto max-w-3xl">
 
-        <div className="mb-10 flex flex-col items-center text-center gap-3 sm:mb-14">
+        <div className="mb-6 flex flex-col items-center text-center gap-2 sm:mb-8">
           <SectionHeader label="FAQ" />
-          <p className="mx-auto max-w-md text-base leading-relaxed text-foreground-muted">
+          <p className="mx-auto max-w-md text-sm leading-relaxed text-foreground-muted sm:text-base">
             Everything you need to know about working with us.
           </p>
         </div>
@@ -32,7 +32,7 @@ export default function FAQ() {
           variants={staggerContainer(mobile)}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
-          className="space-y-3"
+          className="space-y-2"
         >
           {FAQ_ITEMS.map((faq, i) => {
             const isOpen = openIndex === i;
@@ -47,7 +47,7 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
                   aria-expanded={isOpen}
                 >
                   <span className={`text-[0.9375rem] font-semibold tracking-tight transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
@@ -79,7 +79,7 @@ export default function FAQ() {
                   style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >
                   <div className="overflow-hidden">
-                    <p className="border-t border-black/[0.06] px-6 pb-5 pt-4 text-[0.9375rem] leading-relaxed text-foreground-muted">
+                    <p className="border-t border-black/[0.06] px-5 pb-4 pt-3 text-[0.9375rem] leading-relaxed text-foreground-muted sm:px-6">
                       {faq.answer}
                     </p>
                   </div>
@@ -94,7 +94,7 @@ export default function FAQ() {
           variants={inlineEntrance(mobile)}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
-          className="mt-10 flex flex-col items-center gap-3 text-center"
+          className="mt-6 flex flex-col items-center gap-2 text-center"
         >
           <p className="text-sm text-foreground-muted">
             Still have questions? We&apos;d love to chat.

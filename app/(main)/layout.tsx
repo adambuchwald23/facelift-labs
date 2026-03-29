@@ -9,7 +9,7 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      <div id="main">{children}</div>
+      <div id="main" tabIndex={-1} className="outline-none">{children}</div>
       <Footer />
     </>
   );
