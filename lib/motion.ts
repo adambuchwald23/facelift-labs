@@ -75,13 +75,6 @@ export function fadeInLeft(mobile: boolean) {
   };
 }
 
-/* ── Desktop-only viewport config (used with whileInView) ── */
-
-export const DESKTOP_VIEWPORT = {
-  once: true,
-  amount: 0.15 as number,
-};
-
 /* ── Standalone entrance (variants format) ── */
 
 export function inlineEntrance(mobile: boolean) {

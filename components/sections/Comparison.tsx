@@ -9,7 +9,7 @@ import { CheckIcon, XIcon } from "@/components/icons/CheckIcon";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
-import { staggerContainer, fadeInLeft, inlineEntrance, DESKTOP_VIEWPORT } from "@/lib/motion";
+import { staggerContainer, fadeInLeft, inlineEntrance } from "@/lib/motion";
 
 export default function Comparison() {
   const mobile = useIsMobile();
@@ -20,9 +20,6 @@ export default function Comparison() {
   const [cardRef, cardInView] = useInView<HTMLDivElement>();
   const [leftRef, leftInView] = useInView<HTMLUListElement>();
   const [rightRef, rightInView] = useInView<HTMLUListElement>();
-
-  const mobileAnimate = (inView: boolean) =>
-    mobile ? { animate: inView ? "visible" : "hidden" } : { whileInView: "visible" as const, viewport: DESKTOP_VIEWPORT };
 
   return (
     <SectionWrapper
@@ -35,10 +32,10 @@ export default function Comparison() {
         </div>
 
         <motion.div
-          ref={mobile ? cardRef : undefined}
+          ref={cardRef}
           variants={entrance}
           initial="hidden"
-          {...mobileAnimate(cardInView)}
+          animate={cardInView ? "visible" : "hidden"}
           className="overflow-hidden rounded-[28px] bg-white ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px]"
           style={{ boxShadow: CARD_SHADOW }}
         >
@@ -54,10 +51,10 @@ export default function Comparison() {
                 </h3>
               </div>
               <motion.ul
-                ref={mobile ? leftRef : undefined}
+                ref={leftRef}
                 variants={listVars}
                 initial="hidden"
-                {...mobileAnimate(leftInView)}
+                animate={leftInView ? "visible" : "hidden"}
                 className="space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
@@ -93,10 +90,10 @@ export default function Comparison() {
                 />
               </div>
               <motion.ul
-                ref={mobile ? rightRef : undefined}
+                ref={rightRef}
                 variants={listVars}
                 initial="hidden"
-                {...mobileAnimate(rightInView)}
+                animate={rightInView ? "visible" : "hidden"}
                 className="space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (

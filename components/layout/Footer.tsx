@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { FOOTER } from "@/lib/constants";
 import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
-import { staggerContainer, fadeUp as fadeUpPreset, DESKTOP_VIEWPORT } from "@/lib/motion";
+import { staggerContainer, fadeUp as fadeUpPreset } from "@/lib/motion";
 
 export default function Footer() {
   const mobile = useIsMobile();
@@ -15,13 +15,10 @@ export default function Footer() {
   return (
     <footer className="border-t border-black/[0.07] bg-[#f7f8f6]">
       <motion.div
-        ref={mobile ? footerRef : undefined}
+        ref={footerRef}
         variants={staggerContainer(mobile)}
         initial="hidden"
-        {...(mobile
-          ? { animate: footerInView ? "visible" : "hidden" }
-          : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
-        )}
+        animate={footerInView ? "visible" : "hidden"}
         className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
       >
 

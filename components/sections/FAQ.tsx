@@ -9,7 +9,7 @@ import Button from "@/components/ui/Button";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
-import { staggerContainer, fadeUp, inlineEntrance, DESKTOP_VIEWPORT } from "@/lib/motion";
+import { staggerContainer, fadeUp, inlineEntrance } from "@/lib/motion";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -29,13 +29,10 @@ export default function FAQ() {
         </div>
 
         <motion.div
-          ref={mobile ? listRef : undefined}
+          ref={listRef}
           variants={staggerContainer(mobile)}
           initial="hidden"
-          {...(mobile
-            ? { animate: listInView ? "visible" : "hidden" }
-            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
-          )}
+          animate={listInView ? "visible" : "hidden"}
           className="space-y-3"
         >
           {FAQ_ITEMS.map((faq, i) => {
@@ -95,13 +92,10 @@ export default function FAQ() {
 
         {/* Bottom CTA — natural end to the section */}
         <motion.div
-          ref={mobile ? ctaRef : undefined}
+          ref={ctaRef}
           variants={inlineEntrance(mobile)}
           initial="hidden"
-          {...(mobile
-            ? { animate: ctaInView ? "visible" : "hidden" }
-            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
-          )}
+          animate={ctaInView ? "visible" : "hidden"}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
           <p className="text-sm text-foreground-muted">

@@ -9,7 +9,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { PORTFOLIO_PROJECTS } from "@/lib/constants";
 import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
-import { staggerContainer, fadeUpScale, DESKTOP_VIEWPORT } from "@/lib/motion";
+import { staggerContainer, fadeUpScale } from "@/lib/motion";
 
 const hoverSpring = { type: "spring" as const, stiffness: 260, damping: 22 };
 
@@ -58,13 +58,10 @@ export default function Portfolio() {
           </div>
 
           <motion.div
-            ref={mobile ? gridRef : undefined}
+            ref={gridRef}
             variants={staggerContainer(mobile)}
             initial="hidden"
-            {...(mobile
-              ? { animate: gridInView ? "visible" : "hidden" }
-              : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
-            )}
+            animate={gridInView ? "visible" : "hidden"}
             className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
           >
             {PORTFOLIO_PROJECTS.map((project, i) => (
