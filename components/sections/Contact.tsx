@@ -127,23 +127,20 @@ export default function Contact() {
               {CONTACT.serviceOptions.map((opt) => {
                 const selected = services.includes(opt.value);
                 return (
-                  <motion.button
+                  <button
                     key={opt.value}
                     type="button"
                     aria-pressed={selected}
                     onClick={() => toggleService(opt.value)}
-                    animate={{
+                    className="min-h-[44px] rounded-full px-4 py-2 text-sm font-medium ring-1 ring-black/[0.08] outline-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97]"
+                    style={{
                       backgroundColor: selected ? "#00FF88" : "#f7f7f7",
                       color: selected ? "#0a0a0a" : "rgba(10,10,10,0.55)",
-                      scale: selected ? 1.04 : 1,
+                      transform: selected ? "scale(1.04)" : undefined,
                     }}
-                    whileHover={{ scale: selected ? 1.04 : 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ type: "spring", stiffness: 320, damping: 22 }}
-                    className="min-h-[44px] rounded-full px-4 py-2 text-sm font-medium ring-1 ring-black/[0.08] outline-none"
                   >
                     {opt.label}
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>

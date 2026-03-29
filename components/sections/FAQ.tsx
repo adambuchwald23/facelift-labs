@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { FAQ_ITEMS, FAQ_CTA_LABEL } from "@/lib/constants";
@@ -58,10 +58,9 @@ export default function FAQ() {
                     {faq.question}
                   </span>
 
-                  <motion.span
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ type: "spring", stiffness: 280, damping: 24 }}
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-foreground"
+                  <span
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-foreground transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                   >
                     <svg
                       className="h-3.5 w-3.5"
@@ -75,25 +74,20 @@ export default function FAQ() {
                     >
                       <path d="M19 9l-7 7-7-7" />
                     </svg>
-                  </motion.span>
+                  </span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="answer"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="border-t border-black/[0.06] px-6 pb-5 pt-4 text-[0.9375rem] leading-relaxed text-foreground-muted">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* CSS grid transition — no JS layout measurement needed */}
+                <div
+                  className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <p className="border-t border-black/[0.06] px-6 pb-5 pt-4 text-[0.9375rem] leading-relaxed text-foreground-muted">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
