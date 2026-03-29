@@ -244,8 +244,8 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <div className="md:flex-1">
-          <Link href="/" className="inline-block shrink-0 pl-1" style={{ maxWidth: 175 }}>
+        <div className="flex items-center md:flex-1">
+          <Link href="/" className="block shrink-0 pl-1" style={{ maxWidth: 175 }}>
             <Image
               src="/logo.svg"
               alt="Facelift Labs"
