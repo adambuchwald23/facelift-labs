@@ -6,7 +6,8 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { THE_FACELIFT_STEPS } from "@/lib/constants";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, fadeUp, fadeUpScale, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, fadeUp, fadeUpScale, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 function StepArrow() {
   return (
@@ -28,6 +29,7 @@ function StepArrow() {
 
 export default function TheFacelift() {
   const mobile = useIsMobile();
+  const [mobileRef, mobileInView] = useInView<HTMLDivElement>();
   return (
     <SectionWrapper
       id="facelift"
@@ -42,7 +44,7 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={viewportConfig(false)}
+          viewport={DESKTOP_VIEWPORT}
           variants={staggerContainer(false)}
           className="hidden lg:flex items-stretch gap-3"
         >
@@ -60,10 +62,13 @@ export default function TheFacelift() {
 
         {/* Mobile / tablet grid */}
         <motion.div
+          ref={mobile ? mobileRef : undefined}
           variants={staggerContainer(mobile)}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig(mobile)}
+          {...(mobile
+            ? { animate: mobileInView ? "visible" : "hidden" }
+            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+          )}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (

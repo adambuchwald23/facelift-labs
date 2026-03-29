@@ -6,7 +6,8 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { TECH_STACK_ITEMS } from "@/lib/constants";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
 const SPREAD_X = ["-30px", "-16px", "16px", "30px", "-24px", "0px", "24px"];
@@ -14,6 +15,7 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function TechStack() {
   const mobile = useIsMobile();
+  const [gridRef, gridInView] = useInView<HTMLDivElement>();
   return (
     <SectionWrapper
       id="tech-stack"
@@ -25,10 +27,13 @@ export default function TechStack() {
         </div>
 
         <motion.div
+          ref={mobile ? gridRef : undefined}
           variants={staggerContainer(mobile)}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig(mobile)}
+          {...(mobile
+            ? { animate: gridInView ? "visible" : "hidden" }
+            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+          )}
           className="flex flex-col items-center gap-7 sm:gap-8"
         >
           <div className="flex flex-wrap justify-center gap-7 sm:gap-8">

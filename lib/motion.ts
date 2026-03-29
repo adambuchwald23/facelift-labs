@@ -1,12 +1,13 @@
 /**
  * Centralized animation presets — responsive to mobile / desktop.
  *
- * Mobile gets a shorter Y travel (8 px) and tighter timing so animations
- * are visible but don't fight momentum scrolling. The viewport threshold
- * is high enough (0.3) that content won't animate until the user has
- * genuinely scrolled to it, with extra negative margin as a guard.
+ * On mobile, animations are driven by a custom IntersectionObserver hook
+ * (`useInView`) that only initialises after hydration, avoiding the SSR
+ * mismatch that caused `whileInView` to fire prematurely. Components use
+ * `animate={inView ? "visible" : "hidden"}` instead of `whileInView`.
  *
- * Desktop keeps the richer entrance with larger offsets and stagger.
+ * Desktop still uses Framer Motion's `whileInView` since `useIsMobile`
+ * returns `false` on both server and desktop client — no mismatch.
  */
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -74,25 +75,25 @@ export function fadeInLeft(mobile: boolean) {
   };
 }
 
-/* ── Viewport config for whileInView ── */
+/* ── Desktop-only viewport config (used with whileInView) ── */
 
-export function viewportConfig(mobile: boolean) {
-  return {
-    once: true,
-    amount: mobile ? 0.3 : 0.3,
-    margin: mobile ? "0px 0px -80px 0px" : "0px",
-  };
-}
+export const DESKTOP_VIEWPORT = {
+  once: true,
+  amount: 0.3 as number,
+};
 
-/* ── Inline (non-variant) entrance for standalone elements ── */
+/* ── Standalone entrance (variants format) ── */
 
 export function inlineEntrance(mobile: boolean) {
   return {
-    initial: { opacity: 0, y: mobile ? 8 : 14 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: {
-      duration: mobile ? 0.55 : 0.85,
-      ease: EASE,
+    hidden: { opacity: 0, y: mobile ? 8 : 14 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: mobile ? 0.55 : 0.85,
+        ease: EASE,
+      },
     },
   };
 }

@@ -5,18 +5,23 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { FOOTER } from "@/lib/constants";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, fadeUp as fadeUpPreset, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, fadeUp as fadeUpPreset, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 export default function Footer() {
   const mobile = useIsMobile();
+  const [footerRef, footerInView] = useInView<HTMLDivElement>();
   const fadeUp = fadeUpPreset(mobile);
   return (
     <footer className="border-t border-black/[0.07] bg-[#f7f8f6]">
       <motion.div
+        ref={mobile ? footerRef : undefined}
         variants={staggerContainer(mobile)}
         initial="hidden"
-        whileInView="visible"
-        viewport={viewportConfig(mobile)}
+        {...(mobile
+          ? { animate: footerInView ? "visible" : "hidden" }
+          : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+        )}
         className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
       >
 

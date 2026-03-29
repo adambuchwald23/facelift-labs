@@ -8,7 +8,8 @@ import { CONTACT } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, fadeUp, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, fadeUp, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 const INPUT_BASE =
   "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3.5 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
@@ -17,6 +18,7 @@ type FormStatus = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const mobile = useIsMobile();
+  const [observerRef, formInView] = useInView<HTMLDivElement>();
   const fieldVars = fadeUp(mobile);
   const [services, setServices] = useState<string[]>([]);
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -80,12 +82,15 @@ export default function Contact() {
           </p>
         </div>
 
+        <div ref={mobile ? observerRef : undefined}>
         <motion.form
           ref={formRef}
           variants={staggerContainer(mobile)}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig(mobile)}
+          {...(mobile
+            ? { animate: formInView ? "visible" : "hidden" }
+            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+          )}
           onSubmit={handleSubmit}
           className="relative overflow-hidden rounded-[28px] bg-white p-6 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-10"
           style={{ boxShadow: CARD_SHADOW }}
@@ -192,6 +197,7 @@ export default function Contact() {
             </AnimatePresence>
           </div>
         </motion.form>
+        </div>
       </div>
     </SectionWrapper>
   );

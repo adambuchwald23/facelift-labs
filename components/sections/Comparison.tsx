@@ -8,14 +8,21 @@ import { COMPARISON } from "@/lib/constants";
 import { CheckIcon, XIcon } from "@/components/icons/CheckIcon";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, fadeInLeft, inlineEntrance, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, fadeInLeft, inlineEntrance, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 export default function Comparison() {
   const mobile = useIsMobile();
   const rowVars = fadeInLeft(mobile);
   const listVars = staggerContainer(mobile);
-  const vp = viewportConfig(mobile);
   const entrance = inlineEntrance(mobile);
+
+  const [cardRef, cardInView] = useInView<HTMLDivElement>();
+  const [leftRef, leftInView] = useInView<HTMLUListElement>();
+  const [rightRef, rightInView] = useInView<HTMLUListElement>();
+
+  const mobileAnimate = (inView: boolean) =>
+    mobile ? { animate: inView ? "visible" : "hidden" } : { whileInView: "visible" as const, viewport: DESKTOP_VIEWPORT };
 
   return (
     <SectionWrapper
@@ -28,8 +35,10 @@ export default function Comparison() {
         </div>
 
         <motion.div
-          {...entrance}
-          viewport={vp}
+          ref={mobile ? cardRef : undefined}
+          variants={entrance}
+          initial="hidden"
+          {...mobileAnimate(cardInView)}
           className="overflow-hidden rounded-[28px] bg-white ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px]"
           style={{ boxShadow: CARD_SHADOW }}
         >
@@ -45,10 +54,10 @@ export default function Comparison() {
                 </h3>
               </div>
               <motion.ul
+                ref={mobile ? leftRef : undefined}
                 variants={listVars}
                 initial="hidden"
-                whileInView="visible"
-                viewport={vp}
+                {...mobileAnimate(leftInView)}
                 className="space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
@@ -84,10 +93,10 @@ export default function Comparison() {
                 />
               </div>
               <motion.ul
+                ref={mobile ? rightRef : undefined}
                 variants={listVars}
                 initial="hidden"
-                whileInView="visible"
-                viewport={vp}
+                {...mobileAnimate(rightInView)}
                 className="space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (

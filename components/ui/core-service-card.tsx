@@ -4,7 +4,8 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, fadeUp, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, fadeUp, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 export type CoreServiceItem = {
   name: string;
@@ -20,12 +21,16 @@ export function CoreServicesGrid({
   className?: string;
 }) {
   const mobile = useIsMobile();
+  const [gridRef, gridInView] = useInView<HTMLDivElement>();
   return (
     <motion.div
+      ref={mobile ? gridRef : undefined}
       variants={staggerContainer(mobile)}
       initial="hidden"
-      whileInView="visible"
-      viewport={viewportConfig(mobile)}
+      {...(mobile
+        ? { animate: gridInView ? "visible" : "hidden" }
+        : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+      )}
       className={cn(
         "grid grid-cols-1 gap-8 sm:gap-9 md:grid-cols-3 md:gap-9",
         className

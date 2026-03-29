@@ -8,11 +8,14 @@ import { FAQ_ITEMS, FAQ_CTA_LABEL } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { CARD_SHADOW } from "@/lib/design-tokens";
 import { useIsMobile } from "@/lib/use-mobile";
-import { staggerContainer, fadeUp, inlineEntrance, viewportConfig } from "@/lib/motion";
+import { useInView } from "@/lib/use-in-view";
+import { staggerContainer, fadeUp, inlineEntrance, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const mobile = useIsMobile();
+  const [listRef, listInView] = useInView<HTMLDivElement>();
+  const [ctaRef, ctaInView] = useInView<HTMLDivElement>();
 
   return (
     <SectionWrapper id="faq" className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24">
@@ -26,10 +29,13 @@ export default function FAQ() {
         </div>
 
         <motion.div
+          ref={mobile ? listRef : undefined}
           variants={staggerContainer(mobile)}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig(mobile)}
+          {...(mobile
+            ? { animate: listInView ? "visible" : "hidden" }
+            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+          )}
           className="space-y-3"
         >
           {FAQ_ITEMS.map((faq, i) => {
@@ -95,8 +101,13 @@ export default function FAQ() {
 
         {/* Bottom CTA — natural end to the section */}
         <motion.div
-          {...inlineEntrance(mobile)}
-          viewport={viewportConfig(mobile)}
+          ref={mobile ? ctaRef : undefined}
+          variants={inlineEntrance(mobile)}
+          initial="hidden"
+          {...(mobile
+            ? { animate: ctaInView ? "visible" : "hidden" }
+            : { whileInView: "visible", viewport: DESKTOP_VIEWPORT }
+          )}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
           <p className="text-sm text-foreground-muted">
