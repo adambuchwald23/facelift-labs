@@ -50,7 +50,7 @@ export default function Portfolio() {
     <>
       <SectionWrapper
         id="portfolio"
-        className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
+        className="px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16"
       >
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 flex justify-center sm:mb-14">
@@ -73,26 +73,34 @@ export default function Portfolio() {
                   whileTap: { scale: 0.97, transition: HOVER_SPRING },
                 })}
                 className="group relative cursor-pointer"
+                role="button"
+                tabIndex={0}
                 onClick={() => setActiveIndex(i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveIndex(i);
+                  }
+                }}
               >
-                <div
-                  className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[25%] rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  aria-hidden
-                />
+                {!mobile && (
+                  <div
+                    className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[25%] rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    aria-hidden
+                  />
+                )}
 
-                <Image
-                  src={project.imagePath}
-                  alt={project.title}
-                  width={988}
-                  height={816}
-                  className="relative w-full h-auto"
-                  style={{
-                    filter:
-                      "drop-shadow(0 24px 48px rgba(0,0,0,0.20)) drop-shadow(0 6px 14px rgba(0,0,0,0.10))",
-                  }}
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  loading="lazy"
-                />
+                <div className="relative overflow-hidden rounded-xl shadow-[0_24px_48px_rgba(0,0,0,0.20),0_6px_14px_rgba(0,0,0,0.10)]">
+                  <Image
+                    src={project.imagePath}
+                    alt={project.title}
+                    width={988}
+                    height={816}
+                    className="w-full h-auto block"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                </div>
 
                 <div className="mt-3 flex justify-center">
                   <span className="rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07]">
@@ -110,11 +118,14 @@ export default function Portfolio() {
         {activeProject && activeIndex !== null && (
           <motion.div
             key="lb-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeProject ? `${activeProject.title} project details` : undefined}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 p-4"
             onClick={close}
           >
             <motion.div

@@ -18,7 +18,7 @@ export default function FAQ() {
   const [ctaRef, ctaInView] = useInView<HTMLDivElement>();
 
   return (
-    <SectionWrapper id="faq" className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24">
+    <SectionWrapper id="faq" className="min-h-[calc(100vh-5rem)] px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16">
       <div className="mx-auto max-w-3xl">
 
         <div className="mb-10 flex flex-col items-center text-center gap-3 sm:mb-14">

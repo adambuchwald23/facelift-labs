@@ -60,7 +60,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-center px-5 pb-10 sm:px-6 sm:pb-20 md:pb-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-center px-5 pb-6 sm:px-6 sm:pb-12 md:pb-16">
         <div className="w-full max-w-4xl mx-auto text-center">
 
           {/* Headline */}

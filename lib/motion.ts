@@ -1,20 +1,39 @@
 /**
- * Centralized animation presets — responsive to mobile / desktop.
+ * Centralized animation presets — responsive to mobile / desktop
+ * and `prefers-reduced-motion`.
  *
- * On mobile, animations are driven by a custom IntersectionObserver hook
+ * All section animations are driven by a custom IntersectionObserver hook
  * (`useInView`) that only initialises after hydration, avoiding the SSR
  * mismatch that caused `whileInView` to fire prematurely. Components use
  * `animate={inView ? "visible" : "hidden"}` instead of `whileInView`.
- *
- * Desktop still uses Framer Motion's `whileInView` since `useIsMobile`
- * returns `false` on both server and desktop client — no mismatch.
  */
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+let _prefersReduced: boolean | null = null;
+function prefersReducedMotion(): boolean {
+  if (_prefersReduced === null) {
+    _prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+  return _prefersReduced;
+}
+
+const INSTANT = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.01 } },
+};
+
+const INSTANT_CONTAINER = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0, delayChildren: 0 } },
+};
+
 /* ── Container (stagger parent) ── */
 
 export function staggerContainer(mobile: boolean) {
+  if (prefersReducedMotion()) return INSTANT_CONTAINER;
   return {
     hidden: {},
     visible: {
@@ -29,6 +48,7 @@ export function staggerContainer(mobile: boolean) {
 /* ── Fade-up child (cards, rows, fields) ── */
 
 export function fadeUp(mobile: boolean) {
+  if (prefersReducedMotion()) return INSTANT;
   return {
     hidden: { opacity: 0, y: mobile ? 6 : 10 },
     visible: {
@@ -45,6 +65,7 @@ export function fadeUp(mobile: boolean) {
 /* ── Fade-up with scale (portfolio laptops) ── */
 
 export function fadeUpScale(mobile: boolean) {
+  if (prefersReducedMotion()) return INSTANT;
   return {
     hidden: { opacity: 0, y: mobile ? 6 : 12, scale: mobile ? 0.98 : 0.97 },
     visible: {
@@ -62,6 +83,7 @@ export function fadeUpScale(mobile: boolean) {
 /* ── Slide-in from left (comparison rows) ── */
 
 export function fadeInLeft(mobile: boolean) {
+  if (prefersReducedMotion()) return INSTANT;
   return {
     hidden: { opacity: 0, x: mobile ? -4 : -6 },
     visible: {
@@ -78,6 +100,7 @@ export function fadeInLeft(mobile: boolean) {
 /* ── Standalone entrance (variants format) ── */
 
 export function inlineEntrance(mobile: boolean) {
+  if (prefersReducedMotion()) return INSTANT;
   return {
     hidden: { opacity: 0, y: mobile ? 6 : 10 },
     visible: {

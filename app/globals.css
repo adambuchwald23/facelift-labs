@@ -13,7 +13,7 @@
   --radius-button: 25px;
   --radius-card: 50px;
   --radius-pill: 100px;
-  --section-gap: 5rem; /* equal spacing between sections per Figma */
+  --section-gap: 3.5rem; /* tightened spacing between sections */
   --content-max: 1280px;
 }
 
