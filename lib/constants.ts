@@ -2,9 +2,10 @@
  * Site copy and config — single source for nav, sections, FAQ, comparison, form options.
  */
 
-/** Nav pill: Services, Workflow, Why Us, FAQ. Contact Us is the CTA button. */
+/** Nav pill: Services, Portfolio, Workflow, Why Us, FAQ. Contact Us is the CTA button. */
 export const NAV_LINKS = [
   { label: "Services", href: "#services" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "Workflow", href: "#facelift" },
   { label: "Why Us", href: "#why-us" },
   { label: "FAQ", href: "#faq" },
@@ -142,6 +143,7 @@ export const CONTACT = {
 export const FOOTER = {
   navigation: [
     { label: "Services", href: "#services" },
+    { label: "Portfolio", href: "#portfolio" },
     { label: "Workflow", href: "#facelift" },
     { label: "Why Us", href: "#why-us" },
     { label: "FAQ", href: "#faq" },

@@ -13,17 +13,17 @@ const hoverSpring = { type: "spring" as const, stiffness: 260, damping: 22 };
 const laptopContainerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.28, delayChildren: 0.2 },
   },
 };
 
 const laptopVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 50, scale: 0.91 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -72,7 +72,7 @@ export default function Portfolio() {
           variants={laptopContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -20% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
           className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
         >
           {PORTFOLIO_PROJECTS.map((project, i) => (

@@ -8,19 +8,15 @@ import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 
 /**
- * Single-page landing: Hero → Portfolio → Core Services → The Facelift
- * → Tech Stack → Comparison → FAQ → Contact. Footer in root layout.
- *
- * Sections are imported normally (not dynamic + ssr:false) so the server
- * sends real HTML on first paint. Relying only on client-only placeholders
- * leaves the page empty/broken if JS is slow, blocked, or errors.
+ * Single-page landing: Hero → Services → Portfolio → Workflow
+ * → Tech Stack → Why Us → FAQ → Contact. Footer in root layout.
  */
 export default function HomePage() {
   return (
     <main>
       <Hero />
-      <Portfolio />
       <CoreServices />
+      <Portfolio />
       <TheFacelift />
       <TechStack />
       <Comparison />
