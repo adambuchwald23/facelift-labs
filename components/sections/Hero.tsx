@@ -7,11 +7,11 @@ import { HERO, HERO_TRUST_LOGOS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 18 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1.1, delay: 0.3 + i * 0.18, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 

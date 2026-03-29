@@ -11,15 +11,15 @@ interface SectionWrapperProps {
 }
 
 const directionOffset = {
-  up:    { y: 24, x: 0  },
-  left:  { y: 10, x: -16 },
-  right: { y: 10, x: 16  },
+  up:    { y: 16, x: 0  },
+  left:  { y: 6,  x: -10 },
+  right: { y: 6,  x: 10  },
 };
 
 /**
  * Wraps a section with scroll-triggered slide animation (play once).
- * Only animates position — opacity is handled by inner child elements
- * to avoid double-opacity issues on mobile viewports.
+ * Uses small offsets so inner child stagger animations do the heavy lifting.
+ * `will-change` + `translateZ(0)` promote to GPU layer for jank-free scrolling.
  */
 export default function SectionWrapper({
   id,
@@ -33,8 +33,9 @@ export default function SectionWrapper({
       id={id}
       initial={{ y: offset.y, x: offset.x }}
       whileInView={{ y: 0, x: 0 }}
-      viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-      transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "0px 0px -6% 0px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      style={{ willChange: "transform", transform: "translateZ(0)" }}
       className={`scroll-mt-24 ${className}`}
     >
       {children}

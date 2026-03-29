@@ -10,12 +10,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const formContainerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.16, delayChildren: 0.25 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 const fieldVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const INPUT_BASE =

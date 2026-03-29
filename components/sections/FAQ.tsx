@@ -10,12 +10,12 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.25 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 26 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function FAQ() {
@@ -104,10 +104,10 @@ export default function FAQ() {
 
         {/* Bottom CTA — natural end to the section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-          transition={{ duration: 1.0, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "0px 0px -6% 0px" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
           <p className="text-sm text-foreground-muted">
