@@ -50,10 +50,12 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* Viewport-height utilities with 100vh fallback for older browsers */
-.section-viewport {
-  min-height: calc(100vh - 6rem);
-  min-height: calc(100svh - 6rem);
+/* Viewport-height utilities — desktop only so mobile flows naturally */
+@media (min-width: 768px) {
+  .section-viewport {
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100svh - 6rem);
+  }
 }
 .hero-viewport {
   min-height: calc(100vh - 4rem);
