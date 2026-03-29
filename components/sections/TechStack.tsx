@@ -69,7 +69,7 @@ function Tile({
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
     },
   };
 

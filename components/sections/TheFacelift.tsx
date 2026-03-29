@@ -18,7 +18,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -65,7 +65,7 @@ export default function TheFacelift() {
               key={step.number}
               variants={{
                 hidden: { opacity: 0, y: 26, scale: 0.97 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] } },
               }}
               className="flex flex-1 items-stretch gap-3"
             >

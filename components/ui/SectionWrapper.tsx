@@ -34,7 +34,7 @@ export default function SectionWrapper({
       initial={{ y: offset.y, x: offset.x }}
       whileInView={{ y: 0, x: 0 }}
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
       style={{ willChange: "transform", transform: "translateZ(0)" }}
       className={`scroll-mt-24 ${className}`}
     >

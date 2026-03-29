@@ -23,7 +23,7 @@ const laptopVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -59,64 +59,63 @@ export default function Portfolio() {
   const activeProject = activeIndex !== null ? PORTFOLIO_PROJECTS[activeIndex] : null;
 
   return (
-    <SectionWrapper
-      id="portfolio"
-      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
-    >
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10 flex justify-center sm:mb-14">
-          <SectionHeader label="Portfolio" />
+    <>
+      <SectionWrapper
+        id="portfolio"
+        className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 flex justify-center sm:mb-14">
+            <SectionHeader label="Portfolio" />
+          </div>
+
+          <motion.div
+            variants={laptopContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -15% 0px" }}
+            className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
+          >
+            {PORTFOLIO_PROJECTS.map((project, i) => (
+              <motion.div
+                key={project.title}
+                variants={laptopVariants}
+                whileHover={{ y: -10, scale: 1.02, transition: hoverSpring }}
+                whileTap={{ scale: 0.97, transition: hoverSpring }}
+                className="group relative cursor-pointer"
+                onClick={() => setActiveIndex(i)}
+              >
+                <div
+                  className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[25%] rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  aria-hidden
+                />
+
+                <Image
+                  src={project.imagePath}
+                  alt={project.title}
+                  width={988}
+                  height={816}
+                  className="relative w-full h-auto"
+                  style={{
+                    filter:
+                      "drop-shadow(0 24px 48px rgba(0,0,0,0.20)) drop-shadow(0 6px 14px rgba(0,0,0,0.10))",
+                  }}
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  priority={i < 2}
+                />
+
+                <div className="mt-3 flex justify-center">
+                  <span className="rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07]">
+                    {project.title}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
+      </SectionWrapper>
 
-        <motion.div
-          variants={laptopContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -15% 0px" }}
-          className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
-        >
-          {PORTFOLIO_PROJECTS.map((project, i) => (
-            <motion.div
-              key={project.title}
-              variants={laptopVariants}
-              whileHover={{ y: -10, scale: 1.02, transition: hoverSpring }}
-              whileTap={{ scale: 0.97, transition: hoverSpring }}
-              className="group relative cursor-pointer"
-              onClick={() => setActiveIndex(i)}
-            >
-              {/* Accent glow on hover */}
-              <div
-                className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[25%] rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                aria-hidden
-              />
-
-              {/* Laptop — transparent PNG floats with drop-shadow */}
-              <Image
-                src={project.imagePath}
-                alt={project.title}
-                width={988}
-                height={816}
-                className="relative w-full h-auto"
-                style={{
-                  filter:
-                    "drop-shadow(0 24px 48px rgba(0,0,0,0.20)) drop-shadow(0 6px 14px rgba(0,0,0,0.10))",
-                }}
-                sizes="(max-width: 640px) 100vw, 50vw"
-                priority={i < 2}
-              />
-
-              {/* Project name pill */}
-              <div className="mt-3 flex justify-center">
-                <span className="rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07]">
-                  {project.title}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Lightbox */}
+      {/* Lightbox — rendered outside SectionWrapper so fixed positioning works correctly */}
       <AnimatePresence>
         {activeProject && activeIndex !== null && (
           <motion.div
@@ -137,7 +136,6 @@ export default function Portfolio() {
               className="relative w-full max-w-4xl overflow-hidden rounded-[20px] bg-[#0a0a0a] shadow-2xl sm:rounded-[28px]"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close */}
               <button
                 onClick={close}
                 className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
@@ -146,7 +144,6 @@ export default function Portfolio() {
                 <X className="h-4 w-4" />
               </button>
 
-              {/* Screenshot */}
               <div className="relative aspect-[16/10] w-full" style={{ minHeight: 200 }}>
                 <Image
                   src={activeProject.screenshotPath}
@@ -158,15 +155,12 @@ export default function Portfolio() {
                 />
               </div>
 
-              {/* Bottom bar: title + nav arrows + visit site CTA */}
               <div className="flex flex-col gap-3 border-t border-white/10 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4">
-                {/* Title + counter */}
                 <div className="flex flex-col items-center gap-0.5 text-center sm:order-2">
                   <p className="text-sm font-semibold text-white/90">{activeProject.title}</p>
                   <p className="text-xs text-white/35">{activeIndex + 1} / {PORTFOLIO_PROJECTS.length}</p>
                 </div>
 
-                {/* Prev / Next + Visit Site — row on mobile */}
                 <div className="flex items-center justify-between sm:contents">
                   <div className="flex items-center gap-2 sm:order-1">
                     <button
@@ -198,7 +192,6 @@ export default function Portfolio() {
               </div>
             </motion.div>
 
-            {/* Side nav arrows (desktop) */}
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
               className="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/10 p-3 text-white backdrop-blur-sm transition hover:bg-white/20 lg:flex"
@@ -216,6 +209,6 @@ export default function Portfolio() {
           </motion.div>
         )}
       </AnimatePresence>
-    </SectionWrapper>
+    </>
   );
 }
