@@ -4,27 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FOOTER } from "@/lib/constants";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
-};
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeUp as fadeUpPreset, viewportConfig } from "@/lib/motion";
 
 export default function Footer() {
+  const mobile = useIsMobile();
+  const fadeUp = fadeUpPreset(mobile);
   return (
     <footer className="border-t border-black/[0.07] bg-[#f7f8f6]">
       <motion.div
-        variants={containerVariants}
+        variants={staggerContainer(mobile)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={viewportConfig(mobile)}
         className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
       >
 

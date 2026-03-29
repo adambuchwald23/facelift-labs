@@ -7,25 +7,10 @@ import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { PORTFOLIO_PROJECTS } from "@/lib/constants";
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeUpScale, viewportConfig } from "@/lib/motion";
 
 const hoverSpring = { type: "spring" as const, stiffness: 260, damping: 22 };
-
-const laptopContainerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.22, delayChildren: 0.1 },
-  },
-};
-
-const laptopVariants = {
-  hidden: { opacity: 0, y: 16, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-  },
-};
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -57,6 +42,7 @@ export default function Portfolio() {
   }, [activeIndex]);
 
   const activeProject = activeIndex !== null ? PORTFOLIO_PROJECTS[activeIndex] : null;
+  const mobile = useIsMobile();
 
   return (
     <>
@@ -70,16 +56,16 @@ export default function Portfolio() {
           </div>
 
           <motion.div
-            variants={laptopContainerVariants}
+            variants={staggerContainer(mobile)}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={viewportConfig(mobile)}
             className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
           >
             {PORTFOLIO_PROJECTS.map((project, i) => (
               <motion.div
                 key={project.title}
-                variants={laptopVariants}
+                variants={fadeUpScale(mobile)}
                 whileHover={{ y: -10, scale: 1.02, transition: hoverSpring }}
                 whileTap={{ scale: 0.97, transition: hoverSpring }}
                 className="group relative cursor-pointer"

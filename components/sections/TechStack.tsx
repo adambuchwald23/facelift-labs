@@ -5,17 +5,15 @@ import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { TECH_STACK_ITEMS } from "@/lib/constants";
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, viewportConfig } from "@/lib/motion";
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
-
 const SPREAD_X = ["-30px", "-16px", "16px", "30px", "-24px", "0px", "24px"];
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function TechStack() {
+  const mobile = useIsMobile();
   return (
     <SectionWrapper
       id="tech-stack"
@@ -27,23 +25,21 @@ export default function TechStack() {
         </div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer(mobile)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewportConfig(mobile)}
           className="flex flex-col items-center gap-7 sm:gap-8"
         >
-          {/* Row 1 — 4 items */}
           <div className="flex flex-wrap justify-center gap-7 sm:gap-8">
             {TECH_STACK_ITEMS.slice(0, 4).map((tool, i) => (
-              <Tile key={tool.name} tool={tool} floatIndex={i} />
+              <Tile key={tool.name} tool={tool} floatIndex={i} mobile={mobile} />
             ))}
           </div>
 
-          {/* Row 2 — 3 items */}
           <div className="flex flex-wrap justify-center gap-7 sm:gap-8">
             {TECH_STACK_ITEMS.slice(4).map((tool, i) => (
-              <Tile key={tool.name} tool={tool} floatIndex={i + 4} />
+              <Tile key={tool.name} tool={tool} floatIndex={i + 4} mobile={mobile} />
             ))}
           </div>
         </motion.div>
@@ -55,21 +51,23 @@ export default function TechStack() {
 function Tile({
   tool,
   floatIndex,
+  mobile,
 }: {
   tool: { name: string; logo: string };
   floatIndex: number;
+  mobile: boolean;
 }) {
   const dur = FLOAT_DURATIONS[floatIndex % FLOAT_DURATIONS.length];
   const spreadX = SPREAD_X[floatIndex % SPREAD_X.length];
 
   const tileVariants = {
-    hidden: { opacity: 0, y: 14, x: spreadX, scale: 0.95 },
+    hidden: { opacity: 0, y: mobile ? 0 : 14, x: mobile ? "0px" : spreadX, scale: mobile ? 1 : 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: mobile ? 0.45 : 0.85, ease: EASE as unknown as number[] },
     },
   };
 

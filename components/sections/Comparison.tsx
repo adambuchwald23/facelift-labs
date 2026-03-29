@@ -8,18 +8,16 @@ import { COMPARISON } from "@/lib/constants";
 import { CheckIcon } from "@/components/icons/CheckIcon";
 import { XIcon } from "@/components/icons/CheckIcon";
 import { CARD_SHADOW } from "@/lib/design-tokens";
-
-const listVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.14, delayChildren: 0.15 } },
-};
-
-const rowVariants = {
-  hidden: { opacity: 0, x: -8 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-};
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeInLeft, inlineEntrance, viewportConfig } from "@/lib/motion";
 
 export default function Comparison() {
+  const mobile = useIsMobile();
+  const rowVars = fadeInLeft(mobile);
+  const listVars = staggerContainer(mobile);
+  const vp = viewportConfig(mobile);
+  const entrance = inlineEntrance(mobile);
+
   return (
     <SectionWrapper
       id="why-us"
@@ -32,16 +30,13 @@ export default function Comparison() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          {...entrance}
+          viewport={vp}
           className="overflow-hidden rounded-[28px] bg-white ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px]"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div className="grid md:grid-cols-2">
 
-            {/* ── Left: Other Agencies ── */}
             <div className="border-b border-black/[0.06] p-7 md:border-b-0 md:border-r md:p-10">
               <div className="mb-7 flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/40">
@@ -52,16 +47,16 @@ export default function Comparison() {
                 </h3>
               </div>
               <motion.ul
-                variants={listVariants}
+                variants={listVars}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={vp}
                 className="space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
                   <motion.li
                     key={text}
-                    variants={rowVariants}
+                    variants={rowVars}
                     className="flex gap-3 text-[0.9375rem] text-foreground/40"
                   >
                     <span className="mt-0.5 shrink-0 text-foreground/25">
@@ -73,9 +68,7 @@ export default function Comparison() {
               </motion.ul>
             </div>
 
-            {/* ── Right: Facelift Labs ── */}
             <div className="relative p-7 md:p-10">
-              {/* Subtle accent top bar */}
               <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 rounded-tr-[28px] sm:rounded-tr-[40px]" />
 
               <div className="mb-7 flex items-center gap-3">
@@ -93,16 +86,16 @@ export default function Comparison() {
                 />
               </div>
               <motion.ul
-                variants={listVariants}
+                variants={listVars}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={vp}
                 className="space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (
                   <motion.li
                     key={text}
-                    variants={rowVariants}
+                    variants={rowVars}
                     className="flex gap-3 text-[0.9375rem] text-foreground-muted"
                   >
                     <span className="mt-0.5 shrink-0 text-accent">

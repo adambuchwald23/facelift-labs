@@ -7,16 +7,8 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { CONTACT } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { CARD_SHADOW } from "@/lib/design-tokens";
-
-const formContainerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
-
-const fieldVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-};
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeUp, viewportConfig } from "@/lib/motion";
 
 const INPUT_BASE =
   "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
@@ -24,6 +16,8 @@ const INPUT_BASE =
 type FormStatus = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
+  const mobile = useIsMobile();
+  const fieldVars = fadeUp(mobile);
   const [services, setServices] = useState<string[]>([]);
   const [status, setStatus] = useState<FormStatus>("idle");
   const formRef = useRef<HTMLFormElement>(null);
@@ -88,10 +82,10 @@ export default function Contact() {
 
         <motion.form
           ref={formRef}
-          variants={formContainerVariants}
+          variants={staggerContainer(mobile)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewportConfig(mobile)}
           onSubmit={handleSubmit}
           className="relative overflow-hidden rounded-[28px] bg-white p-6 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-10"
           style={{ boxShadow: CARD_SHADOW }}
@@ -101,7 +95,7 @@ export default function Contact() {
             className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[28px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 sm:rounded-t-[40px]"
           />
 
-          <motion.div variants={fieldVariants} className="grid gap-5 sm:grid-cols-2">
+          <motion.div variants={fieldVars} className="grid gap-5 sm:grid-cols-2">
             <label className="block">
               <span className="mb-2 block text-sm font-medium text-foreground">First Name</span>
               <input type="text" name="firstName" className={INPUT_BASE} placeholder="John" />
@@ -112,17 +106,17 @@ export default function Contact() {
             </label>
           </motion.div>
 
-          <motion.label variants={fieldVariants} className="mt-5 block">
+          <motion.label variants={fieldVars} className="mt-5 block">
             <span className="mb-2 block text-sm font-medium text-foreground">Email</span>
             <input type="email" name="email" className={INPUT_BASE} placeholder="you@example.com" aria-required="true" required />
           </motion.label>
 
-          <motion.label variants={fieldVariants} className="mt-5 block">
+          <motion.label variants={fieldVars} className="mt-5 block">
             <span className="mb-2 block text-sm font-medium text-foreground">Phone Number</span>
             <input type="tel" name="phone" className={INPUT_BASE} placeholder="(555) 123-4567" />
           </motion.label>
 
-          <motion.fieldset variants={fieldVariants} className="mt-5">
+          <motion.fieldset variants={fieldVars} className="mt-5">
             <legend className="mb-3 block text-sm font-medium text-foreground">Select Service(s)</legend>
             <div className="flex flex-wrap gap-2.5">
               {CONTACT.serviceOptions.map((opt) => {
@@ -150,7 +144,7 @@ export default function Contact() {
             </div>
           </motion.fieldset>
 
-          <motion.label variants={fieldVariants} className="mt-5 block">
+          <motion.label variants={fieldVars} className="mt-5 block">
             <span className="mb-2 block text-sm font-medium text-foreground">Message</span>
             <textarea
               name="message"
@@ -162,7 +156,7 @@ export default function Contact() {
             />
           </motion.label>
 
-          <motion.div variants={fieldVariants} className="mt-8">
+          <motion.div variants={fieldVars} className="mt-8">
             <Button
               type="submit"
               variant="primary"

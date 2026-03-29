@@ -3,21 +3,13 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { CARD_SHADOW } from "@/lib/design-tokens";
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeUp, viewportConfig } from "@/lib/motion";
 
 export type CoreServiceItem = {
   name: string;
   description: string;
   iconSrc: string;
-};
-
-const cardContainerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export function CoreServicesGrid({
@@ -27,12 +19,13 @@ export function CoreServicesGrid({
   children: React.ReactNode;
   className?: string;
 }) {
+  const mobile = useIsMobile();
   return (
     <motion.div
-      variants={cardContainerVariants}
+      variants={staggerContainer(mobile)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={viewportConfig(mobile)}
       className={cn(
         "grid grid-cols-1 gap-8 sm:gap-9 md:grid-cols-3 md:gap-9",
         className
@@ -49,9 +42,10 @@ export function CoreServiceCard({
   iconSrc,
   className,
 }: CoreServiceItem & { className?: string }) {
+  const mobile = useIsMobile();
   return (
     <motion.article
-      variants={cardVariants}
+      variants={fadeUp(mobile)}
       className={cn(
         "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
         className

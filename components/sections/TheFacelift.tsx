@@ -5,22 +5,8 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { THE_FACELIFT_STEPS } from "@/lib/constants";
 import { CARD_SHADOW } from "@/lib/design-tokens";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-  },
-};
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeUp, fadeUpScale, viewportConfig } from "@/lib/motion";
 
 function StepArrow() {
   return (
@@ -41,6 +27,7 @@ function StepArrow() {
 }
 
 export default function TheFacelift() {
+  const mobile = useIsMobile();
   return (
     <SectionWrapper
       id="facelift"
@@ -52,21 +39,18 @@ export default function TheFacelift() {
           <SectionHeader label="Workflow" />
         </div>
 
-        {/* Desktop: flex row with arrows — staggered pop-up */}
+        {/* Desktop: flex row with arrows */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } } }}
+          viewport={viewportConfig(false)}
+          variants={staggerContainer(false)}
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
             <motion.div
               key={step.number}
-              variants={{
-                hidden: { opacity: 0, y: 14, scale: 0.98 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
-              }}
+              variants={fadeUpScale(false)}
               className="flex flex-1 items-stretch gap-3"
             >
               <StepCard step={step} />
@@ -77,14 +61,14 @@ export default function TheFacelift() {
 
         {/* Mobile / tablet grid */}
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer(mobile)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewportConfig(mobile)}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (
-            <StepCardAnimated key={step.number} step={step} />
+            <StepCardAnimated key={step.number} step={step} mobile={mobile} />
           ))}
         </motion.div>
       </div>
@@ -108,10 +92,10 @@ function StepCard({ step }: { step: Step }) {
 }
 
 /** Mobile/tablet card — uses parent container stagger */
-function StepCardAnimated({ step }: { step: Step }) {
+function StepCardAnimated({ step, mobile }: { step: Step; mobile: boolean }) {
   return (
     <motion.article
-      variants={cardVariants}
+      variants={fadeUp(mobile)}
       className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >

@@ -5,18 +5,27 @@ import Image from "next/image";
 
 import { HERO, HERO_TRUST_LOGOS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import { useIsMobile } from "@/lib/use-mobile";
 
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.85, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
+function heroVariants(mobile: boolean) {
+  return {
+    hidden: { opacity: 0, y: mobile ? 0 : 16 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: mobile ? 0.4 : 0.85,
+        delay: mobile ? 0.05 + i * 0.06 : 0.15 + i * 0.12,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    }),
+  };
+}
 
 
 export default function Hero() {
+  const mobile = useIsMobile();
+  const fadeUpVariants = heroVariants(mobile);
   return (
     <section
       id="about"

@@ -7,25 +7,17 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { FAQ_ITEMS, FAQ_CTA_LABEL } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { CARD_SHADOW } from "@/lib/design-tokens";
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.16, delayChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
-};
+import { useIsMobile } from "@/lib/use-mobile";
+import { staggerContainer, fadeUp, inlineEntrance, viewportConfig } from "@/lib/motion";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const mobile = useIsMobile();
 
   return (
     <SectionWrapper id="faq" className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-3xl">
 
-        {/* Centered header */}
         <div className="mb-10 flex flex-col items-center text-center gap-3 sm:mb-14">
           <SectionHeader label="FAQ" />
           <p className="mx-auto max-w-md text-base leading-relaxed text-foreground-muted">
@@ -33,12 +25,11 @@ export default function FAQ() {
           </p>
         </div>
 
-        {/* FAQ items */}
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer(mobile)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewportConfig(mobile)}
           className="space-y-3"
         >
           {FAQ_ITEMS.map((faq, i) => {
@@ -47,7 +38,7 @@ export default function FAQ() {
             return (
               <motion.div
                 key={faq.question}
-                variants={itemVariants}
+                variants={fadeUp(mobile)}
                 className="overflow-hidden rounded-[20px] bg-white border border-black/20 sm:rounded-[24px]"
                 style={{ boxShadow: isOpen ? CARD_SHADOW : "0 1px 3px rgba(0,0,0,0.04)" }}
               >
@@ -104,10 +95,8 @@ export default function FAQ() {
 
         {/* Bottom CTA — natural end to the section */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          {...inlineEntrance(mobile)}
+          viewport={viewportConfig(mobile)}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
           <p className="text-sm text-foreground-muted">
