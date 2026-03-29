@@ -56,7 +56,7 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -15% 0px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.16, delayChildren: 0.15 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
@@ -80,7 +80,7 @@ export default function TheFacelift() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -15% 0px" }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (
@@ -98,7 +98,7 @@ type Step = (typeof THE_FACELIFT_STEPS)[number];
 function StepCard({ step }: { step: Step }) {
   return (
     <motion.article
-      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-[shadow,transform] duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)] hover:-translate-y-1"
+      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />
@@ -112,7 +112,7 @@ function StepCardAnimated({ step }: { step: Step }) {
   return (
     <motion.article
       variants={cardVariants}
-      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-[shadow,transform] duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)] hover:-translate-y-1"
+      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />

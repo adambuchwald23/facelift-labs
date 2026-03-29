@@ -30,7 +30,7 @@ export default function TechStack() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          viewport={{ once: true, margin: "0px 0px -15% 0px" }}
           className="flex flex-col items-center gap-7 sm:gap-8"
         >
           {/* Row 1 — 4 items */}

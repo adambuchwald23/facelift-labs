@@ -24,7 +24,7 @@ export default function Footer() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+        viewport={{ once: true, margin: "0px 0px -15% 0px" }}
         className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
       >
 

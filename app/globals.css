@@ -73,14 +73,11 @@ body {
   top: 0;
 }
 
-/* Touch devices: remove tap highlight and disable sticky hover states */
+/* Touch devices: remove tap highlight */
 @media (hover: none) {
   a,
   button {
     -webkit-tap-highlight-color: transparent;
-  }
-  .hover\:-translate-y-1:hover {
-    transform: none !important;
   }
 }
 
