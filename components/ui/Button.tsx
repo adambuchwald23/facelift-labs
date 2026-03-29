@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -36,8 +37,19 @@ export default function Button({
   const classes = cn(base, variants[variant], className);
 
   if (href) {
+    const isHash = href.startsWith("#");
+
+    const handleClick = isHash
+      ? (e: React.MouseEvent) => {
+          e.preventDefault();
+          onClick?.();
+          const el = document.getElementById(href.slice(1));
+          if (el) smoothScrollTo(el);
+        }
+      : onClick;
+
     return (
-      <Link href={href} className={cn(classes, "hover:scale-[1.02] active:scale-[0.98]")} onClick={onClick}>
+      <Link href={href} className={cn(classes, "hover:scale-[1.02] active:scale-[0.98]")} onClick={handleClick}>
         {children}
       </Link>
     );

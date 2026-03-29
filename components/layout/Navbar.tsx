@@ -75,6 +75,13 @@ export default function Navbar() {
           active = link.href;
         }
       }
+
+      // Clear pill when scrolled past the last nav section (e.g. at Contact or Footer)
+      const contactEl = document.getElementById("contact");
+      if (contactEl && contactEl.getBoundingClientRect().top <= threshold) {
+        active = "";
+      }
+
       if (active !== activeHrefRef.current) setActiveHref(active);
       activeHrefRef.current = active;
     };
