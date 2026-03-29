@@ -12,7 +12,7 @@ import { useInView } from "@/lib/use-in-view";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 
 const INPUT_BASE =
-  "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3.5 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
+  "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -75,9 +75,9 @@ export default function Contact() {
       className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10 md:pt-10 md:pb-12"
     >
       <div className="mx-auto max-w-3xl">
-        <div className="mb-10 flex flex-col items-center gap-3 text-center sm:mb-14">
+        <div className="mb-5 flex flex-col items-center gap-2 text-center sm:mb-8">
           <SectionHeader label={CONTACT.headline} />
-          <p className="text-base text-foreground-muted">
+          <p className="text-sm text-foreground-muted sm:text-base">
             Tell us about your project and we&apos;ll be in touch within 24 hours.
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function Contact() {
           initial="hidden"
           animate={formInView ? "visible" : "hidden"}
           onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-[28px] bg-white p-6 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-10"
+          className="relative overflow-hidden rounded-[28px] bg-white p-5 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div
@@ -97,30 +97,30 @@ export default function Contact() {
             className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[28px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 sm:rounded-t-[40px]"
           />
 
-          <motion.div variants={fieldVars} className="grid gap-5 sm:grid-cols-2">
+          <motion.div variants={fieldVars} className="grid gap-4 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-foreground">First Name</span>
-              <input type="text" name="firstName" className={INPUT_BASE} placeholder="John" />
+              <span className="mb-1.5 block text-sm font-medium text-foreground">First Name</span>
+              <input type="text" name="firstName" autoComplete="given-name" className={INPUT_BASE} placeholder="John" />
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-foreground">Last Name</span>
-              <input type="text" name="lastName" className={INPUT_BASE} placeholder="Doe" />
+              <span className="mb-1.5 block text-sm font-medium text-foreground">Last Name</span>
+              <input type="text" name="lastName" autoComplete="family-name" className={INPUT_BASE} placeholder="Doe" />
             </label>
           </motion.div>
 
-          <motion.label variants={fieldVars} className="mt-5 block">
-            <span className="mb-2 block text-sm font-medium text-foreground">Email</span>
-            <input type="email" name="email" className={INPUT_BASE} placeholder="you@example.com" aria-required="true" required />
+          <motion.label variants={fieldVars} className="mt-3.5 block">
+            <span className="mb-1.5 block text-sm font-medium text-foreground">Email</span>
+            <input type="email" name="email" autoComplete="email" className={INPUT_BASE} placeholder="you@example.com" aria-required="true" required />
           </motion.label>
 
-          <motion.label variants={fieldVars} className="mt-5 block">
-            <span className="mb-2 block text-sm font-medium text-foreground">Phone Number</span>
-            <input type="tel" name="phone" className={INPUT_BASE} placeholder="(555) 123-4567" />
+          <motion.label variants={fieldVars} className="mt-3.5 block">
+            <span className="mb-1.5 block text-sm font-medium text-foreground">Phone Number</span>
+            <input type="tel" name="phone" autoComplete="tel" className={INPUT_BASE} placeholder="(555) 123-4567" />
           </motion.label>
 
-          <motion.fieldset variants={fieldVars} className="mt-5">
-            <legend className="mb-3 block text-sm font-medium text-foreground">Select Service(s)</legend>
-            <div className="flex flex-wrap gap-2.5">
+          <motion.fieldset variants={fieldVars} className="mt-3.5">
+            <legend className="mb-2 block text-sm font-medium text-foreground">Select Service(s)</legend>
+            <div className="flex flex-wrap gap-2">
               {CONTACT.serviceOptions.map((opt) => {
                 const selected = services.includes(opt.value);
                 return (
@@ -129,7 +129,7 @@ export default function Contact() {
                     type="button"
                     aria-pressed={selected}
                     onClick={() => toggleService(opt.value)}
-                    className="min-h-[44px] rounded-full px-4 py-2 text-sm font-medium ring-1 ring-black/[0.08] outline-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97]"
+                    className="min-h-[40px] rounded-full px-3.5 py-1.5 text-sm font-medium ring-1 ring-black/[0.08] outline-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97]"
                     style={{
                       backgroundColor: selected ? "#00FF88" : "#f7f7f7",
                       color: selected ? "#0a0a0a" : "rgba(10,10,10,0.55)",
@@ -143,11 +143,11 @@ export default function Contact() {
             </div>
           </motion.fieldset>
 
-          <motion.label variants={fieldVars} className="mt-5 block">
-            <span className="mb-2 block text-sm font-medium text-foreground">Message</span>
+          <motion.label variants={fieldVars} className="mt-3.5 block">
+            <span className="mb-1.5 block text-sm font-medium text-foreground">Message</span>
             <textarea
               name="message"
-              rows={4}
+              rows={3}
               className={INPUT_BASE}
               placeholder="Tell us about your project..."
               aria-required="true"
@@ -155,7 +155,7 @@ export default function Contact() {
             />
           </motion.label>
 
-          <motion.div variants={fieldVars} className="mt-8">
+          <motion.div variants={fieldVars} className="mt-5">
             <Button
               type="submit"
               variant="primary"

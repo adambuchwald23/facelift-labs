@@ -10,14 +10,11 @@
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-let _prefersReduced: boolean | null = null;
 function prefersReducedMotion(): boolean {
-  if (_prefersReduced === null) {
-    _prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }
-  return _prefersReduced;
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 }
 
 const INSTANT = {

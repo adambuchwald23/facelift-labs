@@ -73,7 +73,7 @@ export default function Comparison() {
             </div>
 
             <div className="relative p-7 md:p-10">
-              <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 rounded-tr-[28px] sm:rounded-tr-[40px]" />
+              <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 md:rounded-tr-[40px]" />
 
               <div className="mb-7 flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/20">

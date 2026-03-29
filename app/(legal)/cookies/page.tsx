@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function CookiePolicy() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
       <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
         Cookie Policy
       </h1>
@@ -85,6 +85,6 @@ export default function CookiePolicy() {
           </p>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

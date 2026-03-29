@@ -7,6 +7,7 @@ import { FOOTER } from "@/lib/constants";
 import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
 import { staggerContainer, fadeUp as fadeUpPreset } from "@/lib/motion";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 export default function Footer() {
   const mobile = useIsMobile();
@@ -27,7 +28,14 @@ export default function Footer() {
 
           {/* Left: logo + tagline + location pill */}
           <motion.div variants={fadeUp} className="flex flex-col gap-6">
-            <Link href="/" className="inline-block shrink-0">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo(document.body);
+              }}
+              className="inline-block shrink-0"
+            >
               <Image
                 src="/logos/facelift-labs-horizontal.svg"
                 alt="Facelift Labs"
@@ -36,7 +44,7 @@ export default function Footer() {
                 className="h-8 w-auto"
                 loading="lazy"
               />
-            </Link>
+            </a>
 
             <p className="max-w-[220px] text-sm leading-relaxed text-foreground-muted">
               Modern websites engineered to convert.
