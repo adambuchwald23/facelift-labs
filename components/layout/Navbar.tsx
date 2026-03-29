@@ -244,17 +244,19 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Link href="/" className="shrink-0 pl-1" style={{ maxWidth: 175 }}>
-          <Image
-            src="/logo.svg"
-            alt="Facelift Labs"
-            width={613}
-            height={100}
-            className="h-auto"
-            style={{ width: "clamp(140px, 38vw, 175px)" }}
-            priority
-          />
-        </Link>
+        <div className="md:flex-1">
+          <Link href="/" className="inline-block shrink-0 pl-1" style={{ maxWidth: 175 }}>
+            <Image
+              src="/logo.svg"
+              alt="Facelift Labs"
+              width={613}
+              height={100}
+              className="h-auto"
+              style={{ width: "clamp(140px, 38vw, 175px)" }}
+              priority
+            />
+          </Link>
+        </div>
 
         {/* Desktop nav */}
         <nav className="hidden items-center md:flex" aria-label="Main navigation">
@@ -277,7 +279,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right side */}
-        <div className="flex items-center gap-2 pr-1">
+        <div className="flex items-center gap-2 pr-1 md:flex-1 md:justify-end">
           <div className="hidden shrink-0 md:block">
             <Button
               href="#contact"
