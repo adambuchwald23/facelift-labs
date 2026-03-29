@@ -32,7 +32,11 @@ function easeInOutQuint(t: number): number {
  * Custom smooth scroll with distance-adaptive duration.
  * Cancels any in-flight animation before starting a new one.
  */
-export function smoothScrollTo(el: HTMLElement, duration?: number) {
+export function smoothScrollTo(
+  el: HTMLElement,
+  duration?: number,
+  onComplete?: () => void,
+) {
   if (activeRaf) cancelAnimationFrame(activeRaf);
 
   const prefersReduced =
@@ -43,6 +47,7 @@ export function smoothScrollTo(el: HTMLElement, duration?: number) {
 
   if (prefersReduced) {
     window.scrollTo(0, target);
+    onComplete?.();
     return;
   }
 
@@ -60,6 +65,7 @@ export function smoothScrollTo(el: HTMLElement, duration?: number) {
       activeRaf = requestAnimationFrame(step);
     } else {
       activeRaf = 0;
+      onComplete?.();
     }
   }
 

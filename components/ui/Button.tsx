@@ -44,7 +44,14 @@ export default function Button({
           e.preventDefault();
           onClick?.();
           const el = document.getElementById(href.slice(1));
-          if (el) smoothScrollTo(el);
+          if (el) {
+            window.dispatchEvent(new CustomEvent("nav-lock"));
+            smoothScrollTo(el, undefined, () => {
+              window.dispatchEvent(
+                new CustomEvent("nav-unlock", { detail: { href } }),
+              );
+            });
+          }
         }
       : onClick;
 

@@ -10,6 +10,7 @@ import { smoothScrollTo } from "@/lib/smooth-scroll";
 export default function SmoothScrollProvider() {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
+      if (e.defaultPrevented) return;
       const anchor = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href^='#']");
       if (!anchor) return;
 

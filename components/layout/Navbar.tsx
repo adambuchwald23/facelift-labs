@@ -49,6 +49,30 @@ export default function Navbar() {
     return () => window.removeEventListener("hashchange", syncFromHash);
   }, []);
 
+  const detectActiveSection = useCallback(() => {
+    const sy = window.scrollY;
+    if (sy < 100) {
+      if (activeHrefRef.current !== "") setActiveHref("");
+      activeHrefRef.current = "";
+      return;
+    }
+    const threshold = 120;
+    let active = "";
+    for (const link of NAV_LINKS) {
+      const el = document.getElementById(link.href.slice(1));
+      if (!el) continue;
+      if (el.getBoundingClientRect().top <= threshold) {
+        active = link.href;
+      }
+    }
+    const contactEl = document.getElementById("contact");
+    if (contactEl && contactEl.getBoundingClientRect().top <= threshold) {
+      active = "";
+    }
+    if (active !== activeHrefRef.current) setActiveHref(active);
+    activeHrefRef.current = active;
+  }, []);
+
   // Single rAF-throttled scroll listener for both scrolled state and active section.
   useEffect(() => {
     let ticking = false;
@@ -61,29 +85,7 @@ export default function Navbar() {
       scrolledRef.current = nowScrolled;
 
       if (clickLockRef.current) return;
-      if (sy < 100) {
-        if (activeHrefRef.current !== "") setActiveHref("");
-        activeHrefRef.current = "";
-        return;
-      }
-      const threshold = 120;
-      let active = "";
-      for (const link of NAV_LINKS) {
-        const el = document.getElementById(link.href.slice(1));
-        if (!el) continue;
-        if (el.getBoundingClientRect().top <= threshold) {
-          active = link.href;
-        }
-      }
-
-      // Clear pill when scrolled past the last nav section (e.g. at Contact or Footer)
-      const contactEl = document.getElementById("contact");
-      if (contactEl && contactEl.getBoundingClientRect().top <= threshold) {
-        active = "";
-      }
-
-      if (active !== activeHrefRef.current) setActiveHref(active);
-      activeHrefRef.current = active;
+      detectActiveSection();
     };
 
     const onScroll = () => {
@@ -95,6 +97,37 @@ export default function Navbar() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, [detectActiveSection]);
+
+  // Lock pill during CTA-driven scrolls (hero buttons, Contact Us, etc.)
+  useEffect(() => {
+    const onLock = () => {
+      clickLockRef.current = true;
+      clearTimeout(clickLockTimer.current);
+      setActiveHref("");
+      activeHrefRef.current = "";
+    };
+
+    const onUnlock = (e: Event) => {
+      const href = (e as CustomEvent<{ href: string }>).detail?.href;
+      const isNavSection = NAV_LINKS.some((l) => l.href === href);
+
+      if (isNavSection) {
+        setActiveHref(href);
+        activeHrefRef.current = href;
+      }
+
+      clickLockTimer.current = setTimeout(() => {
+        clickLockRef.current = false;
+      }, 300);
+    };
+
+    window.addEventListener("nav-lock", onLock);
+    window.addEventListener("nav-unlock", onUnlock);
+    return () => {
+      window.removeEventListener("nav-lock", onLock);
+      window.removeEventListener("nav-unlock", onUnlock);
+    };
   }, []);
 
   // Close mobile menu when the user starts scrolling.
