@@ -22,7 +22,10 @@ export default function Navbar() {
   const activeHrefRef = useRef(activeHref);
   const scrolledRef = useRef(false);
   const rafRef = useRef<number>(0);
-  activeHrefRef.current = activeHref;
+
+  useEffect(() => {
+    activeHrefRef.current = activeHref;
+  }, [activeHref]);
 
   // Clear timers on unmount to prevent memory leaks / stale callbacks.
   useEffect(() => {

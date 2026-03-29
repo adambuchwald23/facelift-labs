@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette").default;
 
 function addVariablesForColors({ addBase, theme }: { addBase: (base: Record<string, Record<string, string>>) => void; theme: (path: string) => Record<string, string> }) {
