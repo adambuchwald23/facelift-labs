@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-24 hero-viewport"
+      className="relative w-full flex flex-col items-center overflow-x-clip scroll-mt-16 md:scroll-mt-24 hero-viewport"
     >
       {/* Top-left radial glow — contained to corner, never reaches marquee */}
       <div

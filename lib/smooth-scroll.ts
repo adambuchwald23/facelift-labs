@@ -1,4 +1,9 @@
-const SCROLL_OFFSET = 96;
+const MOBILE_BP = 768;
+
+function getScrollOffset(): number {
+  if (typeof window === "undefined") return 96;
+  return window.innerWidth < MOBILE_BP ? 64 : 96;
+}
 
 let activeRaf = 0;
 
@@ -43,7 +48,7 @@ export function smoothScrollTo(
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const target = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+  const target = el.getBoundingClientRect().top + window.scrollY - getScrollOffset();
 
   if (prefersReduced) {
     window.scrollTo(0, target);

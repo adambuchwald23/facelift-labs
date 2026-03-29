@@ -17,10 +17,10 @@ export default function FAQ() {
   const [listRef, listInView] = useInView<HTMLDivElement>();
 
   return (
-    <SectionWrapper id="faq" className="section-viewport px-4 py-10 sm:px-6 sm:py-12 md:pt-10 md:pb-12">
+    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-10 md:pb-12">
       <div className="mx-auto max-w-3xl">
 
-        <div className="mb-10 flex flex-col items-center text-center gap-4 sm:mb-14">
+        <div className="mb-6 flex flex-col items-center text-center gap-6">
           <SectionHeader label="FAQ" />
           <p className="mx-auto max-w-md text-sm leading-relaxed text-foreground-muted sm:text-base">
             Everything you need to know about working with us.
@@ -94,7 +94,7 @@ export default function FAQ() {
           variants={inlineEntrance(mobile)}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
-          className="mt-10 flex flex-col items-center gap-4 text-center"
+          className="mt-6 flex flex-col items-center gap-6 text-center"
         >
           <p className="text-sm text-foreground-muted">
             Still have questions? We&apos;d love to chat.
