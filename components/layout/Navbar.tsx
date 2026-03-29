@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useLayoutEffect, useCallback } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { NAV_LINKS } from "@/lib/constants";
@@ -245,7 +244,17 @@ export default function Navbar() {
       >
         {/* Logo */}
         <div className="flex items-center md:flex-1">
-          <Link href="/" className="block shrink-0 pl-1" style={{ maxWidth: 175 }}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveHref("");
+              activeHrefRef.current = "";
+              smoothScrollTo(document.body);
+            }}
+            className="block shrink-0 pl-1"
+            style={{ maxWidth: 175 }}
+          >
             <Image
               src="/logo.svg"
               alt="Facelift Labs"
@@ -255,7 +264,7 @@ export default function Navbar() {
               style={{ width: "clamp(140px, 38vw, 175px)" }}
               priority
             />
-          </Link>
+          </a>
         </div>
 
         {/* Desktop nav */}

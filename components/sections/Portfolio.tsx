@@ -90,17 +90,15 @@ export default function Portfolio() {
                   />
                 )}
 
-                <div className="relative overflow-hidden rounded-xl shadow-[0_24px_48px_rgba(0,0,0,0.20),0_6px_14px_rgba(0,0,0,0.10)]">
-                  <Image
-                    src={project.imagePath}
-                    alt={project.title}
-                    width={988}
-                    height={816}
-                    className="w-full h-auto block"
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    loading="lazy"
-                  />
-                </div>
+                <Image
+                  src={project.imagePath}
+                  alt={project.title}
+                  width={988}
+                  height={816}
+                  className="relative w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  loading="lazy"
+                />
 
                 <div className="mt-3 flex justify-center">
                   <span className="rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07]">

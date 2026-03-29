@@ -8,15 +8,16 @@ export default function LegalLayout({
 }) {
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 sm:px-6">
-          <Link href="/" className="shrink-0">
+          <Link href="/" className="block shrink-0">
             <Image
               src="/logo.svg"
               alt="Facelift Labs"
               width={613}
               height={100}
-              className="h-auto w-[130px]"
+              className="h-auto"
+              style={{ width: "clamp(120px, 30vw, 150px)" }}
               loading="eager"
             />
           </Link>
