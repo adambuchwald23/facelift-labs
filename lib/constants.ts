@@ -95,26 +95,6 @@ export const FAQ_CTA_LABEL = "Book a call";
 
 export const FAQ_ITEMS = [
   {
-    question: "Why partner with Facelift Labs?",
-    answer:
-      "We combine strategy, design, and engineering to deliver websites that drive growth. Every project gets a dedicated team and a custom approach.",
-  },
-  {
-    question: "Do you include SEO in your builds?",
-    answer:
-      "Yes. SEO is baked into our process from day one—technical foundation, content structure, and performance all aligned for visibility.",
-  },
-  {
-    question: "How long does a typical project take?",
-    answer:
-      "Timeline depends on scope. A typical website project runs 8–12 weeks from kickoff to launch, with clear milestones along the way.",
-  },
-  {
-    question: "Why invest in a fully custom website?",
-    answer:
-      "Custom sites perform better, scale with your brand, and avoid the limitations of templates. You get a unique asset that supports your goals.",
-  },
-  {
     question: 'What is a "Digital Facelift?"',
     answer:
       "A Digital Facelift is our end-to-end process: strategy, design, build, and launch—giving your brand a modern, high-performing web presence.",
@@ -123,6 +103,26 @@ export const FAQ_ITEMS = [
     question: "What services does Facelift Labs offer?",
     answer:
       "We offer UI/UX design, web development (Next.js and modern stacks), SEO and marketing, strategy and audits, and ongoing support.",
+  },
+  {
+    question: "Why partner with Facelift Labs?",
+    answer:
+      "We combine strategy, design, and engineering to deliver websites that drive growth. Every project gets a dedicated team and a custom approach.",
+  },
+  {
+    question: "How long does a typical project take?",
+    answer:
+      "Timeline depends on scope. A typical website project runs 8–12 weeks from kickoff to launch, with clear milestones along the way.",
+  },
+  {
+    question: "Do you include SEO in your builds?",
+    answer:
+      "Yes. SEO is baked into our process from day one—technical foundation, content structure, and performance all aligned for visibility.",
+  },
+  {
+    question: "Why invest in a fully custom website?",
+    answer:
+      "Custom sites perform better, scale with your brand, and avoid the limitations of templates. You get a unique asset that supports your goals.",
   },
 ] as const;
 
