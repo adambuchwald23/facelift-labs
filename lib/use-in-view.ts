@@ -1,7 +1,8 @@
 import { useRef, useState, useCallback } from "react";
 
 interface UseInViewOptions {
-  /** CSS rootMargin string, e.g. "0px 0px -120px 0px" */
+  /** CSS rootMargin string — default uses 30% bottom inset so animations
+   *  trigger when an element reaches the upper ~70% of the viewport. */
   rootMargin?: string;
   /** 0–1 visibility threshold */
   threshold?: number;
@@ -12,19 +13,13 @@ interface UseInViewOptions {
 /**
  * Lightweight IntersectionObserver hook using a **callback ref**.
  *
- * A callback ref is critical here because `useIsMobile()` returns `false`
- * during SSR. Components pass `ref={mobile ? callbackRef : undefined}`,
- * so the ref only receives a DOM node after hydration flips `mobile` to
- * `true`. A regular useRef + useEffect would miss this because the effect
- * fires before the ref is attached.
- *
  * Unlike Framer Motion's `whileInView`, this hook:
  * - Only creates the observer when a DOM node is attached (no SSR mismatch)
- * - Uses a fixed-pixel rootMargin (not a percentage of element height)
+ * - Uses a percentage-based rootMargin that scales with viewport size
  * - Returns a simple boolean that drives `animate` instead of `whileInView`
  */
 export function useInView<T extends HTMLElement = HTMLDivElement>({
-  rootMargin = "0px 0px -60px 0px",
+  rootMargin = "0px 0px -30% 0px",
   threshold = 0.1,
   once = true,
 }: UseInViewOptions = {}): [(node: T | null) => void, boolean] {
