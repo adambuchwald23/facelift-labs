@@ -142,11 +142,21 @@ export default function Navbar() {
 
   useLayoutEffect(positionPill, [activeHref, positionPill]);
 
-  // Reposition pill on window resize so it never drifts out of alignment.
+  // Reposition pill on window resize — rAF-throttled to avoid layout thrashing.
   useEffect(() => {
-    const onResize = () => positionPill();
+    let resizeRaf = 0;
+    const onResize = () => {
+      if (resizeRaf) return;
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        positionPill();
+      });
+    };
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      cancelAnimationFrame(resizeRaf);
+    };
   }, [positionPill]);
 
   const handleNavClick = useCallback(
@@ -189,7 +199,7 @@ export default function Navbar() {
   );
 
   return (
-    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-1.5 pb-1 sm:pt-2 sm:pb-1.5 [transform:translateZ(0)]">
+    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-1.5 pb-1 sm:pt-2 sm:pb-1.5 [transform:translateZ(0)] [will-change:transform]">
       <motion.div
         initial={false}
         animate={{ opacity: 1, y: 0 }}

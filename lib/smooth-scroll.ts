@@ -2,15 +2,20 @@ const SCROLL_OFFSET = 96;
 
 let activeRaf = 0;
 
+const IS_TOUCH =
+  typeof navigator !== "undefined" && navigator.maxTouchPoints > 0;
+
 /**
  * Duration scales with scroll distance so short jumps are snappy
  * and long jumps (e.g. top → contact) feel relaxed, not nauseating.
+ * Mobile caps lower because smaller viewports make distance feel faster.
  */
 function calcDuration(distancePx: number): number {
   const abs = Math.abs(distancePx);
   const base = 500;
   const scaled = base + abs * 0.3;
-  return Math.min(Math.max(scaled, 650), 1800);
+  const max = IS_TOUCH ? 1200 : 1800;
+  return Math.min(Math.max(scaled, 650), max);
 }
 
 /**

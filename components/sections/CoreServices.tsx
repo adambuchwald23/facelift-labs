@@ -7,6 +7,7 @@ import {
   CoreServicesGrid,
   type CoreServiceItem,
 } from "@/components/ui/core-service-card";
+import { useIsMobile } from "@/lib/use-mobile";
 
 const CORE_SERVICE_ICONS = {
   ux: "/images/core-services/ux-ui.svg",
@@ -36,6 +37,7 @@ const services: CoreServiceItem[] = [
 ];
 
 export default function CoreServices() {
+  const mobile = useIsMobile();
   return (
     <SectionWrapper
       id="services"
@@ -45,9 +47,9 @@ export default function CoreServices() {
         <div className="mb-8 flex justify-center sm:mb-12">
           <SectionHeader label="Services" />
         </div>
-        <CoreServicesGrid>
+        <CoreServicesGrid mobile={mobile}>
           {services.map((item) => (
-            <CoreServiceCard key={item.name} {...item} />
+            <CoreServiceCard key={item.name} {...item} mobile={mobile} />
           ))}
         </CoreServicesGrid>
       </div>

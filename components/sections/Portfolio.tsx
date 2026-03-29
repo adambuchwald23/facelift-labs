@@ -11,7 +11,7 @@ import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
 import { staggerContainer, fadeUpScale } from "@/lib/motion";
 
-const hoverSpring = { type: "spring" as const, stiffness: 260, damping: 22 };
+const HOVER_SPRING = { type: "spring" as const, stiffness: 260, damping: 22 };
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -68,8 +68,10 @@ export default function Portfolio() {
               <motion.div
                 key={project.title}
                 variants={fadeUpScale(mobile)}
-                whileHover={{ y: -10, scale: 1.02, transition: hoverSpring }}
-                whileTap={{ scale: 0.97, transition: hoverSpring }}
+                {...(!mobile && {
+                  whileHover: { y: -10, scale: 1.02, transition: HOVER_SPRING },
+                  whileTap: { scale: 0.97, transition: HOVER_SPRING },
+                })}
                 className="group relative cursor-pointer"
                 onClick={() => setActiveIndex(i)}
               >

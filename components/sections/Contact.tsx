@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -19,7 +19,7 @@ type FormStatus = "idle" | "sending" | "success" | "error";
 export default function Contact() {
   const mobile = useIsMobile();
   const [observerRef, formInView] = useInView<HTMLDivElement>();
-  const fieldVars = fadeUp(mobile);
+  const fieldVars = useMemo(() => fadeUp(mobile), [mobile]);
   const [services, setServices] = useState<string[]>([]);
   const [status, setStatus] = useState<FormStatus>("idle");
   const formRef = useRef<HTMLFormElement>(null);

@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CARD_SHADOW } from "@/lib/design-tokens";
-import { useIsMobile } from "@/lib/use-mobile";
 import { useInView } from "@/lib/use-in-view";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 
@@ -16,11 +15,12 @@ export type CoreServiceItem = {
 export function CoreServicesGrid({
   children,
   className,
+  mobile,
 }: {
   children: React.ReactNode;
   className?: string;
+  mobile: boolean;
 }) {
-  const mobile = useIsMobile();
   const [gridRef, gridInView] = useInView<HTMLDivElement>();
   return (
     <motion.div
@@ -43,8 +43,8 @@ export function CoreServiceCard({
   description,
   iconSrc,
   className,
-}: CoreServiceItem & { className?: string }) {
-  const mobile = useIsMobile();
+  mobile,
+}: CoreServiceItem & { className?: string; mobile: boolean }) {
   return (
     <motion.article
       variants={fadeUp(mobile)}
