@@ -2,7 +2,6 @@ interface SectionWrapperProps {
   id?: string;
   children: React.ReactNode;
   className?: string;
-  direction?: "up" | "left" | "right";
 }
 
 /**

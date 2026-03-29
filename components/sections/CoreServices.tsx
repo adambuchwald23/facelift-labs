@@ -39,7 +39,6 @@ export default function CoreServices() {
   return (
     <SectionWrapper
       id="services"
-      direction="left"
       className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">

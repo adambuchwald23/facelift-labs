@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { THE_FACELIFT_STEPS } from "@/lib/constants";
@@ -31,7 +31,6 @@ export default function TheFacelift() {
   return (
     <SectionWrapper
       id="facelift"
-      direction="right"
       className="min-h-[calc(100vh-5rem)] px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">

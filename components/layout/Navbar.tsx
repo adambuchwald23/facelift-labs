@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useLayoutEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { NAV_LINKS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { NavTab } from "@/components/ui/nav-tab";
@@ -18,7 +18,7 @@ export default function Navbar() {
   const pillRef = useRef<HTMLDivElement>(null);
   const firstActivationRef = useRef(true);
   const clickLockRef = useRef(false);
-  const clickLockTimer = useRef<ReturnType<typeof setTimeout>>();
+  const clickLockTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const activeHrefRef = useRef(activeHref);
   const scrolledRef = useRef(false);
   const rafRef = useRef<number>(0);
@@ -57,14 +57,13 @@ export default function Navbar() {
       if (nowScrolled !== scrolledRef.current) setScrolled(nowScrolled);
       scrolledRef.current = nowScrolled;
 
+      if (clickLockRef.current) return;
       if (sy < 100) {
         if (activeHrefRef.current !== "") setActiveHref("");
         activeHrefRef.current = "";
-        clickLockRef.current = false;
         return;
       }
-      if (clickLockRef.current) return;
-      const threshold = 90;
+      const threshold = 120;
       let active = "";
       for (const link of NAV_LINKS) {
         const el = document.getElementById(link.href.slice(1));
@@ -146,7 +145,7 @@ export default function Navbar() {
       clearTimeout(clickLockTimer.current);
       clickLockTimer.current = setTimeout(() => {
         clickLockRef.current = false;
-      }, 1000);
+      }, 2500);
 
       setActiveHref(href);
       activeHrefRef.current = href;
@@ -170,7 +169,7 @@ export default function Navbar() {
       clearTimeout(clickLockTimer.current);
       clickLockTimer.current = setTimeout(() => {
         clickLockRef.current = false;
-      }, 1000);
+      }, 2500);
 
       const id = href.startsWith("#") ? href.slice(1) : href;
       const el = document.getElementById(id);
@@ -184,7 +183,7 @@ export default function Navbar() {
       <motion.div
         initial={false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 backdrop-blur-xl border border-black/[0.06] transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
           scrolled
             ? "bg-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
@@ -258,7 +257,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="pointer-events-auto absolute left-4 right-4 top-[calc(100%+4px)] rounded-[24px] border border-black/[0.06] bg-white/95 p-3 shadow-xl backdrop-blur-xl"
           >
             <nav className="flex flex-col gap-0.5">

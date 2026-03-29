@@ -7,7 +7,7 @@
  * Desktop: richer entrance with Y offset and visible stagger cascade.
  */
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /* ── Container (stagger parent) ── */
 
@@ -33,7 +33,7 @@ export function fadeUp(mobile: boolean) {
       y: 0,
       transition: {
         duration: mobile ? 0.45 : 0.85,
-        ease: EASE as unknown as number[],
+        ease: EASE,
       },
     },
   };
@@ -50,7 +50,7 @@ export function fadeUpScale(mobile: boolean) {
       scale: 1,
       transition: {
         duration: mobile ? 0.45 : 0.85,
-        ease: EASE as unknown as number[],
+        ease: EASE,
       },
     },
   };
@@ -66,7 +66,7 @@ export function fadeInLeft(mobile: boolean) {
       x: 0,
       transition: {
         duration: mobile ? 0.4 : 0.8,
-        ease: EASE as unknown as number[],
+        ease: EASE,
       },
     },
   };
@@ -89,7 +89,7 @@ export function inlineEntrance(mobile: boolean) {
     whileInView: { opacity: 1, y: 0 },
     transition: {
       duration: mobile ? 0.45 : 0.85,
-      ease: EASE as unknown as number[],
+      ease: EASE,
     },
   };
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -10,7 +10,7 @@ import { staggerContainer, viewportConfig } from "@/lib/motion";
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
 const SPREAD_X = ["-30px", "-16px", "16px", "30px", "-24px", "0px", "24px"];
-const EASE = [0.16, 1, 0.3, 1] as const;
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function TechStack() {
   const mobile = useIsMobile();
@@ -67,7 +67,7 @@ function Tile({
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: mobile ? 0.45 : 0.85, ease: EASE as unknown as number[] },
+      transition: { duration: mobile ? 0.45 : 0.85, ease: EASE },
     },
   };
 

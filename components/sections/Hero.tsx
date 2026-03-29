@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 import { HERO, HERO_TRUST_LOGOS } from "@/lib/constants";
@@ -16,7 +16,7 @@ function heroVariants(mobile: boolean) {
       transition: {
         duration: mobile ? 0.4 : 0.85,
         delay: mobile ? 0.05 + i * 0.06 : 0.15 + i * 0.12,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       },
     }),
   };
