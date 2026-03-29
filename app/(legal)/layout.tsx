@@ -17,12 +17,12 @@ export default function LegalLayout({
               width={613}
               height={100}
               className="h-auto w-[130px]"
-              loading="lazy"
+              loading="eager"
             />
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 rounded-full border border-black/[0.1] px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-black/[0.04]"
+            className="inline-flex items-center gap-1.5 rounded-full border border-black/[0.1] px-4 py-2 min-h-[44px] text-sm font-medium text-foreground transition-colors hover:bg-black/[0.04]"
           >
             <svg
               width="16"

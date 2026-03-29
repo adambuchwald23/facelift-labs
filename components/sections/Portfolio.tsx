@@ -169,7 +169,7 @@ export default function Portfolio() {
                     href={activeProject.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-foreground transition hover:brightness-110 sm:order-3"
+                    className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 min-h-[44px] text-sm font-semibold text-foreground transition hover:brightness-110 sm:order-3"
                   >
                     Visit Site
                     <ExternalLink className="h-3.5 w-3.5" />

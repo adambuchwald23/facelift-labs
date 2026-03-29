@@ -11,7 +11,7 @@ import { useIsMobile } from "@/lib/use-mobile";
 import { staggerContainer, fadeUp, viewportConfig } from "@/lib/motion";
 
 const INPUT_BASE =
-  "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
+  "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3.5 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 

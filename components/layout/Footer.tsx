@@ -64,19 +64,19 @@ export default function Footer() {
           </motion.div>
 
           {/* Right: nav columns */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-10 sm:gap-x-16">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:gap-x-16">
 
             {/* Navigation */}
             <motion.div variants={fadeUp}>
               <h3 className="mb-5 text-sm font-semibold tracking-tight text-foreground">
                 Navigation
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {FOOTER.navigation.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
+                      className="inline-block py-1.5 text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
                     >
                       {item.label}
                     </Link>
@@ -90,11 +90,11 @@ export default function Footer() {
               <h3 className="mb-5 text-sm font-semibold tracking-tight text-foreground">
                 Contact
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 <li>
                   <a
                     href={`tel:${FOOTER.contact.phone.replace(/\D/g, "")}`}
-                    className="text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
+                    className="inline-block py-1.5 text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
                   >
                     {FOOTER.contact.phone}
                   </a>
@@ -102,7 +102,7 @@ export default function Footer() {
                 <li>
                   <a
                     href={`mailto:${FOOTER.contact.email}`}
-                    className="text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
+                    className="inline-block py-1.5 text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
                   >
                     {FOOTER.contact.email}
                   </a>
@@ -121,12 +121,12 @@ export default function Footer() {
           <p className="text-sm text-foreground-muted">
             {FOOTER.copyright}
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             {FOOTER.bottomLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
+                className="inline-block py-2 text-sm text-foreground-muted transition-colors duration-200 hover:text-foreground"
               >
                 {item.label}
               </Link>

@@ -61,13 +61,13 @@ function Tile({
   const spreadX = SPREAD_X[floatIndex % SPREAD_X.length];
 
   const tileVariants = {
-    hidden: { opacity: 0, y: mobile ? 0 : 14, x: mobile ? "0px" : spreadX, scale: mobile ? 1 : 0.95 },
+    hidden: { opacity: 0, y: mobile ? 8 : 14, x: mobile ? "0px" : spreadX, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: mobile ? 0.45 : 0.85, ease: EASE },
+      transition: { duration: mobile ? 0.55 : 0.85, ease: EASE },
     },
   };
 
@@ -89,7 +89,7 @@ function Tile({
             sizes="56px"
           />
         </div>
-        <span className="text-[0.7rem] font-semibold tracking-wide text-foreground/50 transition-colors group-hover:text-foreground/70">
+        <span className="text-xs font-semibold tracking-wide text-foreground/50 transition-colors group-hover:text-foreground/70">
           {tool.name}
         </span>
       </div>

@@ -1,10 +1,12 @@
 /**
- * Centralized animation presets.
+ * Centralized animation presets — responsive to mobile / desktop.
  *
- * Mobile: quick opacity-only fade — no vertical travel, minimal stagger.
- * Momentum scrolling on phones makes stagger/translate animations unreliable.
+ * Mobile gets a shorter Y travel (8 px) and tighter timing so animations
+ * are visible but don't fight momentum scrolling. The viewport threshold
+ * is high enough (0.3) that content won't animate until the user has
+ * genuinely scrolled to it, with extra negative margin as a guard.
  *
- * Desktop: richer entrance with Y offset and visible stagger cascade.
+ * Desktop keeps the richer entrance with larger offsets and stagger.
  */
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -16,8 +18,8 @@ export function staggerContainer(mobile: boolean) {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: mobile ? 0.04 : 0.16,
-        delayChildren: mobile ? 0 : 0.1,
+        staggerChildren: mobile ? 0.08 : 0.16,
+        delayChildren: mobile ? 0.05 : 0.1,
       },
     },
   };
@@ -27,12 +29,12 @@ export function staggerContainer(mobile: boolean) {
 
 export function fadeUp(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 0 : 14 },
+    hidden: { opacity: 0, y: mobile ? 8 : 14 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.45 : 0.85,
+        duration: mobile ? 0.55 : 0.85,
         ease: EASE,
       },
     },
@@ -43,13 +45,13 @@ export function fadeUp(mobile: boolean) {
 
 export function fadeUpScale(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 0 : 16, scale: mobile ? 1 : 0.97 },
+    hidden: { opacity: 0, y: mobile ? 8 : 16, scale: mobile ? 0.98 : 0.97 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: mobile ? 0.45 : 0.85,
+        duration: mobile ? 0.55 : 0.85,
         ease: EASE,
       },
     },
@@ -60,12 +62,12 @@ export function fadeUpScale(mobile: boolean) {
 
 export function fadeInLeft(mobile: boolean) {
   return {
-    hidden: { opacity: 0, x: mobile ? 0 : -8 },
+    hidden: { opacity: 0, x: mobile ? -4 : -8 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: mobile ? 0.4 : 0.8,
+        duration: mobile ? 0.5 : 0.8,
         ease: EASE,
       },
     },
@@ -77,7 +79,8 @@ export function fadeInLeft(mobile: boolean) {
 export function viewportConfig(mobile: boolean) {
   return {
     once: true,
-    amount: mobile ? 0.15 : 0.3,
+    amount: mobile ? 0.3 : 0.3,
+    margin: mobile ? "0px 0px -80px 0px" : "0px",
   };
 }
 
@@ -85,10 +88,10 @@ export function viewportConfig(mobile: boolean) {
 
 export function inlineEntrance(mobile: boolean) {
   return {
-    initial: { opacity: 0, y: mobile ? 0 : 14 },
+    initial: { opacity: 0, y: mobile ? 8 : 14 },
     whileInView: { opacity: 1, y: 0 },
     transition: {
-      duration: mobile ? 0.45 : 0.85,
+      duration: mobile ? 0.55 : 0.85,
       ease: EASE,
     },
   };

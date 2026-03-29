@@ -13,7 +13,6 @@ interface NavTabProps {
 
 export const NavTab = React.memo(function NavTab({
   text,
-  href,
   selected,
   tabRef,
   onClick,
@@ -22,7 +21,6 @@ export const NavTab = React.memo(function NavTab({
     <button
       ref={tabRef}
       type="button"
-      data-href={href}
       aria-current={selected ? "true" : undefined}
       onClick={onClick}
       className={cn(

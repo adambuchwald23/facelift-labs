@@ -25,14 +25,8 @@
 
 html {
   scroll-behavior: auto;
-  overflow-x: hidden;
   overflow-x: clip;
   overscroll-behavior-x: none;
-}
-
-/* Prevent sticky navbar from covering section headers when scrolling to anchor */
-section[id] {
-  scroll-margin-top: 6rem;
 }
 
 body {
@@ -41,7 +35,6 @@ body {
   color: var(--foreground);
   min-height: 100vh;
   max-width: 100vw;
-  overflow-x: hidden;
   overflow-x: clip;
   overscroll-behavior-x: none;
   touch-action: pan-y pinch-zoom;

@@ -9,19 +9,18 @@ import { useIsMobile } from "@/lib/use-mobile";
 
 function heroVariants(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 0 : 16 },
+    hidden: { opacity: 0, y: mobile ? 10 : 16 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.4 : 0.85,
-        delay: mobile ? 0.05 + i * 0.06 : 0.15 + i * 0.12,
+        duration: mobile ? 0.5 : 0.85,
+        delay: mobile ? 0.08 + i * 0.08 : 0.15 + i * 0.12,
         ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       },
     }),
   };
 }
-
 
 export default function Hero() {
   const mobile = useIsMobile();

@@ -143,7 +143,7 @@ export default function Navbar() {
   }, [positionPill]);
 
   const handleNavClick = useCallback(
-    (href: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    (href: string) => () => {
       clickLockRef.current = true;
       clearTimeout(clickLockTimer.current);
       clickLockTimer.current = setTimeout(() => {
@@ -200,8 +200,8 @@ export default function Navbar() {
             alt="Facelift Labs"
             width={613}
             height={100}
-            className="h-auto w-[140px] sm:w-[160px] md:w-[175px]"
-            style={{ width: "clamp(140px, 38vw, 175px)", height: "auto" }}
+            className="h-auto"
+            style={{ width: "clamp(140px, 38vw, 175px)" }}
             priority
           />
         </Link>
