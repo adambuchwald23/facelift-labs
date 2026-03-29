@@ -12,12 +12,12 @@ export type CoreServiceItem = {
 
 const cardContainerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.16, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export function CoreServicesGrid({
@@ -32,7 +32,7 @@ export function CoreServicesGrid({
       variants={cardContainerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2, margin: "0px 0px -15% 0px" }}
+      viewport={{ once: true, amount: 0.3 }}
       className={cn(
         "grid grid-cols-1 gap-8 sm:gap-9 md:grid-cols-3 md:gap-9",
         className

@@ -9,16 +9,16 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.16, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 14 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -56,16 +56,16 @@ export default function TheFacelift() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -15% 0px" }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.16, delayChildren: 0.15 } } }}
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
             <motion.div
               key={step.number}
               variants={{
-                hidden: { opacity: 0, y: 26, scale: 0.97 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] } },
+                hidden: { opacity: 0, y: 14, scale: 0.98 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
               }}
               className="flex flex-1 items-stretch gap-3"
             >
@@ -80,7 +80,7 @@ export default function TheFacelift() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -15% 0px" }}
+          viewport={{ once: true, amount: 0.3 }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (

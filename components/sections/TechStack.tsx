@@ -8,7 +8,7 @@ import { TECH_STACK_ITEMS } from "@/lib/constants";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
@@ -30,7 +30,7 @@ export default function TechStack() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -15% 0px" }}
+          viewport={{ once: true, amount: 0.3 }}
           className="flex flex-col items-center gap-7 sm:gap-8"
         >
           {/* Row 1 — 4 items */}
@@ -63,13 +63,13 @@ function Tile({
   const spreadX = SPREAD_X[floatIndex % SPREAD_X.length];
 
   const tileVariants = {
-    hidden: { opacity: 0, y: 22, x: spreadX, scale: 0.93 },
+    hidden: { opacity: 0, y: 14, x: spreadX, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
     },
   };
 

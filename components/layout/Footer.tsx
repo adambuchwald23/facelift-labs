@@ -9,12 +9,12 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
 };
 
 export default function Footer() {
@@ -24,7 +24,7 @@ export default function Footer() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2, margin: "0px 0px -15% 0px" }}
+        viewport={{ once: true, amount: 0.3 }}
         className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
       >
 
