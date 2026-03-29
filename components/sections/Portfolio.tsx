@@ -13,17 +13,17 @@ const hoverSpring = { type: "spring" as const, stiffness: 260, damping: 22 };
 const laptopContainerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.2, delayChildren: 0.15 },
   },
 };
 
 const laptopVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.95 },
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   },
 };
 

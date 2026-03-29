@@ -180,7 +180,7 @@ export default function Navbar() {
   );
 
   return (
-    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-2 pb-2 sm:pt-4 [transform:translateZ(0)]">
+    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-1.5 pb-1 sm:pt-2 sm:pb-1.5 [transform:translateZ(0)]">
       <motion.div
         initial={false}
         animate={{ opacity: 1, y: 0 }}

@@ -11,9 +11,9 @@ interface SectionWrapperProps {
 }
 
 const directionOffset = {
-  up:    { y: 16, x: 0  },
-  left:  { y: 6,  x: -10 },
-  right: { y: 6,  x: 10  },
+  up:    { y: 18, x: 0  },
+  left:  { y: 8,  x: -12 },
+  right: { y: 8,  x: 12  },
 };
 
 /**
@@ -33,8 +33,8 @@ export default function SectionWrapper({
       id={id}
       initial={{ y: offset.y, x: offset.x }}
       whileInView={{ y: 0, x: 0 }}
-      viewport={{ once: true, margin: "0px 0px -6% 0px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       style={{ willChange: "transform", transform: "translateZ(0)" }}
       className={`scroll-mt-24 ${className}`}
     >

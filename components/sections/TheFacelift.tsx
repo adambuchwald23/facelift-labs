@@ -9,16 +9,16 @@ import { CARD_SHADOW } from "@/lib/design-tokens";
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.16, delayChildren: 0.15 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 22 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -57,15 +57,15 @@ export default function TheFacelift() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.16, delayChildren: 0.15 } } }}
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
             <motion.div
               key={step.number}
               variants={{
-                hidden: { opacity: 0, y: 24, scale: 0.97 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                hidden: { opacity: 0, y: 26, scale: 0.97 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
               }}
               className="flex flex-1 items-stretch gap-3"
             >
