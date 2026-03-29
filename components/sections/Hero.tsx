@@ -60,7 +60,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-center px-5 pb-6 sm:px-6 sm:pb-12 md:pb-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-center px-5 pb-[8vh] sm:px-6 sm:pb-[10vh]">
         <div className="w-full max-w-4xl mx-auto text-center">
 
           {/* Headline */}
@@ -128,7 +128,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-6 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-14 sm:text-sm"
+            className="mt-6 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-8 sm:text-sm"
           >
             {HERO.trustedBy}
           </motion.p>
@@ -163,7 +163,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-5 sm:mt-10"
+            className="mt-4 sm:mt-6"
             aria-hidden
           >
             <div className="marquee-wrap mx-auto max-w-2xl overflow-hidden">

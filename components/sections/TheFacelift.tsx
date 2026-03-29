@@ -117,7 +117,7 @@ function NumberWatermark({ number }: { number: string }) {
         letterSpacing: "-0.05em",
         lineHeight: 1,
         color: "transparent",
-        background: "linear-gradient(180deg, rgba(0,255,136,0.45) 0%, rgba(0,255,136,0.15) 100%)",
+        background: "linear-gradient(180deg, rgba(0,255,136,0.75) 0%, rgba(0,255,136,0.35) 100%)",
         WebkitBackgroundClip: "text",
         backgroundClip: "text",
       }}

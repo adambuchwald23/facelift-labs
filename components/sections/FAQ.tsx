@@ -15,7 +15,6 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const mobile = useIsMobile();
   const [listRef, listInView] = useInView<HTMLDivElement>();
-  const [ctaRef, ctaInView] = useInView<HTMLDivElement>();
 
   return (
     <SectionWrapper id="faq" className="px-4 py-8 sm:px-6 sm:py-10 md:py-14 lg:py-16">
@@ -92,10 +91,9 @@ export default function FAQ() {
 
         {/* Bottom CTA — natural end to the section */}
         <motion.div
-          ref={ctaRef}
           variants={inlineEntrance(mobile)}
           initial="hidden"
-          animate={ctaInView ? "visible" : "hidden"}
+          animate={listInView ? "visible" : "hidden"}
           className="mt-10 flex flex-col items-center gap-3 text-center"
         >
           <p className="text-sm text-foreground-muted">

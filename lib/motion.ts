@@ -38,8 +38,8 @@ export function staggerContainer(mobile: boolean) {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: mobile ? 0.05 : 0.09,
-        delayChildren: mobile ? 0.02 : 0.04,
+        staggerChildren: mobile ? 0.08 : 0.09,
+        delayChildren: mobile ? 0.05 : 0.04,
       },
     },
   };
@@ -50,12 +50,12 @@ export function staggerContainer(mobile: boolean) {
 export function fadeUp(mobile: boolean) {
   if (prefersReducedMotion()) return INSTANT;
   return {
-    hidden: { opacity: 0, y: mobile ? 6 : 10 },
+    hidden: { opacity: 0, y: mobile ? 14 : 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.5 : 0.7,
+        duration: mobile ? 0.6 : 0.7,
         ease: EASE,
       },
     },
@@ -67,13 +67,13 @@ export function fadeUp(mobile: boolean) {
 export function fadeUpScale(mobile: boolean) {
   if (prefersReducedMotion()) return INSTANT;
   return {
-    hidden: { opacity: 0, y: mobile ? 6 : 12, scale: mobile ? 0.98 : 0.97 },
+    hidden: { opacity: 0, y: mobile ? 14 : 12, scale: mobile ? 0.97 : 0.97 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: mobile ? 0.5 : 0.7,
+        duration: mobile ? 0.6 : 0.7,
         ease: EASE,
       },
     },
@@ -85,12 +85,12 @@ export function fadeUpScale(mobile: boolean) {
 export function fadeInLeft(mobile: boolean) {
   if (prefersReducedMotion()) return INSTANT;
   return {
-    hidden: { opacity: 0, x: mobile ? -4 : -6 },
+    hidden: { opacity: 0, x: mobile ? -8 : -6 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: mobile ? 0.45 : 0.65,
+        duration: mobile ? 0.55 : 0.65,
         ease: EASE,
       },
     },
@@ -102,12 +102,12 @@ export function fadeInLeft(mobile: boolean) {
 export function inlineEntrance(mobile: boolean) {
   if (prefersReducedMotion()) return INSTANT;
   return {
-    hidden: { opacity: 0, y: mobile ? 6 : 10 },
+    hidden: { opacity: 0, y: mobile ? 14 : 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.5 : 0.7,
+        duration: mobile ? 0.6 : 0.7,
         ease: EASE,
       },
     },
