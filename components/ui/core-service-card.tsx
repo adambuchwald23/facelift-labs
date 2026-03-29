@@ -12,12 +12,12 @@ export type CoreServiceItem = {
 
 const cardContainerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.5, delayChildren: 0.4 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export function CoreServicesGrid({
@@ -52,10 +52,8 @@ export function CoreServiceCard({
   return (
     <motion.article
       variants={cardVariants}
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300, damping: 24 }}
       className={cn(
-        "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
+        "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-[shadow,transform] duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)] hover:-translate-y-1",
         className
       )}
       style={{ boxShadow: CARD_SHADOW }}

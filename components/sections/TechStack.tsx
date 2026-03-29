@@ -8,7 +8,7 @@ import { TECH_STACK_ITEMS } from "@/lib/constants";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
@@ -63,13 +63,13 @@ function Tile({
   const spreadX = SPREAD_X[floatIndex % SPREAD_X.length];
 
   const tileVariants = {
-    hidden: { opacity: 0, y: 30, x: spreadX, scale: 0.85 },
+    hidden: { opacity: 0, y: 20, x: spreadX, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 

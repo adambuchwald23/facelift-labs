@@ -13,17 +13,17 @@ const hoverSpring = { type: "spring" as const, stiffness: 260, damping: 22 };
 const laptopContainerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.6, delayChildren: 0.4 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
   },
 };
 
 const laptopVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.9 },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -102,7 +102,6 @@ export default function Portfolio() {
                     "drop-shadow(0 24px 48px rgba(0,0,0,0.20)) drop-shadow(0 6px 14px rgba(0,0,0,0.10))",
                 }}
                 sizes="(max-width: 640px) 100vw, 50vw"
-                unoptimized
                 priority={i < 2}
               />
 
@@ -156,7 +155,6 @@ export default function Portfolio() {
                   className={activeProject.screenshotFit === "cover" ? "object-cover" : "object-contain"}
                   sizes="(max-width: 896px) 100vw, 896px"
                   priority
-                  unoptimized
                 />
               </div>
 
