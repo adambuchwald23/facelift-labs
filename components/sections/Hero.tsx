@@ -9,14 +9,14 @@ import { useIsMobile } from "@/lib/use-mobile";
 
 function heroVariants(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 10 : 16 },
+    hidden: { opacity: 0, y: mobile ? 8 : 12 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.5 : 0.85,
-        delay: mobile ? 0.08 + i * 0.08 : 0.15 + i * 0.12,
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+        duration: mobile ? 0.45 : 0.7,
+        delay: mobile ? 0.06 + i * 0.06 : 0.1 + i * 0.09,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     }),
   };

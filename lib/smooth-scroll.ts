@@ -8,13 +8,23 @@ let activeRaf = 0;
  */
 function calcDuration(distancePx: number): number {
   const abs = Math.abs(distancePx);
-  const base = 600;
-  const scaled = base + abs * 0.35;
-  return Math.min(Math.max(scaled, 800), 2200);
+  const base = 500;
+  const scaled = base + abs * 0.3;
+  return Math.min(Math.max(scaled, 650), 1800);
 }
 
 /**
- * Custom smooth scroll with distance-adaptive duration and cubic ease-in-out.
+ * Quintic ease-in-out — gentler acceleration than cubic, butter-smooth
+ * deceleration. Feels more organic for scroll transitions.
+ */
+function easeInOutQuint(t: number): number {
+  return t < 0.5
+    ? 16 * t * t * t * t * t
+    : 1 - Math.pow(-2 * t + 2, 5) / 2;
+}
+
+/**
+ * Custom smooth scroll with distance-adaptive duration.
  * Cancels any in-flight animation before starting a new one.
  */
 export function smoothScrollTo(el: HTMLElement, duration?: number) {
@@ -40,12 +50,7 @@ export function smoothScrollTo(el: HTMLElement, duration?: number) {
     if (!startTime) startTime = timestamp;
     const elapsed = timestamp - startTime;
     const progress = Math.min(elapsed / dur, 1);
-    // cubic ease-in-out — gentle acceleration and deceleration
-    const ease =
-      progress < 0.5
-        ? 4 * progress * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-    window.scrollTo(0, start + distance * ease);
+    window.scrollTo(0, start + distance * easeInOutQuint(progress));
     if (progress < 1) {
       activeRaf = requestAnimationFrame(step);
     } else {

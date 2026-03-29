@@ -11,7 +11,7 @@ import { staggerContainer, DESKTOP_VIEWPORT } from "@/lib/motion";
 
 const FLOAT_DURATIONS = [3.2, 3.8, 4.1, 3.5, 4.4, 3.0, 3.7];
 const SPREAD_X = ["-30px", "-16px", "16px", "30px", "-24px", "0px", "24px"];
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export default function TechStack() {
   const mobile = useIsMobile();
@@ -66,13 +66,13 @@ function Tile({
   const spreadX = SPREAD_X[floatIndex % SPREAD_X.length];
 
   const tileVariants = {
-    hidden: { opacity: 0, y: mobile ? 8 : 14, x: mobile ? "0px" : spreadX, scale: 0.95 },
+    hidden: { opacity: 0, y: mobile ? 6 : 10, x: mobile ? "0px" : spreadX, scale: 0.96 },
     visible: {
       opacity: 1,
       y: 0,
       x: "0px",
       scale: 1,
-      transition: { duration: mobile ? 0.55 : 0.85, ease: EASE },
+      transition: { duration: mobile ? 0.5 : 0.7, ease: EASE },
     },
   };
 

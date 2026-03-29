@@ -10,7 +10,7 @@
  * returns `false` on both server and desktop client — no mismatch.
  */
 
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 /* ── Container (stagger parent) ── */
 
@@ -19,8 +19,8 @@ export function staggerContainer(mobile: boolean) {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: mobile ? 0.08 : 0.16,
-        delayChildren: mobile ? 0.05 : 0.1,
+        staggerChildren: mobile ? 0.05 : 0.09,
+        delayChildren: mobile ? 0.02 : 0.04,
       },
     },
   };
@@ -30,12 +30,12 @@ export function staggerContainer(mobile: boolean) {
 
 export function fadeUp(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 8 : 14 },
+    hidden: { opacity: 0, y: mobile ? 6 : 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.55 : 0.85,
+        duration: mobile ? 0.5 : 0.7,
         ease: EASE,
       },
     },
@@ -46,13 +46,13 @@ export function fadeUp(mobile: boolean) {
 
 export function fadeUpScale(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 8 : 16, scale: mobile ? 0.98 : 0.97 },
+    hidden: { opacity: 0, y: mobile ? 6 : 12, scale: mobile ? 0.98 : 0.97 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: mobile ? 0.55 : 0.85,
+        duration: mobile ? 0.5 : 0.7,
         ease: EASE,
       },
     },
@@ -63,12 +63,12 @@ export function fadeUpScale(mobile: boolean) {
 
 export function fadeInLeft(mobile: boolean) {
   return {
-    hidden: { opacity: 0, x: mobile ? -4 : -8 },
+    hidden: { opacity: 0, x: mobile ? -4 : -6 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: mobile ? 0.5 : 0.8,
+        duration: mobile ? 0.45 : 0.65,
         ease: EASE,
       },
     },
@@ -79,19 +79,19 @@ export function fadeInLeft(mobile: boolean) {
 
 export const DESKTOP_VIEWPORT = {
   once: true,
-  amount: 0.3 as number,
+  amount: 0.15 as number,
 };
 
 /* ── Standalone entrance (variants format) ── */
 
 export function inlineEntrance(mobile: boolean) {
   return {
-    hidden: { opacity: 0, y: mobile ? 8 : 14 },
+    hidden: { opacity: 0, y: mobile ? 6 : 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.55 : 0.85,
+        duration: mobile ? 0.5 : 0.7,
         ease: EASE,
       },
     },

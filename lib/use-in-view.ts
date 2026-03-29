@@ -24,7 +24,7 @@ interface UseInViewOptions {
  * - Returns a simple boolean that drives `animate` instead of `whileInView`
  */
 export function useInView<T extends HTMLElement = HTMLDivElement>({
-  rootMargin = "0px 0px -120px 0px",
+  rootMargin = "0px 0px -60px 0px",
   threshold = 0.1,
   once = true,
 }: UseInViewOptions = {}): [(node: T | null) => void, boolean] {
