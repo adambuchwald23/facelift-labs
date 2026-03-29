@@ -83,12 +83,10 @@ export default function Portfolio() {
                   }
                 }}
               >
-                {!mobile && (
-                  <div
-                    className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[25%] rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                    aria-hidden
-                  />
-                )}
+                <div
+                  className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[25%] rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 hidden md:block"
+                  aria-hidden
+                />
 
                 <Image
                   src={project.imagePath}

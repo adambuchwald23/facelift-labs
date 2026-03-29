@@ -75,7 +75,7 @@ export default function Contact() {
       className="section-viewport px-4 py-10 sm:px-6 sm:py-12 md:pt-10 md:pb-12"
     >
       <div className="mx-auto max-w-3xl">
-        <div className="mb-5 flex flex-col items-center gap-2 text-center sm:mb-8">
+        <div className="mb-10 flex flex-col items-center gap-4 text-center sm:mb-14">
           <SectionHeader label={CONTACT.headline} />
           <p className="text-sm text-foreground-muted sm:text-base">
             Tell us about your project and we&apos;ll be in touch within 24 hours.
