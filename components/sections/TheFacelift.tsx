@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "motion/react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -36,7 +37,7 @@ export default function TheFacelift() {
       id="facelift"
       className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-6 md:pb-10"
     >
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex justify-center sm:mb-14">
           <SectionHeader label="Workflow" />
         </div>
@@ -50,14 +51,15 @@ export default function TheFacelift() {
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
-            <motion.div
-              key={step.number}
-              variants={fadeUpScale(false)}
-              className="flex flex-1 items-stretch gap-3"
-            >
-              <StepCard step={step} />
+            <React.Fragment key={step.number}>
+              <motion.div
+                variants={fadeUpScale(false)}
+                className="flex flex-1"
+              >
+                <StepCard step={step} />
+              </motion.div>
               {i < THE_FACELIFT_STEPS.length - 1 && <StepArrow />}
-            </motion.div>
+            </React.Fragment>
           ))}
         </motion.div>
 
