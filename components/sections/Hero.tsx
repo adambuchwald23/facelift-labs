@@ -65,7 +65,7 @@ export default function Hero() {
 
           {/* Headline */}
           <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <h1 className="text-[1.625rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-5 md:mb-8">
+            <h1 className="text-[1.375rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-5 md:mb-8">
               <span className="block pb-0 sm:pb-2">{HERO.headline}</span>{" "}
               <span className="mt-1 sm:mt-3 block min-h-[1.2em]">
                 to{" "}
