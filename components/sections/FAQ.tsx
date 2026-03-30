@@ -46,9 +46,11 @@ export default function FAQ() {
               >
                 <button
                   type="button"
+                  id={`faq-btn-${i}`}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${i}`}
                 >
                   <span className={`text-[0.9375rem] font-semibold tracking-tight transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
                     {faq.question}
@@ -75,6 +77,9 @@ export default function FAQ() {
 
                 {/* CSS grid transition — no JS layout measurement needed */}
                 <div
+                  id={`faq-panel-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-btn-${i}`}
                   className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
                   style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >

@@ -129,12 +129,19 @@ export default function Navbar() {
     };
   }, []);
 
-  // Close mobile menu when the user starts scrolling.
+  // Close mobile menu on scroll or Escape key.
   useEffect(() => {
     if (!mobileOpen) return;
     const close = () => setMobileOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
     window.addEventListener("scroll", close, { passive: true, once: true });
-    return () => window.removeEventListener("scroll", close);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("scroll", close);
+      window.removeEventListener("keydown", onKey);
+    };
   }, [mobileOpen]);
 
   // Position the pill via direct DOM writes so React never interferes.

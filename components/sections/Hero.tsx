@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 
@@ -24,7 +25,7 @@ function heroVariants(mobile: boolean) {
 
 export default function Hero() {
   const mobile = useIsMobile();
-  const fadeUpVariants = heroVariants(mobile);
+  const fadeUpVariants = useMemo(() => heroVariants(mobile), [mobile]);
   return (
     <section
       id="about"

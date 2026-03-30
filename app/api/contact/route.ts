@@ -1,6 +1,23 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+/* ── Rate limiter (sliding window, in-memory) ── */
+
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 5;
+const hits = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = hits.get(ip)?.filter((t) => now - t < RATE_WINDOW_MS) ?? [];
+  if (timestamps.length >= RATE_MAX) return true;
+  timestamps.push(now);
+  hits.set(ip, timestamps);
+  return false;
+}
+
+/* ── Helpers ── */
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, "&amp;")
@@ -10,13 +27,42 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#39;");
 }
 
+function stripControlChars(str: string): string {
+  return str.replace(/[\r\n\t\x00-\x1f]/g, " ").trim();
+}
+
 const MAX_FIELD_LEN = 500;
 const MAX_MESSAGE_LEN = 5000;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+const ALLOWED_ORIGINS = [
+  "https://faceliftlabs.com",
+  "https://www.faceliftlabs.com",
+  process.env.NEXT_PUBLIC_SITE_URL,
+].filter(Boolean);
+
 export async function POST(req: Request) {
   try {
+    const origin = req.headers.get("origin") || req.headers.get("referer") || "";
+    const originAllowed =
+      !origin ||
+      ALLOWED_ORIGINS.some((allowed) => origin.startsWith(allowed!));
+    if (!originAllowed) {
+      return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+    }
+
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 },
+      );
+    }
+
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
         { error: "Email service is not configured." },
@@ -64,17 +110,21 @@ export async function POST(req: Request) {
       );
     }
 
+    const cleanEmail = stripControlChars(email);
+    const cleanFirstName = stripControlChars(String(firstName || "")).slice(0, MAX_FIELD_LEN);
+    const cleanLastName = stripControlChars(String(lastName || "")).slice(0, MAX_FIELD_LEN);
+
     const safe = {
-      firstName: escapeHtml(String(firstName || "").slice(0, MAX_FIELD_LEN)),
-      lastName: escapeHtml(String(lastName || "").slice(0, MAX_FIELD_LEN)),
-      email: escapeHtml(email),
-      phone: escapeHtml(String(phone || "").slice(0, MAX_FIELD_LEN)),
+      firstName: escapeHtml(cleanFirstName),
+      lastName: escapeHtml(cleanLastName),
+      email: escapeHtml(cleanEmail),
+      phone: escapeHtml(stripControlChars(String(phone || "")).slice(0, MAX_FIELD_LEN)),
       services: Array.isArray(services)
         ? services
             .slice(0, 20)
-            .map((s: unknown) => escapeHtml(String(s).slice(0, MAX_FIELD_LEN)))
+            .map((s: unknown) => escapeHtml(stripControlChars(String(s)).slice(0, MAX_FIELD_LEN)))
         : [],
-      message: escapeHtml(message),
+      message: escapeHtml(String(message)),
     };
 
     const toEmail = process.env.CONTACT_TO_EMAIL || "hello@faceliftlabs.com";
@@ -82,8 +132,8 @@ export async function POST(req: Request) {
     const { error } = await resend.emails.send({
       from: "Facelift Labs <onboarding@resend.dev>",
       to: [toEmail],
-      replyTo: email,
-      subject: `New inquiry from ${safe.firstName} ${safe.lastName}`.trim(),
+      replyTo: cleanEmail,
+      subject: `New inquiry from ${cleanFirstName} ${cleanLastName}`.trim(),
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${safe.firstName} ${safe.lastName}</p>

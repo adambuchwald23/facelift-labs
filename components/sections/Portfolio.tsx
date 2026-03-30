@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
@@ -15,8 +15,14 @@ const HOVER_SPRING = { type: "spring" as const, stiffness: 260, damping: 22 };
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
-  const close = useCallback(() => setActiveIndex(null), []);
+  const close = useCallback(() => {
+    setActiveIndex(null);
+    triggerRef.current?.focus();
+    triggerRef.current = null;
+  }, []);
   const prev = useCallback(() =>
     setActiveIndex((i) => (i === null ? null : (i - 1 + PORTFOLIO_PROJECTS.length) % PORTFOLIO_PROJECTS.length)),
     []
@@ -39,6 +45,9 @@ export default function Portfolio() {
 
   useEffect(() => {
     document.body.style.overflow = activeIndex !== null ? "hidden" : "";
+    if (activeIndex !== null) {
+      requestAnimationFrame(() => closeButtonRef.current?.focus());
+    }
     return () => { document.body.style.overflow = ""; };
   }, [activeIndex]);
 
@@ -75,10 +84,14 @@ export default function Portfolio() {
                 className="group relative cursor-pointer"
                 role="button"
                 tabIndex={0}
-                onClick={() => setActiveIndex(i)}
+                onClick={(e) => {
+                  triggerRef.current = e.currentTarget;
+                  setActiveIndex(i);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
+                    triggerRef.current = e.currentTarget as HTMLElement;
                     setActiveIndex(i);
                   }
                 }}
@@ -134,6 +147,7 @@ export default function Portfolio() {
               onClick={(e) => e.stopPropagation()}
             >
               <button
+                ref={closeButtonRef}
                 onClick={close}
                 className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
                 aria-label="Close"

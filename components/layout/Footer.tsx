@@ -42,6 +42,7 @@ export default function Footer() {
                 width={200}
                 height={36}
                 className="h-8 w-auto"
+                sizes="200px"
                 loading="lazy"
               />
             </a>
