@@ -236,10 +236,10 @@ export default function Navbar() {
         initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-        className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 backdrop-blur-md border border-black/[0.06] transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
+        className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 border backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
           scrolled
-            ? "bg-white/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
-            : "bg-white/70"
+            ? "bg-white/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-black/[0.06]"
+            : "bg-transparent border-transparent"
         }`}
       >
         {/* Logo */}
