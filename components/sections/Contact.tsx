@@ -89,7 +89,7 @@ export default function Contact() {
           initial="hidden"
           animate={formInView ? "visible" : "hidden"}
           onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-[28px] bg-white p-5 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8"
+          className="relative overflow-hidden rounded-[28px] bg-white p-5 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div
@@ -155,7 +155,7 @@ export default function Contact() {
             />
           </motion.label>
 
-          <motion.div variants={fieldVars} className="mt-5">
+          <motion.div variants={fieldVars} className="mt-4">
             <Button
               type="submit"
               variant="primary"
