@@ -72,10 +72,10 @@ export default function Contact() {
   return (
     <SectionWrapper
       id="contact"
-      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-10 md:pb-10"
+      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-8 md:pb-8"
     >
       <div className="mx-auto max-w-3xl">
-        <div className="mb-6 flex flex-col items-center gap-6 text-center sm:mb-12">
+        <div className="mb-6 flex flex-col items-center gap-6 text-center sm:mb-8">
           <SectionHeader label={CONTACT.headline} />
           <p className="text-sm text-foreground-muted sm:text-base">
             Tell us about your project and we&apos;ll be in touch within 24 hours.
