@@ -239,7 +239,7 @@ export default function Navbar() {
         className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 border backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
           scrolled
             ? "bg-white/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-black/[0.06]"
-            : "bg-transparent border-transparent"
+            : "bg-white/70 border-black/[0.06] md:bg-transparent md:border-transparent md:shadow-none"
         }`}
       >
         {/* Logo */}
