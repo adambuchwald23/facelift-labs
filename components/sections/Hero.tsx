@@ -184,8 +184,8 @@ export default function Hero() {
                             fill
                             className="object-contain"
                             sizes="176px"
-                            loading={setIdx === 0 ? "eager" : "lazy"}
-                            fetchPriority={setIdx === 0 ? "high" : "low"}
+                            loading={setIdx === 0 && i < 2 ? "eager" : "lazy"}
+                            fetchPriority={setIdx === 0 && i < 2 ? "high" : "low"}
                           />
                         </div>
                       </div>

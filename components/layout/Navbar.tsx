@@ -269,6 +269,7 @@ export default function Navbar() {
               height={100}
               className="h-auto"
               style={{ width: "clamp(140px, 38vw, 175px)" }}
+              sizes="(max-width: 768px) 38vw, 175px"
               priority
             />
           </a>

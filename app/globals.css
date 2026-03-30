@@ -97,7 +97,6 @@ body {
 
 .animate-marquee {
   animation: marquee 40s linear infinite;
-  will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }

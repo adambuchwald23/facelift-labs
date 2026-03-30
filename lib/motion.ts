@@ -10,11 +10,15 @@
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+let _reducedMotion: boolean | null = null;
+
 function prefersReducedMotion(): boolean {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
+  if (_reducedMotion !== null) return _reducedMotion;
+  if (typeof window === "undefined") return false;
+  const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+  _reducedMotion = mql.matches;
+  mql.addEventListener("change", (e) => { _reducedMotion = e.matches; });
+  return _reducedMotion;
 }
 
 const INSTANT = {

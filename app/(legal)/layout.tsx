@@ -18,7 +18,8 @@ export default function LegalLayout({
               height={100}
               className="h-auto"
               style={{ width: "clamp(120px, 30vw, 150px)" }}
-              loading="eager"
+              sizes="(max-width: 640px) 30vw, 150px"
+              priority
             />
           </Link>
           <Link

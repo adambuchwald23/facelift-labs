@@ -88,7 +88,7 @@ function Tile({
             alt={`${tool.name} logo`}
             fill
             className="object-contain"
-            sizes="56px"
+            sizes="(max-width: 640px) 64px, 96px"
           />
         </div>
         <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-foreground/50 transition-colors group-hover:text-foreground/70">
