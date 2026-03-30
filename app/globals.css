@@ -52,8 +52,8 @@ body {
 /* Viewport-height utilities — desktop only so mobile flows naturally */
 @media (min-width: 768px) {
   .section-viewport {
-    min-height: calc(100vh - 6rem);
-    min-height: calc(100svh - 6rem);
+    min-height: calc(100vh - 14rem);
+    min-height: calc(100svh - 14rem);
   }
 }
 .hero-viewport {
