@@ -20,11 +20,11 @@ export default function Footer() {
         variants={staggerContainer(mobile)}
         initial="hidden"
         animate={footerInView ? "visible" : "hidden"}
-        className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16"
+        className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16"
       >
 
         {/* Main row: logo + location left — nav columns right */}
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
 
           {/* Left: logo + tagline + location pill */}
           <motion.div variants={fadeUp} className="flex flex-col gap-6">

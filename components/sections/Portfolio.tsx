@@ -53,7 +53,7 @@ export default function Portfolio() {
         className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-6 md:pb-10"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="mb-10 flex justify-center sm:mb-14">
+          <div className="mb-6 flex justify-center sm:mb-14">
             <SectionHeader label="Portfolio" />
           </div>
 
@@ -62,7 +62,7 @@ export default function Portfolio() {
             variants={staggerContainer(mobile)}
             initial="hidden"
             animate={gridInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-12"
           >
             {PORTFOLIO_PROJECTS.map((project, i) => (
               <motion.div

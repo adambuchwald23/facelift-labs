@@ -92,7 +92,7 @@ export default function Hero() {
             animate="visible"
             className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
           >
-            <Button href="#contact" variant="primary" className="cta-arrow-btn w-full !px-5 !py-2.5 !text-sm sm:w-auto sm:min-w-[18rem] sm:!px-6 sm:!py-3 sm:!text-base !text-foreground">
+            <Button href="#contact" variant="primary" className="cta-arrow-btn w-full sm:w-auto sm:min-w-[18rem] !text-foreground">
               <span>{HERO.ctaPrimary}</span>
               <span className="relative h-6 w-6 sm:h-7 sm:w-7 shrink-0 overflow-hidden rounded-full" aria-hidden>
                 <svg className="absolute inset-0 h-6 w-6 sm:h-7 sm:w-7" width={28} height={28} viewBox="0 0 29 29" fill="none">
@@ -105,7 +105,7 @@ export default function Hero() {
                 </span>
               </span>
             </Button>
-            <Button href="#facelift" variant="outline" className="w-full !px-5 !py-2.5 !text-sm sm:w-auto sm:min-w-[18rem] sm:!px-6 sm:!py-3 sm:!text-base !border-foreground hover:!bg-foreground/5">
+            <Button href="#facelift" variant="outline" className="w-full sm:w-auto sm:min-w-[18rem] !border-foreground hover:!bg-foreground/5">
               <span>{HERO.ctaSecondary}</span>
               <svg
                 className="h-6 w-6 sm:h-7 sm:w-7 shrink-0"

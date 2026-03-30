@@ -38,7 +38,7 @@ export default function TheFacelift() {
       className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-6 md:pb-10"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-10 flex justify-center sm:mb-14">
+        <div className="mb-6 flex justify-center sm:mb-14">
           <SectionHeader label="Workflow" />
         </div>
 
@@ -69,7 +69,7 @@ export default function TheFacelift() {
           variants={staggerContainer(mobile)}
           initial="hidden"
           animate={mobileInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 gap-5 max-w-sm mx-auto sm:max-w-none sm:grid-cols-2 lg:hidden"
+          className="grid grid-cols-1 gap-4 max-w-sm mx-auto sm:max-w-none sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (
             <StepCardAnimated key={step.number} step={step} mobile={mobile} />
@@ -115,7 +115,7 @@ function NumberWatermark({ number }: { number: string }) {
       aria-hidden
       className="select-none font-black leading-none"
       style={{
-        fontSize: "clamp(4.5rem, 10vw, 6.5rem)",
+        fontSize: "clamp(3.5rem, 9vw, 6.5rem)",
         letterSpacing: "-0.05em",
         lineHeight: 1,
         color: "transparent",
@@ -132,7 +132,7 @@ function NumberWatermark({ number }: { number: string }) {
 function StepContent({ step }: { step: Step }) {
   return (
     <>
-      <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
+      <h3 className="mt-4 text-lg sm:text-xl font-bold tracking-tight text-foreground">
         {step.title}
       </h3>
       <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-foreground-muted">

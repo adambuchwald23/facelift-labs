@@ -31,15 +31,15 @@ export default function TechStack() {
           variants={staggerContainer(mobile)}
           initial="hidden"
           animate={gridInView ? "visible" : "hidden"}
-          className="flex flex-col items-center gap-7 sm:gap-8"
+          className="flex flex-col items-center gap-4 sm:gap-8"
         >
-          <div className="flex flex-wrap justify-center gap-7 sm:gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             {TECH_STACK_ITEMS.slice(0, 4).map((tool, i) => (
               <Tile key={tool.name} tool={tool} floatIndex={i} mobile={mobile} />
             ))}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-7 sm:gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             {TECH_STACK_ITEMS.slice(4).map((tool, i) => (
               <Tile key={tool.name} tool={tool} floatIndex={i + 4} mobile={mobile} />
             ))}
@@ -76,13 +76,13 @@ function Tile({
   return (
     <motion.div variants={tileVariants}>
       <div
-        className="tile-float group flex h-[120px] w-[120px] cursor-default flex-col items-center justify-center gap-3 rounded-[28px] bg-[#f5f5f5] ring-1 ring-black/[0.07] transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(0,255,136,0.18),0_4px_12px_rgba(0,0,0,0.08)] sm:h-[132px] sm:w-[132px]"
+        className="tile-float group flex h-[88px] w-[88px] sm:h-[120px] sm:w-[120px] cursor-default flex-col items-center justify-center gap-2 sm:gap-3 rounded-[20px] sm:rounded-[28px] bg-[#f5f5f5] ring-1 ring-black/[0.07] transition-shadow duration-300 md:hover:shadow-[0_16px_40px_rgba(0,255,136,0.18),0_4px_12px_rgba(0,0,0,0.08)]"
         style={{
           "--float-dur": `${dur}s`,
           "--float-delay": `${floatIndex * 0.3}s`,
         } as React.CSSProperties}
       >
-        <div className="relative h-12 w-12 shrink-0 sm:h-14 sm:w-14">
+        <div className="relative h-9 w-9 shrink-0 sm:h-12 sm:w-12">
           <Image
             src={tool.logo}
             alt={`${tool.name} logo`}

@@ -27,7 +27,7 @@ export default function Comparison() {
       className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-6 md:pb-10"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-10 flex justify-center sm:mb-14">
+        <div className="mb-6 flex justify-center sm:mb-14">
           <SectionHeader label="Why Us" />
         </div>
 
@@ -41,8 +41,8 @@ export default function Comparison() {
         >
           <div className="grid md:grid-cols-2">
 
-            <div className="border-b border-black/[0.06] p-7 md:border-b-0 md:border-r md:p-10">
-              <div className="mb-7 flex items-center gap-3">
+            <div className="border-b border-black/[0.06] p-5 sm:p-7 md:border-b-0 md:border-r md:p-10">
+              <div className="mb-5 sm:mb-7 flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/40">
                   <XIcon className="h-5 w-5" />
                 </span>
@@ -72,10 +72,10 @@ export default function Comparison() {
               </motion.ul>
             </div>
 
-            <div className="relative p-7 md:p-10">
+            <div className="relative p-5 sm:p-7 md:p-10">
               <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 md:rounded-tr-[40px]" />
 
-              <div className="mb-7 flex items-center gap-3">
+              <div className="mb-5 sm:mb-7 flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/20">
                   <CheckIcon className="h-5 w-5" />
                 </span>
