@@ -34,7 +34,8 @@ function StepArrow() {
 
 export default function TheFacelift() {
   const mobile = useIsMobile();
-  const [cardsRef, cardsInView] = useInView<HTMLDivElement>();
+  const [desktopRef, desktopInView] = useInView<HTMLDivElement>();
+  const [mobileRef, mobileInView] = useInView<HTMLDivElement>();
   const [tilesRef, tilesInView] = useInView<HTMLDivElement>();
 
   return (
@@ -53,9 +54,9 @@ export default function TheFacelift() {
 
         {/* Desktop: horizontal row with arrows */}
         <motion.div
-          ref={cardsRef}
+          ref={desktopRef}
           initial="hidden"
-          animate={cardsInView ? "visible" : "hidden"}
+          animate={desktopInView ? "visible" : "hidden"}
           variants={staggerContainer(false)}
           className="hidden lg:flex items-stretch gap-3"
         >
@@ -71,9 +72,10 @@ export default function TheFacelift() {
 
         {/* Mobile: single column; Tablet: 2-col grid */}
         <motion.div
+          ref={mobileRef}
           variants={staggerContainer(mobile)}
           initial="hidden"
-          animate={cardsInView ? "visible" : "hidden"}
+          animate={mobileInView ? "visible" : "hidden"}
           className="grid grid-cols-1 gap-3 max-w-sm mx-auto sm:max-w-none sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (
