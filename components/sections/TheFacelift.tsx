@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -36,7 +36,18 @@ export default function TheFacelift() {
   const mobile = useIsMobile();
   const [desktopRef, desktopInView] = useInView<HTMLDivElement>();
   const [mobileRef, mobileInView] = useInView<HTMLDivElement>();
+  const [tilesKey, setTilesKey] = useState(0);
   const [tilesRef, tilesInView] = useInView<HTMLDivElement>();
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      if ((e as CustomEvent).detail?.id === "facelift") {
+        setTilesKey((k) => k + 1);
+      }
+    };
+    window.addEventListener("nav-scroll", handler);
+    return () => window.removeEventListener("nav-scroll", handler);
+  }, []);
 
   return (
     <SectionWrapper
@@ -83,8 +94,9 @@ export default function TheFacelift() {
           ))}
         </motion.div>
 
-        {/* Tech stack tiles */}
+        {/* Tech stack tiles — key bumps on nav-scroll to replay entrance */}
         <motion.div
+          key={tilesKey}
           ref={tilesRef}
           variants={staggerContainer(mobile)}
           initial="hidden"

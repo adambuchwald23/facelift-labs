@@ -212,7 +212,10 @@ export default function Navbar() {
 
       const id = href.startsWith("#") ? href.slice(1) : href;
       const el = document.getElementById(id);
-      if (el) smoothScrollTo(el);
+      if (el) {
+        window.dispatchEvent(new CustomEvent("nav-scroll", { detail: { id } }));
+        smoothScrollTo(el);
+      }
     },
     [positionPill],
   );
@@ -232,7 +235,10 @@ export default function Navbar() {
 
       const id = href.startsWith("#") ? href.slice(1) : href;
       const el = document.getElementById(id);
-      if (el) smoothScrollTo(el);
+      if (el) {
+        window.dispatchEvent(new CustomEvent("nav-scroll", { detail: { id } }));
+        smoothScrollTo(el);
+      }
     },
     [],
   );
