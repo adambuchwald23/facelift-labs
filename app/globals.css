@@ -49,8 +49,16 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* section-viewport: no min-height — sections size to their content;
-   gaps are controlled by consistent padding (md:pt-10 md:pb-10). */
+/* Each section fills one viewport and vertically centres its content */
+@media (min-width: 768px) {
+  .section-viewport {
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100svh - 6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 .hero-viewport {
   min-height: 100vh;
   min-height: 100svh;
