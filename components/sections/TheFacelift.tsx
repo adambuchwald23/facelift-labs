@@ -37,7 +37,7 @@ export default function TheFacelift() {
   const [desktopRef, desktopInView] = useInView<HTMLDivElement>();
   const [mobileRef, mobileInView] = useInView<HTMLDivElement>();
   const [tilesKey, setTilesKey] = useState(0);
-  const [tilesRef, tilesInView] = useInView<HTMLDivElement>();
+  const [tilesRef, tilesInView] = useInView<HTMLDivElement>({ rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
 
   useEffect(() => {
     const handler = (e: Event) => {
