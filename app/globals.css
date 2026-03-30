@@ -52,13 +52,13 @@ body {
 /* Viewport-height utilities — desktop only so mobile flows naturally */
 @media (min-width: 768px) {
   .section-viewport {
-    min-height: calc(100vh - 14rem);
-    min-height: calc(100svh - 14rem);
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100svh - 6rem);
   }
 }
 .hero-viewport {
-  min-height: calc(100vh - 4rem);
-  min-height: calc(100svh - 4rem);
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 /* Skip-to-content link — hidden until focused for keyboard users */
@@ -206,6 +206,10 @@ body {
 }
 .tile-float {
   animation: tile-float var(--float-dur, 3.4s) ease-in-out var(--float-delay, 0s) infinite;
+}
+
+@media (max-width: 767px) {
+  .tile-float { animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

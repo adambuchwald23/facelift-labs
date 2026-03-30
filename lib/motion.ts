@@ -35,8 +35,8 @@ export function staggerContainer(mobile: boolean) {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: mobile ? 0.08 : 0.09,
-        delayChildren: mobile ? 0.05 : 0.04,
+        staggerChildren: mobile ? 0.1 : 0.09,
+        delayChildren: mobile ? 0.08 : 0.04,
       },
     },
   };
@@ -52,7 +52,7 @@ export function fadeUp(mobile: boolean) {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.6 : 0.7,
+        duration: mobile ? 0.75 : 0.7,
         ease: EASE,
       },
     },
@@ -70,7 +70,7 @@ export function fadeUpScale(mobile: boolean) {
       y: 0,
       scale: 1,
       transition: {
-        duration: mobile ? 0.6 : 0.7,
+        duration: mobile ? 0.75 : 0.7,
         ease: EASE,
       },
     },
@@ -87,7 +87,7 @@ export function fadeInLeft(mobile: boolean) {
       opacity: 1,
       x: 0,
       transition: {
-        duration: mobile ? 0.55 : 0.65,
+        duration: mobile ? 0.65 : 0.65,
         ease: EASE,
       },
     },
@@ -104,7 +104,7 @@ export function inlineEntrance(mobile: boolean) {
       opacity: 1,
       y: 0,
       transition: {
-        duration: mobile ? 0.6 : 0.7,
+        duration: mobile ? 0.75 : 0.7,
         ease: EASE,
       },
     },
