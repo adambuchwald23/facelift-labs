@@ -87,7 +87,7 @@ export default function FAQ() {
   }, []);
 
   return (
-    <SectionWrapper id="faq" className="px-4 pt-6 pb-8 sm:px-6 sm:py-16 md:py-24">
+    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-16 md:py-24">
       <div className="mx-auto max-w-3xl">
 
         <div className="mb-6 flex flex-col items-center text-center gap-6 sm:mb-12">

@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <SectionWrapper
       id="contact"
-      className="px-4 pt-6 pb-8 sm:px-6 sm:py-16 md:pt-24 md:pb-28"
+      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-16 md:pt-24 md:pb-28"
     >
       <div className="mx-auto max-w-3xl">
         <div className="mb-6 flex flex-col items-center gap-6 text-center sm:mb-8">

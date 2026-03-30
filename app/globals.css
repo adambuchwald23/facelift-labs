@@ -49,7 +49,15 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* Editorial flow: sections size to content; generous padding separates them. */
+/* Nav-linked sections fill the viewport below the navbar so the next
+   section never bleeds in when clicking a nav link. No centering —
+   content stays at the top with its own padding. */
+@media (min-width: 768px) {
+  .section-viewport {
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100svh - 6rem);
+  }
+}
 .hero-viewport {
   min-height: 100vh;
   min-height: 100svh;

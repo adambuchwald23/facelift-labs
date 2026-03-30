@@ -81,6 +81,8 @@ export const COMPARISON = {
     "Long term support, improvements, and updates",
     "High performance builds optimized for speed",
     "Strategic SEO implementation to increase visibility and traffic",
+    "AI-powered tooling to accelerate delivery and innovation",
+    "Transparent process with real-time visibility into progress",
   ],
   otherAgencies: [
     "Rely on generalist teams and repeatable solutions",
@@ -88,6 +90,8 @@ export const COMPARISON = {
     "Support often ends shortly after launch",
     "Standard performance with slower load speeds",
     "Basic SEO setup with limited optimization",
+    "Manual workflows that slow timelines and limit output",
+    "Opaque development with limited client involvement",
   ],
 } as const;
 
