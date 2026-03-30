@@ -2,7 +2,7 @@ const MOBILE_BP = 768;
 
 function getScrollOffset(): number {
   if (typeof window === "undefined") return 96;
-  return window.innerWidth < MOBILE_BP ? 64 : 96;
+  return window.innerWidth < MOBILE_BP ? 76 : 96;
 }
 
 let activeRaf = 0;

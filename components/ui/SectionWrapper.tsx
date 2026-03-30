@@ -12,7 +12,7 @@ export default function SectionWrapper({
   className = "",
 }: SectionWrapperProps) {
   return (
-    <section id={id} className={cn("scroll-mt-16 md:scroll-mt-24", className)}>
+    <section id={id} className={cn("scroll-mt-[76px] md:scroll-mt-24", className)}>
       {children}
     </section>
   );
