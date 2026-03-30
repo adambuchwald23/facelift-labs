@@ -13,7 +13,7 @@ export default function SectionHeader({ label, className = "" }: SectionHeaderPr
         className,
       )}
     >
-      <span className="text-base font-bold text-foreground sm:text-2xl">{label}</span>
+      <h2 className="text-base font-bold text-foreground sm:text-2xl">{label}</h2>
     </div>
   );
 }

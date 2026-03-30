@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Facelift Labs", url: "https://faceliftlabs.com" }],
   creator: "Facelift Labs",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -48,15 +51,15 @@ export const metadata: Metadata = {
     title: "Facelift Labs | Modern Websites Engineered to Convert",
     description:
       "We design and build high-performance websites for brands that need a new site or a complete redesign. Custom UX/UI design, Next.js development, and strategic SEO.",
-    url: "https://faceliftlabs.com",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Facelift Labs" }],
+    url: "/",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Facelift Labs — Modern Websites Engineered to Convert" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Facelift Labs | Modern Websites Engineered to Convert",
     description:
       "We design and build high-performance websites for brands that need a new site or a complete redesign.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
