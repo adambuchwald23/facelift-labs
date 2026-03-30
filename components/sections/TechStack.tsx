@@ -19,7 +19,7 @@ export default function TechStack() {
   return (
     <SectionWrapper
       id="tech-stack"
-      className="px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-14"
+      className="px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-8 md:pb-12"
     >
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 flex justify-center sm:mb-16">

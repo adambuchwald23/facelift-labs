@@ -31,7 +31,7 @@ const services: CoreServiceItem[] = [
   {
     name: "SEO Mastery",
     description:
-      "Technical SEO baked into the foundation. We ensure your site doesn't just look good—it gets found by the right people.",
+      "Technical SEO baked into the foundation. We ensure your site doesn't just look good, it gets found by the right people.",
     iconSrc: CORE_SERVICE_ICONS.seo,
   },
 ];
@@ -41,7 +41,7 @@ export default function CoreServices() {
   return (
     <SectionWrapper
       id="services"
-      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-10 md:pb-12"
+      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-6 md:pb-10"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex justify-center sm:mb-12">
