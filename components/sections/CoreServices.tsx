@@ -44,7 +44,7 @@ export default function CoreServices() {
       className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-6 flex justify-center sm:mb-12">
+        <div className="mb-4 flex justify-center sm:mb-10">
           <SectionHeader label="Services" />
         </div>
         <CoreServicesGrid mobile={mobile}>

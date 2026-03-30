@@ -27,27 +27,27 @@ const FAQItem = memo(function FAQItem({
   return (
     <motion.div
       variants={fadeUp(mobile)}
-      className="overflow-hidden rounded-[20px] bg-white border border-black/20 sm:rounded-[24px]"
+      className="overflow-hidden rounded-[16px] bg-white border border-black/20 sm:rounded-[24px]"
       style={{ boxShadow: isOpen ? CARD_SHADOW : "0 1px 3px rgba(0,0,0,0.04)" }}
     >
       <button
         type="button"
         id={`faq-btn-${index}`}
         onClick={() => onToggle(index)}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left sm:gap-4 sm:px-6 sm:py-4"
         aria-expanded={isOpen}
         aria-controls={`faq-panel-${index}`}
       >
-        <span className={`text-[0.9375rem] font-semibold tracking-tight transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
+        <span className={`text-sm font-semibold tracking-tight transition-colors duration-200 sm:text-[0.9375rem] ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
           {faq.question}
         </span>
 
         <span
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-foreground transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-foreground transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-7 sm:w-7"
           style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         >
           <svg
-            className="h-3.5 w-3.5"
+            className="h-3 w-3 sm:h-3.5 sm:w-3.5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -69,7 +69,7 @@ const FAQItem = memo(function FAQItem({
         style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">
-          <p className="border-t border-black/[0.06] px-5 pb-4 pt-3 text-[0.9375rem] leading-relaxed text-foreground-muted sm:px-6">
+          <p className="border-t border-black/[0.06] px-4 pb-3 pt-2.5 text-sm leading-relaxed text-foreground-muted sm:px-6 sm:pb-4 sm:pt-3 sm:text-[0.9375rem]">
             {faq.answer}
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function FAQ() {
           variants={inlineEntrance(mobile)}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
-          className="mt-5 flex flex-col items-center gap-4 text-center"
+          className="mt-4 flex flex-col items-center gap-3 text-center sm:mt-5 sm:gap-4"
         >
           <p className="text-sm text-foreground-muted">
             Still have questions? We&apos;d love to chat.

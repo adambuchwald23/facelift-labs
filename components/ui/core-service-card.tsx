@@ -29,7 +29,7 @@ export function CoreServicesGrid({
       initial="hidden"
       animate={gridInView ? "visible" : "hidden"}
       className={cn(
-        "grid grid-cols-1 gap-5 sm:gap-9 md:grid-cols-3 md:gap-9",
+        "grid grid-cols-1 gap-3 sm:gap-9 md:grid-cols-3 md:gap-9",
         className
       )}
     >
@@ -49,18 +49,18 @@ export function CoreServiceCard({
     <motion.article
       variants={fadeUp(mobile)}
       className={cn(
-        "relative flex min-h-0 sm:min-h-[220px] flex-col items-start rounded-[28px] bg-white p-5 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 md:hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
+        "relative flex min-h-0 sm:min-h-[220px] flex-col items-start rounded-[20px] bg-white p-4 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 md:hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
         className
       )}
       style={{ boxShadow: CARD_SHADOW }}
     >
       {/* Accent icon pill */}
       <div
-        className="inline-flex items-center justify-center rounded-2xl bg-accent/10 p-2.5 sm:p-3 ring-1 ring-accent/20"
+        className="inline-flex items-center justify-center rounded-2xl bg-accent/10 p-2 sm:p-3 ring-1 ring-accent/20"
         aria-hidden
       >
         <div
-          className="size-6 sm:size-7 bg-accent"
+          className="size-5 sm:size-7 bg-accent"
           style={{
             maskImage: `url(${iconSrc})`,
             maskSize: "contain",
@@ -74,10 +74,10 @@ export function CoreServiceCard({
         />
       </div>
 
-      <h3 className="mt-5 text-lg sm:text-xl font-bold tracking-tight text-foreground">
+      <h3 className="mt-3 text-base sm:text-xl font-bold tracking-tight text-foreground">
         {name}
       </h3>
-      <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-foreground-muted">
+      <p className="mt-1.5 text-sm leading-relaxed text-foreground-muted sm:text-[0.9375rem]">
         {description}
       </p>
     </motion.article>

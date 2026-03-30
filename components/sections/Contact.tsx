@@ -12,7 +12,7 @@ import { useInView } from "@/lib/use-in-view";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 
 const INPUT_BASE =
-  "w-full rounded-2xl bg-[#f7f7f7] px-4 py-3 text-[0.9375rem] text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50";
+  "w-full rounded-xl bg-[#f7f7f7] px-3.5 py-2.5 text-sm text-foreground placeholder:text-foreground/30 outline-none ring-1 ring-black/[0.07] transition-all duration-200 focus:bg-white focus:ring-2 focus:ring-accent/50 sm:rounded-2xl sm:px-4 sm:py-3 sm:text-[0.9375rem]";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -89,15 +89,15 @@ export default function Contact() {
           initial="hidden"
           animate={formInView ? "visible" : "hidden"}
           onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-[28px] bg-white p-4 ring-1 ring-inset ring-black/[0.07] sm:rounded-[36px] sm:p-6"
+          className="relative overflow-hidden rounded-[20px] bg-white p-3.5 ring-1 ring-inset ring-black/[0.07] sm:rounded-[36px] sm:p-6"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[28px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 sm:rounded-t-[40px]"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[20px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 sm:rounded-t-[40px]"
           />
 
-          <motion.div variants={fieldVars} className="grid gap-4 sm:grid-cols-2">
+          <motion.div variants={fieldVars} className="grid gap-3 sm:grid-cols-2 sm:gap-4">
             <label className="block">
               <span className="mb-1 block text-sm font-medium text-foreground">First Name</span>
               <input type="text" name="firstName" autoComplete="given-name" className={INPUT_BASE} placeholder="John" />
@@ -129,7 +129,7 @@ export default function Contact() {
                     type="button"
                     aria-pressed={selected}
                     onClick={() => toggleService(opt.value)}
-                    className="min-h-[40px] rounded-full px-3.5 py-1.5 text-sm font-medium ring-1 ring-black/[0.08] outline-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97]"
+                    className="min-h-[36px] rounded-full px-3 py-1 text-xs font-medium ring-1 ring-black/[0.08] outline-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97] sm:min-h-[40px] sm:px-3.5 sm:py-1.5 sm:text-sm"
                     style={{
                       backgroundColor: selected ? "#00FF88" : "#f7f7f7",
                       color: selected ? "#0a0a0a" : "rgba(10,10,10,0.55)",

@@ -89,9 +89,9 @@ export default function TheFacelift() {
           variants={staggerContainer(mobile)}
           initial="hidden"
           animate={tilesInView ? "visible" : "hidden"}
-          className="mt-8 sm:mt-12"
+          className="mt-6 sm:mt-12"
         >
-          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-foreground-subtle sm:mb-6 sm:text-sm">
+          <p className="mb-3 text-center text-xs font-semibold uppercase tracking-widest text-foreground-subtle sm:mb-6 sm:text-sm">
             Powered by
           </p>
           <div className="flex flex-wrap justify-center gap-2.5 sm:gap-4">
@@ -138,7 +138,7 @@ function NumberWatermark({ number }: { number: string }) {
       aria-hidden
       className="select-none font-black leading-none"
       style={{
-        fontSize: "clamp(2.5rem, 7vw, 5rem)",
+        fontSize: "clamp(2rem, 6vw, 5rem)",
         letterSpacing: "-0.05em",
         lineHeight: 1,
         color: "transparent",
@@ -189,13 +189,13 @@ function TechTile({
   return (
     <motion.div variants={tileVariants}>
       <div
-        className="tile-float group flex h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] lg:h-[100px] lg:w-[100px] cursor-default flex-col items-center justify-center gap-1 sm:gap-2 rounded-[14px] sm:rounded-[20px] bg-[#f5f5f5] ring-1 ring-black/[0.07] transition-shadow duration-300 md:hover:shadow-[0_16px_40px_rgba(0,255,136,0.18),0_4px_12px_rgba(0,0,0,0.08)]"
+        className="tile-float group flex h-[52px] w-[52px] sm:h-[80px] sm:w-[80px] lg:h-[100px] lg:w-[100px] cursor-default flex-col items-center justify-center gap-0.5 sm:gap-2 rounded-[12px] sm:rounded-[20px] bg-[#f5f5f5] ring-1 ring-black/[0.07] transition-shadow duration-300 md:hover:shadow-[0_16px_40px_rgba(0,255,136,0.18),0_4px_12px_rgba(0,0,0,0.08)]"
         style={{
           "--float-dur": `${dur}s`,
           "--float-delay": `${floatIndex * 0.3}s`,
         } as React.CSSProperties}
       >
-        <div className="relative h-6 w-6 shrink-0 sm:h-8 sm:w-8 lg:h-10 lg:w-10">
+        <div className="relative h-5 w-5 shrink-0 sm:h-8 sm:w-8 lg:h-10 lg:w-10">
           <Image
             src={tool.logo}
             alt={`${tool.name} logo`}

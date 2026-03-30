@@ -61,12 +61,12 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-start md:justify-center px-5 pt-[5vh] sm:px-6 md:pt-0 md:pb-[14vh]">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-1 flex-col justify-start md:justify-center px-4 pt-[3vh] sm:px-6 md:pt-0 md:pb-[14vh]">
         <div className="w-full max-w-4xl mx-auto text-center">
 
           {/* Headline */}
           <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <h1 className="text-[1.375rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-5 md:mb-8">
+            <h1 className="text-[1.375rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[3.25rem] lg:text-[4rem] mb-4 md:mb-8">
               <span className="block pb-0 sm:pb-2">{HERO.headline}</span>{" "}
               <span className="mt-1 sm:mt-3 block min-h-[1.2em]">
                 to{" "}
@@ -80,7 +80,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <p className="mt-4 text-[0.9375rem] leading-relaxed text-foreground-muted sm:mt-6 sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-xl mx-auto">
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-foreground-muted sm:mt-6 sm:text-lg md:text-xl mb-5 sm:mb-8 max-w-md sm:max-w-xl mx-auto">
               {HERO.subtitle}
             </p>
           </motion.div>
@@ -129,7 +129,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-6 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-8 sm:text-sm"
+            className="mt-5 text-xs font-medium uppercase tracking-wider text-foreground-subtle sm:mt-8 sm:text-sm"
           >
             {HERO.trustedBy}
           </motion.p>
@@ -140,7 +140,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-3 flex items-center justify-center gap-1 sm:mt-4"
+            className="mt-2 flex items-center justify-center gap-1 sm:mt-4"
             aria-hidden
           >
             {[1, 2, 3, 4, 5].map((i) => (
@@ -164,7 +164,7 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="mt-4 sm:mt-6"
+            className="mt-3 sm:mt-6"
             aria-hidden
           >
             <div className="marquee-wrap mx-auto max-w-2xl overflow-hidden">
@@ -175,9 +175,9 @@ export default function Hero() {
                       <div
                         key={`trust-${setIdx}-${i}`}
                         data-marquee-cell
-                        className="flex h-10 w-[9rem] shrink-0 items-center justify-center sm:h-16 sm:w-[12rem]"
+                        className="flex h-9 w-[7.5rem] shrink-0 items-center justify-center sm:h-16 sm:w-[12rem]"
                       >
-                        <div className="relative h-7 w-[7.5rem] shrink-0 sm:h-11 sm:w-[11rem]">
+                        <div className="relative h-6 w-[6.5rem] shrink-0 sm:h-11 sm:w-[11rem]">
                           <Image
                             src={logo.full}
                             alt=""

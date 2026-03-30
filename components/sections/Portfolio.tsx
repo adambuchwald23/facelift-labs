@@ -62,7 +62,7 @@ export default function Portfolio() {
         className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16"
       >
         <div className="mx-auto max-w-4xl">
-          <div className="mb-6 flex justify-center sm:mb-12">
+          <div className="mb-4 flex justify-center sm:mb-10">
             <SectionHeader label="Portfolio" />
           </div>
 
@@ -71,7 +71,7 @@ export default function Portfolio() {
             variants={staggerContainer(mobile)}
             initial="hidden"
             animate={gridInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8"
           >
             {PORTFOLIO_PROJECTS.map((project, i) => (
               <motion.div
@@ -111,8 +111,8 @@ export default function Portfolio() {
                   loading="lazy"
                 />
 
-                <div className="mt-3 flex justify-center">
-                  <span className="rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07]">
+                <div className="mt-2 flex justify-center sm:mt-3">
+                  <span className="rounded-full bg-white/90 px-3.5 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07] sm:px-4 sm:py-1.5 sm:text-sm">
                     {project.title}
                   </span>
                 </div>

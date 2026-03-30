@@ -27,7 +27,7 @@ export default function Comparison() {
       className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16"
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-6 flex justify-center sm:mb-12">
+        <div className="mb-4 flex justify-center sm:mb-10">
           <SectionHeader label="Why Us" />
         </div>
 
@@ -41,10 +41,10 @@ export default function Comparison() {
         >
           <div className="grid md:grid-cols-2">
 
-            <div className="border-b border-black/[0.06] p-5 sm:p-7 md:border-b-0 md:border-r md:p-10">
-              <div className="mb-5 sm:mb-7 flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/40">
-                  <XIcon className="h-5 w-5" />
+            <div className="border-b border-black/[0.06] p-4 sm:p-7 md:border-b-0 md:border-r md:p-10">
+              <div className="mb-4 sm:mb-7 flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] text-foreground/40 sm:h-9 sm:w-9">
+                  <XIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </span>
                 <h3 className="text-base font-bold tracking-tight text-foreground/50">
                   Other Agencies
@@ -55,13 +55,13 @@ export default function Comparison() {
                 variants={listVars}
                 initial="hidden"
                 animate={leftInView ? "visible" : "hidden"}
-                className="space-y-4"
+                className="space-y-3 sm:space-y-4"
               >
                 {COMPARISON.otherAgencies.map((text) => (
                   <motion.li
                     key={text}
                     variants={rowVars}
-                    className="flex gap-3 text-[0.9375rem] text-foreground/40"
+                    className="flex gap-2.5 text-sm text-foreground/40 sm:gap-3 sm:text-[0.9375rem]"
                   >
                     <span className="mt-0.5 shrink-0 text-foreground/25">
                       <XIcon className="h-5 w-5" />
@@ -72,12 +72,12 @@ export default function Comparison() {
               </motion.ul>
             </div>
 
-            <div className="relative p-5 sm:p-7 md:p-10">
+            <div className="relative p-4 sm:p-7 md:p-10">
               <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/60 via-accent to-accent/60 md:rounded-tr-[40px]" />
 
-              <div className="mb-5 sm:mb-7 flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/20">
-                  <CheckIcon className="h-5 w-5" />
+              <div className="mb-4 sm:mb-7 flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/20 sm:h-9 sm:w-9">
+                  <CheckIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </span>
                 <Image
                   src="/logos/facelift-labs-logo.svg"
@@ -94,13 +94,13 @@ export default function Comparison() {
                 variants={listVars}
                 initial="hidden"
                 animate={rightInView ? "visible" : "hidden"}
-                className="space-y-4"
+                className="space-y-3 sm:space-y-4"
               >
                 {COMPARISON.faceliftLabs.map((text) => (
                   <motion.li
                     key={text}
                     variants={rowVars}
-                    className="flex gap-3 text-[0.9375rem] text-foreground-muted"
+                    className="flex gap-2.5 text-sm text-foreground-muted sm:gap-3 sm:text-[0.9375rem]"
                   >
                     <span className="mt-0.5 shrink-0 text-accent">
                       <CheckIcon className="h-5 w-5" />
