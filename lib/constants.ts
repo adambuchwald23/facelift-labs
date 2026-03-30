@@ -42,7 +42,7 @@ export const THE_FACELIFT_STEPS = [
     number: "01",
     title: "Strategy & Audit",
     description:
-      "We build immersive digital journeys that eliminate cognitive load. Our designs are engineered to guide visitors instinctively toward your goal.",
+      "We analyze your market, audience, and competitors to build a strategy rooted in data, not guesswork.",
   },
   {
     number: "02",

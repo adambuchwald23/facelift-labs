@@ -84,7 +84,7 @@ type Step = (typeof THE_FACELIFT_STEPS)[number];
 function StepCard({ step }: { step: Step }) {
   return (
     <motion.article
-      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
+      className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-white p-5 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 md:hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />
@@ -98,7 +98,7 @@ function StepCardAnimated({ step, mobile }: { step: Step; mobile: boolean }) {
   return (
     <motion.article
       variants={fadeUp(mobile)}
-      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
+      className="relative flex flex-col overflow-hidden rounded-[28px] bg-white p-5 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7 transition-shadow duration-300 md:hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]"
       style={{ boxShadow: CARD_SHADOW }}
     >
       <NumberWatermark number={step.number} />
