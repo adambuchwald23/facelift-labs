@@ -67,7 +67,7 @@ export default function TheFacelift() {
           variants={staggerContainer(mobile)}
           initial="hidden"
           animate={mobileInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:hidden"
+          className="grid grid-cols-1 gap-5 max-w-sm mx-auto sm:max-w-none sm:grid-cols-2 lg:hidden"
         >
           {THE_FACELIFT_STEPS.map((step) => (
             <StepCardAnimated key={step.number} step={step} mobile={mobile} />
