@@ -49,11 +49,15 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* Each section fills one full viewport so adjacent sections never bleed in */
+/* Slide-deck layout: each section fills the viewport below the navbar
+   with content vertically centered — zero next-section bleed on nav-click. */
 @media (min-width: 768px) {
   .section-viewport {
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100svh - 6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 .hero-viewport {
