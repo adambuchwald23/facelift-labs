@@ -49,14 +49,11 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* Each section fills one viewport and vertically centres its content */
+/* Each section fills one full viewport so adjacent sections never bleed in */
 @media (min-width: 768px) {
   .section-viewport {
-    min-height: calc(100vh - 6rem);
-    min-height: calc(100svh - 6rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
   }
 }
 .hero-viewport {
