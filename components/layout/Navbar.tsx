@@ -231,7 +231,7 @@ export default function Navbar() {
   );
 
   return (
-    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-1.5 pb-1 sm:pt-2 sm:pb-1.5 [transform:translateZ(0)] [will-change:transform]">
+    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-3 pb-2.5 sm:pt-4 sm:pb-3.5 [transform:translateZ(0)] [will-change:transform]">
       <motion.div
         initial={false}
         animate={{ opacity: 1, y: 0 }}
