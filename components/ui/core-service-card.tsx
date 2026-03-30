@@ -29,7 +29,7 @@ export function CoreServicesGrid({
       initial="hidden"
       animate={gridInView ? "visible" : "hidden"}
       className={cn(
-        "grid grid-cols-1 gap-8 sm:gap-9 md:grid-cols-3 md:gap-9",
+        "grid grid-cols-1 gap-5 sm:gap-9 md:grid-cols-3 md:gap-9",
         className
       )}
     >
@@ -49,7 +49,7 @@ export function CoreServiceCard({
     <motion.article
       variants={fadeUp(mobile)}
       className={cn(
-        "relative flex min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
+        "relative flex min-h-0 sm:min-h-[220px] flex-col items-start rounded-[28px] bg-white p-6 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 md:hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
         className
       )}
       style={{ boxShadow: CARD_SHADOW }}
