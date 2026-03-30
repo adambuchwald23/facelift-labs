@@ -17,7 +17,7 @@ export default function FAQ() {
   const [listRef, listInView] = useInView<HTMLDivElement>();
 
   return (
-    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-6 md:pb-10">
+    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-10 md:pb-10">
       <div className="mx-auto max-w-3xl">
 
         <div className="mb-6 flex flex-col items-center text-center gap-6 sm:mb-12">
