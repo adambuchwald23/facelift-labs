@@ -72,10 +72,10 @@ export default function Contact() {
   return (
     <SectionWrapper
       id="contact"
-      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-16 md:pt-24 md:pb-28"
+      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-16 md:pb-20"
     >
       <div className="mx-auto max-w-3xl">
-        <div className="mb-6 flex flex-col items-center gap-6 text-center sm:mb-8">
+        <div className="mb-4 flex flex-col items-center gap-3 text-center sm:mb-6">
           <SectionHeader label={CONTACT.headline} />
           <p className="text-sm text-foreground-muted sm:text-base">
             Tell us about your project and we&apos;ll be in touch within 24 hours.
@@ -89,7 +89,7 @@ export default function Contact() {
           initial="hidden"
           animate={formInView ? "visible" : "hidden"}
           onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-[28px] bg-white p-5 ring-1 ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-7"
+          className="relative overflow-hidden rounded-[28px] bg-white p-4 ring-1 ring-inset ring-black/[0.07] sm:rounded-[36px] sm:p-6"
           style={{ boxShadow: CARD_SHADOW }}
         >
           <div
@@ -99,26 +99,26 @@ export default function Contact() {
 
           <motion.div variants={fieldVars} className="grid gap-4 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-foreground">First Name</span>
+              <span className="mb-1 block text-sm font-medium text-foreground">First Name</span>
               <input type="text" name="firstName" autoComplete="given-name" className={INPUT_BASE} placeholder="John" />
             </label>
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-foreground">Last Name</span>
+              <span className="mb-1 block text-sm font-medium text-foreground">Last Name</span>
               <input type="text" name="lastName" autoComplete="family-name" className={INPUT_BASE} placeholder="Doe" />
             </label>
           </motion.div>
 
-          <motion.label variants={fieldVars} className="mt-3.5 block">
-            <span className="mb-1.5 block text-sm font-medium text-foreground">Email</span>
+          <motion.label variants={fieldVars} className="mt-3 block">
+            <span className="mb-1 block text-sm font-medium text-foreground">Email</span>
             <input type="email" name="email" autoComplete="email" className={INPUT_BASE} placeholder="you@example.com" aria-required="true" required />
           </motion.label>
 
-          <motion.label variants={fieldVars} className="mt-3.5 block">
-            <span className="mb-1.5 block text-sm font-medium text-foreground">Phone Number</span>
+          <motion.label variants={fieldVars} className="mt-3 block">
+            <span className="mb-1 block text-sm font-medium text-foreground">Phone Number</span>
             <input type="tel" name="phone" autoComplete="tel" className={INPUT_BASE} placeholder="(555) 123-4567" />
           </motion.label>
 
-          <motion.fieldset variants={fieldVars} className="mt-3.5">
+          <motion.fieldset variants={fieldVars} className="mt-3">
             <legend className="mb-2 block text-sm font-medium text-foreground">Select Service(s)</legend>
             <div className="flex flex-wrap gap-2">
               {CONTACT.serviceOptions.map((opt) => {
@@ -143,8 +143,8 @@ export default function Contact() {
             </div>
           </motion.fieldset>
 
-          <motion.label variants={fieldVars} className="mt-3.5 block">
-            <span className="mb-1.5 block text-sm font-medium text-foreground">Message</span>
+          <motion.label variants={fieldVars} className="mt-3 block">
+            <span className="mb-1 block text-sm font-medium text-foreground">Message</span>
             <textarea
               name="message"
               rows={3}

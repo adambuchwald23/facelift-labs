@@ -87,10 +87,10 @@ export default function FAQ() {
   }, []);
 
   return (
-    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-16 md:py-24">
+    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16">
       <div className="mx-auto max-w-3xl">
 
-        <div className="mb-6 flex flex-col items-center text-center gap-6 sm:mb-12">
+        <div className="mb-4 flex flex-col items-center text-center gap-3 sm:mb-8">
           <SectionHeader label="FAQ" />
           <p className="mx-auto max-w-md text-sm leading-relaxed text-foreground-muted sm:text-base">
             Everything you need to know about working with us.
@@ -121,7 +121,7 @@ export default function FAQ() {
           variants={inlineEntrance(mobile)}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
-          className="mt-6 flex flex-col items-center gap-6 text-center"
+          className="mt-5 flex flex-col items-center gap-4 text-center"
         >
           <p className="text-sm text-foreground-muted">
             Still have questions? We&apos;d love to chat.
