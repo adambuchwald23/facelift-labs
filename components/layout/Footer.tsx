@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -12,12 +13,13 @@ import { smoothScrollTo } from "@/lib/smooth-scroll";
 export default function Footer() {
   const mobile = useIsMobile();
   const [footerRef, footerInView] = useInView<HTMLDivElement>();
-  const fadeUp = fadeUpPreset(mobile);
+  const fadeUp = useMemo(() => fadeUpPreset(mobile), [mobile]);
+  const stagger = useMemo(() => staggerContainer(mobile), [mobile]);
   return (
     <footer className="border-t border-black/[0.07] bg-[#f7f8f6]">
       <motion.div
         ref={footerRef}
-        variants={staggerContainer(mobile)}
+        variants={stagger}
         initial="hidden"
         animate={footerInView ? "visible" : "hidden"}
         className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16"
@@ -37,12 +39,13 @@ export default function Footer() {
               className="inline-block shrink-0"
             >
               <Image
-                src="/logos/facelift-labs-horizontal.svg"
+                src="/logo.svg"
                 alt="Facelift Labs"
-                width={200}
-                height={36}
-                className="h-8 w-auto"
-                sizes="200px"
+                width={613}
+                height={100}
+                className="h-auto"
+                style={{ width: "clamp(130px, 30vw, 160px)" }}
+                sizes="160px"
                 loading="lazy"
               />
             </a>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CARD_SHADOW } from "@/lib/design-tokens";
@@ -22,10 +23,11 @@ export function CoreServicesGrid({
   mobile: boolean;
 }) {
   const [gridRef, gridInView] = useInView<HTMLDivElement>();
+  const stagger = useMemo(() => staggerContainer(mobile), [mobile]);
   return (
     <motion.div
       ref={gridRef}
-      variants={staggerContainer(mobile)}
+      variants={stagger}
       initial="hidden"
       animate={gridInView ? "visible" : "hidden"}
       className={cn(
@@ -45,9 +47,10 @@ export function CoreServiceCard({
   className,
   mobile,
 }: CoreServiceItem & { className?: string; mobile: boolean }) {
+  const cardVariants = useMemo(() => fadeUp(mobile), [mobile]);
   return (
     <motion.article
-      variants={fadeUp(mobile)}
+      variants={cardVariants}
       className={cn(
         "relative flex min-h-0 sm:min-h-[220px] flex-col items-start rounded-[20px] bg-white p-4 ring-[1px] ring-inset ring-black/[0.07] sm:rounded-[40px] sm:p-8 transition-shadow duration-300 md:hover:shadow-[0_20px_50px_-12px_rgba(0,255,136,0.18),0_8px_24px_-8px_rgba(0,0,0,0.10)]",
         className

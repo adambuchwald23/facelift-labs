@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, memo, useCallback } from "react";
+import { useState, useMemo, memo, useCallback } from "react";
 import { motion } from "motion/react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -82,12 +82,14 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const mobile = useIsMobile();
   const [listRef, listInView] = useInView<HTMLDivElement>();
+  const stagger = useMemo(() => staggerContainer(mobile), [mobile]);
+  const entrance = useMemo(() => inlineEntrance(mobile), [mobile]);
   const handleToggle = useCallback((i: number) => {
     setOpenIndex((prev) => (prev === i ? null : i));
   }, []);
 
   return (
-    <SectionWrapper id="faq" className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16">
+    <SectionWrapper id="faq" className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20">
       <div className="mx-auto max-w-3xl">
 
         <div className="mb-4 flex flex-col items-center text-center gap-3 sm:mb-8">
@@ -99,7 +101,7 @@ export default function FAQ() {
 
         <motion.div
           ref={listRef}
-          variants={staggerContainer(mobile)}
+          variants={stagger}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
           className="space-y-2"
@@ -118,7 +120,7 @@ export default function FAQ() {
 
         {/* Bottom CTA — natural end to the section */}
         <motion.div
-          variants={inlineEntrance(mobile)}
+          variants={entrance}
           initial="hidden"
           animate={listInView ? "visible" : "hidden"}
           className="mt-4 flex flex-col items-center gap-3 text-center sm:mt-5 sm:gap-4"

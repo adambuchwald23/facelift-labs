@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -38,6 +38,7 @@ export default function TheFacelift() {
   const [mobileRef, mobileInView] = useInView<HTMLDivElement>();
   const [tilesKey, setTilesKey] = useState(0);
   const [tilesRef, tilesInView] = useInView<HTMLDivElement>({ rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
+  const stagger = useMemo(() => staggerContainer(mobile), [mobile]);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -52,7 +53,7 @@ export default function TheFacelift() {
   return (
     <SectionWrapper
       id="facelift"
-      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16"
+      className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-4 flex flex-col items-center text-center gap-3 sm:mb-8">
@@ -68,7 +69,7 @@ export default function TheFacelift() {
           ref={desktopRef}
           initial="hidden"
           animate={desktopInView ? "visible" : "hidden"}
-          variants={staggerContainer(false)}
+          variants={stagger}
           className="hidden lg:flex items-stretch gap-3"
         >
           {THE_FACELIFT_STEPS.map((step, i) => (
@@ -84,7 +85,7 @@ export default function TheFacelift() {
         {/* Mobile: single column; Tablet: 2-col grid */}
         <motion.div
           ref={mobileRef}
-          variants={staggerContainer(mobile)}
+          variants={stagger}
           initial="hidden"
           animate={mobileInView ? "visible" : "hidden"}
           className="grid grid-cols-1 gap-3 max-w-sm mx-auto sm:max-w-none sm:grid-cols-2 lg:hidden"
@@ -98,7 +99,7 @@ export default function TheFacelift() {
         <motion.div
           key={tilesKey}
           ref={tilesRef}
-          variants={staggerContainer(mobile)}
+          variants={stagger}
           initial="hidden"
           animate={tilesInView ? "visible" : "hidden"}
           className="mt-6 sm:mt-12"
@@ -187,6 +188,9 @@ function TechTile({
   mobile: boolean;
 }) {
   const dur = FLOAT_DURATIONS[floatIndex % FLOAT_DURATIONS.length];
+  const entranceDur = mobile ? 0.5 : 0.7;
+  const staggerDelay = floatIndex * (mobile ? 0.1 : 0.09) + (mobile ? 0.08 : 0.04);
+  const floatStartDelay = entranceDur + staggerDelay;
 
   const tileVariants = {
     hidden: { opacity: 0, y: mobile ? 6 : 10, scale: 0.96 },
@@ -194,7 +198,7 @@ function TechTile({
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: mobile ? 0.5 : 0.7, ease: TILE_EASE },
+      transition: { duration: entranceDur, ease: TILE_EASE },
     },
   };
 
@@ -204,7 +208,7 @@ function TechTile({
         className="tile-float group flex h-[52px] w-[52px] sm:h-[80px] sm:w-[80px] lg:h-[100px] lg:w-[100px] cursor-default flex-col items-center justify-center gap-0.5 sm:gap-2 rounded-[12px] sm:rounded-[20px] bg-[#f5f5f5] ring-1 ring-black/[0.07] transition-shadow duration-300 md:hover:shadow-[0_16px_40px_rgba(0,255,136,0.18),0_4px_12px_rgba(0,0,0,0.08)]"
         style={{
           "--float-dur": `${dur}s`,
-          "--float-delay": `${floatIndex * 0.3}s`,
+          "--float-delay": `${floatStartDelay.toFixed(2)}s`,
         } as React.CSSProperties}
       >
         <div className="relative h-5 w-5 shrink-0 sm:h-8 sm:w-8 lg:h-10 lg:w-10">

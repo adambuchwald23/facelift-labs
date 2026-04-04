@@ -20,6 +20,7 @@ export default function Contact() {
   const mobile = useIsMobile();
   const [observerRef, formInView] = useInView<HTMLDivElement>();
   const fieldVars = useMemo(() => fadeUp(mobile), [mobile]);
+  const stagger = useMemo(() => staggerContainer(mobile), [mobile]);
   const [services, setServices] = useState<string[]>([]);
   const [status, setStatus] = useState<FormStatus>("idle");
   const formRef = useRef<HTMLFormElement>(null);
@@ -72,7 +73,7 @@ export default function Contact() {
   return (
     <SectionWrapper
       id="contact"
-      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:pt-16 md:pb-20"
+      className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:pt-20 md:pb-24"
     >
       <div className="mx-auto max-w-3xl">
         <div className="mb-4 flex flex-col items-center gap-3 text-center sm:mb-6">
@@ -85,7 +86,7 @@ export default function Contact() {
         <div ref={observerRef}>
         <motion.form
           ref={formRef}
-          variants={staggerContainer(mobile)}
+          variants={stagger}
           initial="hidden"
           animate={formInView ? "visible" : "hidden"}
           onSubmit={handleSubmit}

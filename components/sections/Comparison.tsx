@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -13,9 +14,9 @@ import { staggerContainer, fadeInLeft, inlineEntrance } from "@/lib/motion";
 
 export default function Comparison() {
   const mobile = useIsMobile();
-  const rowVars = fadeInLeft(mobile);
-  const listVars = staggerContainer(mobile);
-  const entrance = inlineEntrance(mobile);
+  const rowVars = useMemo(() => fadeInLeft(mobile), [mobile]);
+  const listVars = useMemo(() => staggerContainer(mobile), [mobile]);
+  const entrance = useMemo(() => inlineEntrance(mobile), [mobile]);
 
   const [cardRef, cardInView] = useInView<HTMLDivElement>();
   const [leftRef, leftInView] = useInView<HTMLUListElement>();
@@ -24,7 +25,7 @@ export default function Comparison() {
   return (
     <SectionWrapper
       id="why-us"
-      className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16"
+      className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
     >
       <div className="mx-auto max-w-5xl">
         <div className="mb-4 flex justify-center sm:mb-10">

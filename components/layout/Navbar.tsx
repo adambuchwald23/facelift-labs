@@ -246,9 +246,9 @@ export default function Navbar() {
   return (
     <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-3 pb-2.5 sm:pt-4 sm:pb-3.5 [transform:translateZ(0)] [will-change:transform]">
       <motion.div
-        initial={false}
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+        transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 border backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
           scrolled
             ? "bg-white/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-black/[0.06]"

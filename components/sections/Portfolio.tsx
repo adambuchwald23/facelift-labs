@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
@@ -54,12 +54,13 @@ export default function Portfolio() {
   const activeProject = activeIndex !== null ? PORTFOLIO_PROJECTS[activeIndex] : null;
   const mobile = useIsMobile();
   const [gridRef, gridInView] = useInView<HTMLDivElement>();
+  const stagger = useMemo(() => staggerContainer(mobile), [mobile]);
 
   return (
     <>
       <SectionWrapper
         id="portfolio"
-        className="section-viewport px-4 pt-6 pb-8 sm:px-6 sm:py-12 md:py-16"
+        className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
       >
         <div className="mx-auto max-w-4xl">
           <div className="mb-4 flex justify-center sm:mb-10">
@@ -68,7 +69,7 @@ export default function Portfolio() {
 
           <motion.div
             ref={gridRef}
-            variants={staggerContainer(mobile)}
+            variants={stagger}
             initial="hidden"
             animate={gridInView ? "visible" : "hidden"}
             className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8"
