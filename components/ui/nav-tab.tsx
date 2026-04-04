@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 
 interface NavTabProps {
   text: string;
-  href: string;
   selected: boolean;
   tabRef: (el: HTMLButtonElement | null) => void;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

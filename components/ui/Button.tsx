@@ -56,7 +56,7 @@ export default function Button({
       : onClick;
 
     return (
-      <Link href={href} className={cn(classes, "hover:scale-[1.02] active:scale-[0.98]")} onClick={handleClick}>
+      <Link href={href} className={cn(classes, "[transform:translateZ(0)] hover:scale-[1.02] active:scale-[0.98]")} onClick={handleClick}>
         {children}
       </Link>
     );

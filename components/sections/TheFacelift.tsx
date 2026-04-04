@@ -53,7 +53,7 @@ export default function TheFacelift() {
   return (
     <SectionWrapper
       id="facelift"
-      className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
+      className="px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-4 flex flex-col items-center text-center gap-3 sm:mb-8">

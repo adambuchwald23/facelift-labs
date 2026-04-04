@@ -132,7 +132,6 @@ export const FAQ_ITEMS = [
 
 export const CONTACT = {
   headline: "Let's Build The Future",
-  subtext: "Send us a message.",
   submitLabel: "Send Message",
   /** Figma: Select Service(s) checkboxes */
   serviceOptions: [

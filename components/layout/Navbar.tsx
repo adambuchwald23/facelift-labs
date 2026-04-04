@@ -259,7 +259,7 @@ export default function Navbar() {
   );
 
   return (
-    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 pt-3 pb-2.5 sm:pt-4 sm:pb-3.5 [transform:translateZ(0)] [will-change:transform]">
+    <header className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 py-2.5 sm:pt-4 sm:pb-3.5 [transform:translateZ(0)] [will-change:transform]">
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -307,7 +307,6 @@ export default function Navbar() {
               <NavTab
                 key={link.href}
                 text={link.label}
-                href={link.href}
                 selected={activeHref === link.href}
                 tabRef={(el) => { tabRefs.current[i] = el; }}
                 onClick={handleNavClick(link.href)}

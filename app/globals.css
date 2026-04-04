@@ -49,8 +49,6 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* section-viewport: placeholder class kept for grep-ability.
-   Sections rely on consistent padding instead of min-height. */
 .hero-viewport {
   min-height: 100vh;
   min-height: 100svh;

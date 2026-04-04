@@ -41,7 +41,7 @@ export default function CoreServices() {
   return (
     <SectionWrapper
       id="services"
-      className="section-viewport px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
+      className="px-4 pt-10 pb-8 sm:px-6 sm:py-12 md:py-20"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-4 flex justify-center sm:mb-10">
