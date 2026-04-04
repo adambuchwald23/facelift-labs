@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "./structured-data";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 function metadataBaseUrl() {
   const raw =

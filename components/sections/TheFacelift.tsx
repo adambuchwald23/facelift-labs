@@ -218,6 +218,7 @@ function TechTile({
             fill
             className="object-contain"
             sizes="(max-width: 640px) 48px, (max-width: 1024px) 64px, 80px"
+            loading="lazy"
           />
         </div>
         <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-foreground/50 transition-colors group-hover:text-foreground/70">

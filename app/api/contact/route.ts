@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
+
 /* ── Rate limiter (sliding window, in-memory) ── */
 
 const RATE_WINDOW_MS = 60_000;
@@ -14,6 +18,17 @@ function isRateLimited(ip: string): boolean {
   timestamps.push(now);
   hits.set(ip, timestamps);
   return false;
+}
+
+if (typeof globalThis !== "undefined") {
+  setInterval(() => {
+    const now = Date.now();
+    for (const [ip, ts] of hits) {
+      const valid = ts.filter((t) => now - t < RATE_WINDOW_MS);
+      if (valid.length === 0) hits.delete(ip);
+      else hits.set(ip, valid);
+    }
+  }, RATE_WINDOW_MS).unref?.();
 }
 
 /* ── Helpers ── */
@@ -63,14 +78,12 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!process.env.RESEND_API_KEY) {
+    if (!resend) {
       return NextResponse.json(
         { error: "Email service is not configured." },
         { status: 503 },
       );
     }
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
 
     let body: Record<string, unknown>;
     try {
