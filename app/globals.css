@@ -141,24 +141,19 @@ body {
 
 /* Hero CTA arrow — shoots left-to-right only on button hover */
 @keyframes cta-arrow-shoot {
-  0%   { transform: translate3d(-8px, -50%, 0); opacity: 0; }
-  18%  { transform: translate3d(-2px, -50%, 0); opacity: 1; }
-  72%  { transform: translate3d(5px,  -50%, 0); opacity: 1; }
-  90%  { transform: translate3d(9px,  -50%, 0); opacity: 0; }
-  100% { transform: translate3d(9px,  -50%, 0); opacity: 0; }
+  0%   { transform: translate3d(-8px, 0, 0); opacity: 0; }
+  18%  { transform: translate3d(-2px, 0, 0); opacity: 1; }
+  72%  { transform: translate3d(5px,  0, 0); opacity: 1; }
+  90%  { transform: translate3d(9px,  0, 0); opacity: 0; }
+  100% { transform: translate3d(9px,  0, 0); opacity: 0; }
 }
 
-/* Hidden by default; plays only while the button is hovered */
 .cta-arrow-shoot {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate3d(0, -50%, 0);
-  opacity: 1;
 }
 
 @media (hover: hover) {
@@ -174,7 +169,7 @@ body {
   .cta-arrow-btn:focus-visible .cta-arrow-shoot {
     animation: none;
     opacity: 1;
-    transform: translate3d(0, -50%, 0);
+    transform: none;
   }
 }
 
