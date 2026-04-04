@@ -102,15 +102,17 @@ export default function Portfolio() {
                   aria-hidden
                 />
 
-                <Image
-                  src={project.imagePath}
-                  alt={project.title}
-                  width={988}
-                  height={816}
-                  className="relative w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  loading="lazy"
-                />
+                <div className="relative rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.18)] sm:rounded-xl">
+                  <Image
+                    src={project.imagePath}
+                    alt={project.title}
+                    width={988}
+                    height={816}
+                    className="w-full h-auto rounded-lg sm:rounded-xl"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                </div>
 
                 <div className="mt-2 flex justify-center sm:mt-3">
                   <span className="rounded-full bg-white/90 px-3.5 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur-sm ring-1 ring-black/[0.07] sm:px-4 sm:py-1.5 sm:text-sm">

@@ -189,7 +189,7 @@ function TechTile({
 }) {
   const dur = FLOAT_DURATIONS[floatIndex % FLOAT_DURATIONS.length];
   const entranceDur = mobile ? 0.5 : 0.7;
-  const staggerDelay = floatIndex * (mobile ? 0.1 : 0.09) + (mobile ? 0.08 : 0.04);
+  const staggerDelay = floatIndex * (mobile ? 0.07 : 0.09) + (mobile ? 0.05 : 0.04);
   const floatStartDelay = entranceDur + staggerDelay;
 
   const tileVariants = {

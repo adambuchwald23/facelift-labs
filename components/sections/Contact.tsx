@@ -130,7 +130,7 @@ export default function Contact() {
                     type="button"
                     aria-pressed={selected}
                     onClick={() => toggleService(opt.value)}
-                    className="min-h-[36px] rounded-full px-3 py-1 text-xs font-medium ring-1 ring-black/[0.08] outline-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97] sm:min-h-[40px] sm:px-3.5 sm:py-1.5 sm:text-sm"
+                    className="min-h-[44px] rounded-full px-3 py-1.5 text-xs font-medium ring-1 ring-black/[0.08] outline-none transition-[background-color,color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] active:scale-[0.97] sm:px-3.5 sm:py-1.5 sm:text-sm"
                     style={{
                       backgroundColor: selected ? "#00FF88" : "#f7f7f7",
                       color: selected ? "#0a0a0a" : "rgba(10,10,10,0.55)",

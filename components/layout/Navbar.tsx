@@ -48,6 +48,20 @@ export default function Navbar() {
     return () => window.removeEventListener("hashchange", syncFromHash);
   }, []);
 
+  const sectionOffsetsRef = useRef<{ href: string; top: number }[]>([]);
+  const contactOffsetRef = useRef<number>(Infinity);
+
+  const cacheSectionOffsets = useCallback(() => {
+    const offsets: { href: string; top: number }[] = [];
+    for (const link of NAV_LINKS) {
+      const el = document.getElementById(link.href.slice(1));
+      if (el) offsets.push({ href: link.href, top: el.offsetTop });
+    }
+    sectionOffsetsRef.current = offsets;
+    const contactEl = document.getElementById("contact");
+    contactOffsetRef.current = contactEl ? contactEl.offsetTop : Infinity;
+  }, []);
+
   const detectActiveSection = useCallback(() => {
     const sy = window.scrollY;
     if (sy < 100) {
@@ -55,22 +69,22 @@ export default function Navbar() {
       activeHrefRef.current = "";
       return;
     }
-    const threshold = 120;
+    const threshold = sy + 120;
     let active = "";
-    for (const link of NAV_LINKS) {
-      const el = document.getElementById(link.href.slice(1));
-      if (!el) continue;
-      if (el.getBoundingClientRect().top <= threshold) {
-        active = link.href;
-      }
+    for (const s of sectionOffsetsRef.current) {
+      if (s.top <= threshold) active = s.href;
     }
-    const contactEl = document.getElementById("contact");
-    if (contactEl && contactEl.getBoundingClientRect().top <= threshold) {
-      active = "";
-    }
+    if (contactOffsetRef.current <= threshold) active = "";
     if (active !== activeHrefRef.current) setActiveHref(active);
     activeHrefRef.current = active;
   }, []);
+
+  // Cache section offsets on mount and after layout settles.
+  useEffect(() => {
+    cacheSectionOffsets();
+    const timer = setTimeout(cacheSectionOffsets, 1000);
+    return () => clearTimeout(timer);
+  }, [cacheSectionOffsets]);
 
   // Single rAF-throttled scroll listener for both scrolled state and active section.
   useEffect(() => {
@@ -181,7 +195,7 @@ export default function Navbar() {
 
   useLayoutEffect(positionPill, [activeHref, positionPill]);
 
-  // Reposition pill on window resize — rAF-throttled to avoid layout thrashing.
+  // Reposition pill + recache section offsets on resize — rAF-throttled.
   useEffect(() => {
     let resizeRaf = 0;
     const onResize = () => {
@@ -189,6 +203,7 @@ export default function Navbar() {
       resizeRaf = requestAnimationFrame(() => {
         resizeRaf = 0;
         positionPill();
+        cacheSectionOffsets();
       });
     };
     window.addEventListener("resize", onResize);
@@ -196,7 +211,7 @@ export default function Navbar() {
       window.removeEventListener("resize", onResize);
       cancelAnimationFrame(resizeRaf);
     };
-  }, [positionPill]);
+  }, [positionPill, cacheSectionOffsets]);
 
   const handleNavClick = useCallback(
     (href: string) => () => {
@@ -249,7 +264,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-        className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 border backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
+        className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 rounded-[100px] px-3 py-2 border backdrop-blur-md transition-[background-color,border-color] duration-300 sm:px-4 ${
           scrolled
             ? "bg-white/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-black/[0.06]"
             : "bg-white/70 border-black/[0.06] md:bg-transparent md:border-transparent md:shadow-none"

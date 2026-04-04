@@ -204,7 +204,7 @@ body {
   animation-fill-mode: backwards;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .tile-float { animation: none; }
 }
 
