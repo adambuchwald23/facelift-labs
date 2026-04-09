@@ -50,8 +50,16 @@ body {
 }
 
 .hero-viewport {
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: auto;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero-viewport {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-bottom: 0;
+  }
 }
 
 /* Skip-to-content link — hidden until focused for keyboard users */
