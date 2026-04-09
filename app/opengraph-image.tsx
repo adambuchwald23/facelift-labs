@@ -32,14 +32,14 @@ export default function OgImage() {
               width: 56,
               height: 56,
               borderRadius: 14,
-              background: "#00FF88",
+              background: "#020202",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <span style={{ fontSize: 40, fontWeight: 800, color: "#020202", lineHeight: 1, display: "flex" }}>
-              f
+            <span style={{ fontSize: 30, fontWeight: 800, color: "#00FF88", lineHeight: 1, letterSpacing: -1.5, display: "flex", fontFamily: "Inter, system-ui, sans-serif" }}>
+              FL
             </span>
           </div>
           <span style={{ fontSize: 48, fontWeight: 800, color: "#0a0a0a", letterSpacing: -1, display: "flex" }}>
