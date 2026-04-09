@@ -1,7 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-const MOBILE_BP = 768;
-const QUERY = `(max-width: ${MOBILE_BP}px)`;
+const QUERY = "(max-width: 767px)";
 
 function subscribe(cb: () => void) {
   const mql = window.matchMedia(QUERY);
