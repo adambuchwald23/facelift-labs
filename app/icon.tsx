@@ -1,9 +1,12 @@
 import { ImageResponse } from "next/og";
+import { getInterBold } from "./og-fonts";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
+  const interBold = await getInterBold();
+
   return new ImageResponse(
     (
       <div
@@ -11,7 +14,7 @@ export default function Icon() {
           width: 32,
           height: 32,
           borderRadius: 7,
-          background: "#020202",
+          background: "#ffffff",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -21,17 +24,34 @@ export default function Icon() {
           style={{
             fontSize: 18,
             fontWeight: 800,
-            color: "#00FF88",
+            color: "#020202",
             lineHeight: 1,
             letterSpacing: -1,
-            fontFamily: "Inter, system-ui, sans-serif",
+            fontFamily: "Inter",
             display: "flex",
           }}
         >
-          FL
+          F
+        </span>
+        <span
+          style={{
+            fontSize: 18,
+            fontWeight: 800,
+            color: "#00FF88",
+            lineHeight: 1,
+            letterSpacing: -1,
+            fontFamily: "Inter",
+            display: "flex",
+            marginLeft: -2,
+          }}
+        >
+          L
         </span>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [{ name: "Inter", data: interBold, weight: 800, style: "normal" }],
+    },
   );
 }
