@@ -14,19 +14,19 @@ export default async function Icon() {
           width: 32,
           height: 32,
           borderRadius: 7,
-          background: "#ffffff",
+          background: "#020202",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          gap: 0,
         }}
       >
         <span
           style={{
-            fontSize: 18,
+            fontSize: 17,
             fontWeight: 800,
-            color: "#020202",
+            color: "#ffffff",
             lineHeight: 1,
-            letterSpacing: -1,
             fontFamily: "Inter",
             display: "flex",
           }}
@@ -35,14 +35,12 @@ export default async function Icon() {
         </span>
         <span
           style={{
-            fontSize: 18,
+            fontSize: 17,
             fontWeight: 800,
             color: "#00FF88",
             lineHeight: 1,
-            letterSpacing: -1,
             fontFamily: "Inter",
             display: "flex",
-            marginLeft: -2,
           }}
         >
           L

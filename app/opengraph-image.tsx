@@ -35,17 +35,16 @@ export default async function OgImage() {
               width: 56,
               height: 56,
               borderRadius: 14,
-              background: "#ffffff",
-              border: "2px solid #e5e5e5",
+              background: "#020202",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <span style={{ fontSize: 30, fontWeight: 800, color: "#020202", lineHeight: 1, letterSpacing: -1.5, display: "flex", fontFamily: "Inter" }}>
+            <span style={{ fontSize: 28, fontWeight: 800, color: "#ffffff", lineHeight: 1, display: "flex", fontFamily: "Inter" }}>
               F
             </span>
-            <span style={{ fontSize: 30, fontWeight: 800, color: "#00FF88", lineHeight: 1, letterSpacing: -1.5, display: "flex", fontFamily: "Inter", marginLeft: -2 }}>
+            <span style={{ fontSize: 28, fontWeight: 800, color: "#00FF88", lineHeight: 1, display: "flex", fontFamily: "Inter" }}>
               L
             </span>
           </div>

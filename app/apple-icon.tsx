@@ -14,19 +14,19 @@ export default async function AppleIcon() {
           width: 180,
           height: 180,
           borderRadius: 40,
-          background: "#ffffff",
+          background: "#020202",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          gap: 0,
         }}
       >
         <span
           style={{
-            fontSize: 96,
+            fontSize: 92,
             fontWeight: 800,
-            color: "#020202",
+            color: "#ffffff",
             lineHeight: 1,
-            letterSpacing: -4,
             fontFamily: "Inter",
             display: "flex",
           }}
@@ -35,14 +35,12 @@ export default async function AppleIcon() {
         </span>
         <span
           style={{
-            fontSize: 96,
+            fontSize: 92,
             fontWeight: 800,
             color: "#00FF88",
             lineHeight: 1,
-            letterSpacing: -4,
             fontFamily: "Inter",
             display: "flex",
-            marginLeft: -6,
           }}
         >
           L
