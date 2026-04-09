@@ -10,16 +10,24 @@ export function StructuredData() {
       "@type": "Organization",
       "@id": `${BASE_URL}/#organization`,
       name: "Facelift Labs",
+      alternateName: ["faceliftlabs", "Facelift Labs LLC"],
       url: BASE_URL,
-      logo: `${BASE_URL}/logo.svg`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/logo.svg`,
+        width: 613,
+        height: 100,
+      },
+      image: `${BASE_URL}/opengraph-image`,
       description:
-        "We design and build high-performance websites for brands that need a new site or a complete redesign.",
-      telephone: "954-218-2066",
+        "Facelift Labs designs and builds high-performance websites for brands that need a new site or a complete redesign.",
+      telephone: "+1-954-218-2066",
       email: "hello@faceliftlabs.com",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Tampa",
         addressRegion: "FL",
+        postalCode: "33601",
         addressCountry: "US",
       },
       areaServed: {
@@ -28,6 +36,7 @@ export function StructuredData() {
       },
       sameAs: [
         "https://www.linkedin.com/company/faceliftlabs",
+        "https://faceliftlabs.com",
       ],
     },
     {
@@ -49,7 +58,16 @@ export function StructuredData() {
       "@id": `${BASE_URL}/#website`,
       url: BASE_URL,
       name: "Facelift Labs",
+      alternateName: ["faceliftlabs", "Facelift Labs LLC"],
       publisher: { "@id": `${BASE_URL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `https://www.google.com/search?q=site:faceliftlabs.com+{search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@type": "FAQPage",

@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "Cookie Policy for Facelift Labs — how we use cookies and similar technologies.",
+  alternates: { canonical: "/cookies" },
+  openGraph: { url: "/cookies" },
 };
 
 export default function CookiePolicy() {

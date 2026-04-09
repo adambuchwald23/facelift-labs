@@ -10,25 +10,11 @@ export default function Icon() {
         style={{
           width: 32,
           height: 32,
-          borderRadius: 8,
+          borderRadius: 7,
           background: "#00FF88",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
         }}
-      >
-        <span
-          style={{
-            fontSize: 24,
-            fontWeight: 800,
-            color: "#020202",
-            lineHeight: 1,
-            fontFamily: "Inter, system-ui, sans-serif",
-          }}
-        >
-          f
-        </span>
-      </div>
+      />
     ),
     { ...size },
   );
